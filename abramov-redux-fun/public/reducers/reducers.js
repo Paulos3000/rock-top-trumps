@@ -10,3 +10,18 @@ export const counterFunction = (state=0, action) => {
          return state;
    }
 }
+
+export const todosFunction = (state = [], action) => {
+   switch(action.type) {
+      case 'ADD_TODO' :
+         return [
+            ...state,
+            {
+               id: action.id,
+               text: action.text,
+               completed: false
+            }
+         ]
+   }
+   return state;
+}
