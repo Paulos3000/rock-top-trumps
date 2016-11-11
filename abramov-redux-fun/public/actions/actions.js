@@ -1,6 +1,4 @@
-/* 
-* action creators
-*/
-export function CounterActions() {
-    return { type: "Add" }
+
+export function actionCreatorOne() {
+    return { type: "TYPE_NAME" }
 }

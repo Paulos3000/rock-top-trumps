@@ -1,10 +1,12 @@
-function reducerFunction(state = {counter: 0}, action) {
-    switch (action.type) {
-        case "Add":
-            return Object.assign( {}, state, { counter: state.counter + 1 });
-        default:
-            return state;
-    }
+export const counterFunction = (state=0, action) => {
+   switch(action.type) {
+      case 'INCREMENT' :
+         console.log('incrementing state')
+         return state + 1;
+      case 'DECREMENT' :
+         console.log('decrement state')
+         return state - 1;
+      default :
+         return state;
+   }
 }
-
-export default reducerFunction;
