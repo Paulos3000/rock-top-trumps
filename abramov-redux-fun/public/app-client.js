@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 
+// SAT 12th NOV - CONTINUE REFACTORING FROM TUTORIAL #21
+//------------------------------------------------------
+
 // import todoApp reducer
 import todoApp from './reducers/index'
 
@@ -24,6 +27,22 @@ const {defaultState} = [
 ]
 
 const store = createStore(todoApp)
+
+// 'Functional' Component
+const AddTodo = ( {onAddClick} ) => {
+   let input;
+
+   return (
+   <div>
+      <input ref={ node => {input = node} }></input>
+      <button onClick={() => {
+            onAddClick(input.value);
+            input.value = ''
+         }}>Add Todo
+      </button>
+   </div>
+   )
+}
 
 // function to filter todos list by action type (SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETE)
 const getVisibleTodos = (todos, filter) => {
@@ -52,18 +71,18 @@ class TodoApp extends Component {
       return (
          <div className='container'>
             <h1>TodoApp</h1>
-            <input ref={ node => {this.input = node} }></input>
-            <button onClick={() => {
-               console.log('dispatching action')
-               store.dispatch(
-                  {
+            <h3>Continue from lesson #21 (Dan Abramov) <small>[12.11.16]</small></h3>
+            <hr/>
+
+            <AddTodo
+               onAddClick={text =>
+                  store.dispatch({
                      type: 'ADD_TODO',
-                     text: this.input.value,
-                     id: nextTodoId++
-                  }
-               );
-               this.input.value = ''
-            }}>Add Todo</button>
+                     id: nextTodoId++,
+                     text
+                  })
+               }
+            />
 
             <TodoList
                todos={visibleTodos}
