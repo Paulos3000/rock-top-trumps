@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+    devtool: 'eval-source-map',
     entry: path.join(__dirname, 'public', 'app-client.js'),
     devServer: {
       inline: true,

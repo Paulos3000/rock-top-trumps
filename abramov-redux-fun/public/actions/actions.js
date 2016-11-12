@@ -1,4 +1,8 @@
 
-export function actionCreatorOne() {
-    return { type: "TYPE_NAME" }
+export const incrementAction = () => {
+   return {
+      type: "INCREMENT"
+   }
 }
+
+() => store.dispatch( {type: 'INCREMENT'} )

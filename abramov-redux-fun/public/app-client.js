@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 
-import counter from './reducers/reducers'
-import { counterFunction, todosFunction } from './reducers/reducers'
+// import todoApp reducer
+import todoApp from './reducers/index'
 
-import Counter from './components/Counter'
-
-const defaultState = [
+const {defaultState} = [
    {
       id: 1,
       text: 'First item',
@@ -25,16 +23,44 @@ const defaultState = [
    }
 ]
 
-const store = createStore(counterFunction)
+const store = createStore(todoApp)
+
+let nextTodoId = 0
+class TodoApp extends Component {
+   render() {
+      return (
+         <div className='container'>
+
+            <h1>TodoApp</h1>
+            <input ref={ node => {this.input = node} }></input>
+            <button onClick={() => {
+               console.log('dispatching action')
+               store.dispatch(
+                  {
+                     type: 'ADD_TODO',
+                     text: this.input.value,
+                     id: nextTodoId++
+                  }
+               );
+               this.input.value = ''
+            }}>Add Todo</button>
+
+            <ul>
+               {this.props.todos.map(todo =>
+                  <li key={todo.id}>
+                     {todo.text}
+                  </li>
+               )}
+            </ul>
+         </div>
+      )
+   }
+}
 
 const render = () => ReactDOM.render(
-   <Counter
-      value={store.getState()}
-      onIncrement={() => store.dispatch( {type: 'INCREMENT'} )}
-      onDecrement={() => store.dispatch( {type: 'DECREMENT'} )}
-   />,
+   <TodoApp todos={store.getState().todos}/>,
    document.getElementById("root")
 )
 
-store.subscribe(render)
 render()
+store.subscribe(render)

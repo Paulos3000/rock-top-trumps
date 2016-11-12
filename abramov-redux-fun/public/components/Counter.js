@@ -11,7 +11,7 @@ class Counter extends Component {
             <h1>Counter Page</h1>
             <button onClick={onIncrement}>Increment</button>
             <button onClick={onDecrement}>Decrement</button>
-            <h2>{value}</h2>
+            <h3>{value}</h3>
          </div>
       )
    }
