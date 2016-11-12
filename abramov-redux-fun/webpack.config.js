@@ -25,7 +25,7 @@ module.exports = {
                test: path.join(__dirname, 'public'),
                loader: ['babel-loader'],
                query: {
-                 presets: debug ? ['react', 'es2015', 'stage-2', 'react-hmre'] : ['react', 'es2015', 'stage-2']
+                 presets: debug ? ['react', 'es2015', 'react-hmre', 'stage-2'] : ['react', 'es2015', 'stage-2']
                }
             }
         ]
