@@ -198,22 +198,7 @@ const Footer = () => (
 )
 
 import { createStore } from 'redux'
-
-class Provider extends Component {
-   // allow store prop to available to any child component, inc. grandchildren
-   getChildContext() {
-      return {
-         store: this.props.store
-      }
-   }
-   render() {
-      return this.props.children
-   }
-}
-// for getChildContext() to work, need to specify childContextTypes object (like propTypes, but ESSENTIAL, unlike propTypes)
-Provider.childContextTypes = {
-   store: React.PropTypes.object
-}
+import { Provider } from 'react-redux'
 
 // directly inject store + definition as prop to main app
 ReactDOM.render(
