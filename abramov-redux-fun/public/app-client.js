@@ -25,23 +25,20 @@ const {defaultState} = [
    }
 ]
 
-import { createStore } from 'redux'
-const store = createStore(todoApp)
-
 // MAIN CONTAINER COMPONENT
-const TodoApp = () => (
+const TodoApp = ( {store} ) => (
    <div className='container'>
       <h1>TodoApp</h1>
       <hr/>
-      <AddTodo />
-      <VisibleTodoList />
-      <Footer />
+      <AddTodo store={store}/>
+      <VisibleTodoList store={store}/>
+      <Footer store={store}/>
    </div>
 )
 
 // INPUT FIELD AND SUBMIT BUTTON (PRESENTATIONAL COMPONENT) 'Functional' Component - Input Field
 let nextTodoId = 0   // global variable
-const AddTodo = () => {
+const AddTodo = ( {store} ) => {
    let input;
    return (
    <div>
@@ -78,6 +75,7 @@ const getVisibleTodos = (todos, filter) => {
 // VISIBLE TODO LIST (CLASS INTERMEDIATE CONTAINER COMPONENT)
 class VisibleTodoList extends Component {
    componentDidMount() {
+      const { store } = this.props;
       this.unsubscribe = store.subscribe(() =>
          this.forceUpdate()
       )
@@ -87,7 +85,8 @@ class VisibleTodoList extends Component {
    }
 
    render() {
-      const props = this.props
+      const props = this.props;
+      const { store } = props;
       const state = store.getState();
 
       return (
@@ -131,6 +130,7 @@ const Todo = ( {onClick, completed, text} ) => (
 // FILTER LINK (CLASS INTERMEDIATE CONTAINER COMPONENT)
 class FilterLink extends Component {
    componentDidMount() {
+      const { store } = this.props;
       this.unsubscribe = store.subscribe(() =>
          this.forceUpdate()
       )
@@ -138,8 +138,10 @@ class FilterLink extends Component {
    componentWillUnmount() {
       this.unsubscribe();
    }
+
    render() {
       const props = this.props;
+      const { store } = props;
       const state = store.getState();  // redux store state, NOT react sta
       return (
          <Link
@@ -173,24 +175,26 @@ const Link = ( {active, children, onClick} ) => {
 }
 
 // FOOTER (PRESENTATIONAL COMPONENT)
-const Footer = () => (
+const Footer = ( {store} ) => (
    <p>
       Show:{' '}
       <FilterLink
          filter='SHOW_ALL'
-         >All</FilterLink>{' '}
+         store={store}>All</FilterLink>{' '}
       <FilterLink
          filter='SHOW_ACTIVE'
-         >Active</FilterLink>{' '}
+         store={store}>Active</FilterLink>{' '}
       <FilterLink
          filter='SHOW_COMPLETED'
-         >Completed</FilterLink>{' '}
+         store={store}>Completed</FilterLink>{' '}
    </p>
 )
 
+import { createStore } from 'redux'
 
+// directly inject store + definition as prop to main app
 ReactDOM.render(
-   <TodoApp />,
+   <TodoApp store={createStore(todoApp)} />,
    document.getElementById("root")
 )
 
