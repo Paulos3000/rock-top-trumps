@@ -26,19 +26,19 @@ const {defaultState} = [
 ]
 
 // MAIN CONTAINER COMPONENT
-const TodoApp = ( {store} ) => (
+const TodoApp = () => (
    <div className='container'>
       <h1>TodoApp</h1>
       <hr/>
-      <AddTodo store={store}/>
-      <VisibleTodoList store={store}/>
-      <Footer store={store}/>
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
    </div>
 )
 
 // INPUT FIELD AND SUBMIT BUTTON (PRESENTATIONAL COMPONENT) 'Functional' Component - Input Field
 let nextTodoId = 0   // global variable
-const AddTodo = ( {store} ) => {
+const AddTodo = ( props, {store} ) => {
    let input;
    return (
    <div>
@@ -55,6 +55,9 @@ const AddTodo = ( {store} ) => {
    </div>
    )
 }
+AddTodo.contextTypes = {
+   store: React.PropTypes.object
+};
 
 // FUNCTION - filter todos by action type (SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETE)
 const getVisibleTodos = (todos, filter) => {
@@ -75,7 +78,7 @@ const getVisibleTodos = (todos, filter) => {
 // VISIBLE TODO LIST (CLASS INTERMEDIATE CONTAINER COMPONENT)
 class VisibleTodoList extends Component {
    componentDidMount() {
-      const { store } = this.props;
+      const { store } = this.context;
       this.unsubscribe = store.subscribe(() =>
          this.forceUpdate()
       )
@@ -86,7 +89,7 @@ class VisibleTodoList extends Component {
 
    render() {
       const props = this.props;
-      const { store } = props;
+      const { store } = this.context;
       const state = store.getState();
 
       return (
@@ -100,6 +103,10 @@ class VisibleTodoList extends Component {
             }
          />
    )}
+}
+// like 'childContextTypes' object, called on Provider
+VisibleTodoList.contextTypes = {
+   store: React.PropTypes.object
 }
 
 // LIST OF TODOS (PRESENTATIONAL COMPONENT)
@@ -130,7 +137,7 @@ const Todo = ( {onClick, completed, text} ) => (
 // FILTER LINK (CLASS INTERMEDIATE CONTAINER COMPONENT)
 class FilterLink extends Component {
    componentDidMount() {
-      const { store } = this.props;
+      const { store } = this.context;
       this.unsubscribe = store.subscribe(() =>
          this.forceUpdate()
       )
@@ -141,7 +148,7 @@ class FilterLink extends Component {
 
    render() {
       const props = this.props;
-      const { store } = props;
+      const { store } = this.context;
       const state = store.getState();  // redux store state, NOT react sta
       return (
          <Link
@@ -156,6 +163,9 @@ class FilterLink extends Component {
       )
    }
 }
+FilterLink.contextTypes = {
+   store: React.PropTypes.object
+};
 
 // LINK (PRESENTATIONAL COMPONENT)
 const Link = ( {active, children, onClick} ) => {
@@ -175,26 +185,41 @@ const Link = ( {active, children, onClick} ) => {
 }
 
 // FOOTER (PRESENTATIONAL COMPONENT)
-const Footer = ( {store} ) => (
+const Footer = () => (
    <p>
       Show:{' '}
       <FilterLink
-         filter='SHOW_ALL'
-         store={store}>All</FilterLink>{' '}
+         filter='SHOW_ALL'>All</FilterLink>{' '}
       <FilterLink
-         filter='SHOW_ACTIVE'
-         store={store}>Active</FilterLink>{' '}
+         filter='SHOW_ACTIVE'>Active</FilterLink>{' '}
       <FilterLink
-         filter='SHOW_COMPLETED'
-         store={store}>Completed</FilterLink>{' '}
+         filter='SHOW_COMPLETED'>Completed</FilterLink>{' '}
    </p>
 )
 
 import { createStore } from 'redux'
 
+class Provider extends Component {
+   // allow store prop to available to any child component, inc. grandchildren
+   getChildContext() {
+      return {
+         store: this.props.store
+      }
+   }
+   render() {
+      return this.props.children
+   }
+}
+// for getChildContext() to work, need to specify childContextTypes object (like propTypes, but ESSENTIAL, unlike propTypes)
+Provider.childContextTypes = {
+   store: React.PropTypes.object
+}
+
 // directly inject store + definition as prop to main app
 ReactDOM.render(
-   <TodoApp store={createStore(todoApp)} />,
+   <Provider store={createStore(todoApp)}>
+      <TodoApp />
+   </Provider>,
    document.getElementById("root")
 )
 
