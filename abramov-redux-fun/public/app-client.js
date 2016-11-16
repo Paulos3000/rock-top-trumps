@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
 
 // SAT 12th NOV - CONTINUE REFACTORING FROM TUTORIAL #21
 //------------------------------------------------------
@@ -26,9 +25,41 @@ const {defaultState} = [
    }
 ]
 
+import { createStore } from 'redux'
 const store = createStore(todoApp)
 
-// function to filter todos list by action type (SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETE)
+// MAIN CONTAINER COMPONENT
+const TodoApp = () => (
+   <div className='container'>
+      <h1>TodoApp</h1>
+      <hr/>
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
+   </div>
+)
+
+// INPUT FIELD AND SUBMIT BUTTON (PRESENTATIONAL COMPONENT) 'Functional' Component - Input Field
+let nextTodoId = 0   // global variable
+const AddTodo = () => {
+   let input;
+   return (
+   <div>
+      <input ref={ node => {input = node} }></input>
+      <button onClick={() => {
+         store.dispatch({
+            type: 'ADD_TODO',
+            id: nextTodoId++,
+            text: input.value
+         })
+         input.value = ''
+      }}>Add Todo
+      </button>
+   </div>
+   )
+}
+
+// FUNCTION - filter todos by action type (SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETE)
 const getVisibleTodos = (todos, filter) => {
    switch(filter) {
       case 'SHOW_ALL' :
@@ -44,53 +75,32 @@ const getVisibleTodos = (todos, filter) => {
    }
 }
 
-// MAIN CONTAINER COMPONENT
-let nextTodoId = 0   // global variable
-const TodoApp = ( {todos, visibilityFilter} ) => (
-   <div className='container'>
-      <h1>TodoApp</h1>
-      <hr/>
-      <AddTodo
-         onAddClick={text =>
-            store.dispatch({
-               type: 'ADD_TODO',
-               id: nextTodoId++,
-               text
-            })
-         }
-      />
-      <TodoList
-         todos={getVisibleTodos(todos, visibilityFilter)}
-         onTodoClick={id => store.dispatch({
-            type: 'TOGGLE_TODO',
-            id
-         })}
-      />
-      <Footer
-         visibilityFilter={visibilityFilter}
-         onFilterClick={filter =>
-            store.dispatch({
-               type: 'SET_VISIBILITY_FILTER',
-               filter
-            })
-         }
-      />
-   </div>
-)
+// VISIBLE TODO LIST (CLASS INTERMEDIATE CONTAINER COMPONENT)
+class VisibleTodoList extends Component {
+   componentDidMount() {
+      this.unsubscribe = store.subscribe(() =>
+         this.forceUpdate()
+      )
+   }
+   componentWillUnmount() {
+      this.unsubscribe();
+   }
 
-// INPUT FIELD AND SUBMIT BUTTON (PRESENTATIONAL COMPONENT) 'Functional' Component - Input Field
-const AddTodo = ( {onAddClick} ) => {
-   let input;
-   return (
-   <div>
-      <input ref={ node => {input = node} }></input>
-      <button onClick={() => {
-            onAddClick(input.value);
-            input.value = ''
-         }}>Add Todo
-      </button>
-   </div>
-   )
+   render() {
+      const props = this.props
+      const state = store.getState();
+
+      return (
+         <TodoList
+            todos={ getVisibleTodos(state.todos, state.visibilityFilter) }
+            onTodoClick={id =>
+               store.dispatch({
+                  type: 'TOGGLE_TODO',
+                  id
+               })
+            }
+         />
+   )}
 }
 
 // LIST OF TODOS (PRESENTATIONAL COMPONENT)
@@ -118,16 +128,43 @@ const Todo = ( {onClick, completed, text} ) => (
    </li>
 )
 
-// FILTER LINK (PRESENTATIONAL COMPONENT)
-const FilterLink = ( {onClick, filter, currentFilter, children} ) => {
-   if (filter === currentFilter) {
+// FILTER LINK (CLASS INTERMEDIATE CONTAINER COMPONENT)
+class FilterLink extends Component {
+   componentDidMount() {
+      this.unsubscribe = store.subscribe(() =>
+         this.forceUpdate()
+      )
+   }
+   componentWillUnmount() {
+      this.unsubscribe();
+   }
+   render() {
+      const props = this.props;
+      const state = store.getState();  // redux store state, NOT react sta
+      return (
+         <Link
+            active={props.filter === state.visibilityFilter}
+            onClick={() => store.dispatch({
+               type: 'SET_VISIBILITY_FILTER',
+               filter: props.filter
+            })
+         }>
+            {props.children}
+         </Link>
+      )
+   }
+}
+
+// LINK (PRESENTATIONAL COMPONENT)
+const Link = ( {active, children, onClick} ) => {
+   if (active) {
       return <span>{children}</span>
    }
    return (
       <a href='#'
          onClick={e => {
             e.preventDefault();
-            onClick(filter);
+            onClick();
          }}
       >
          {children}
@@ -136,29 +173,28 @@ const FilterLink = ( {onClick, filter, currentFilter, children} ) => {
 }
 
 // FOOTER (PRESENTATIONAL COMPONENT)
-const Footer = ( {visibilityFilter, onFilterClick} ) => (
+const Footer = () => (
    <p>
       Show:{' '}
       <FilterLink
          filter='SHOW_ALL'
-         currentFilter={visibilityFilter}
-         onClick={onFilterClick}>All</FilterLink>{' '}
+         >All</FilterLink>{' '}
       <FilterLink
          filter='SHOW_ACTIVE'
-         currentFilter={visibilityFilter}
-         onClick={onFilterClick}>Active</FilterLink>{' '}
+         >Active</FilterLink>{' '}
       <FilterLink
          filter='SHOW_COMPLETED'
-         currentFilter={visibilityFilter}
-         onClick={onFilterClick}>Completed</FilterLink>{' '}
+         >Completed</FilterLink>{' '}
    </p>
 )
 
 
-const render = () => ReactDOM.render(
-   <TodoApp {...store.getState()}/>,
+ReactDOM.render(
+   <TodoApp />,
    document.getElementById("root")
 )
 
-render()
-store.subscribe(render)
+// no longer needed as store.subscribe called in lifecycle methods of intermediate container components above...
+// -------------------------
+// render()
+// store.subscribe(render)
