@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom'
 // SAT 12th NOV - CONTINUE REFACTORING FROM TUTORIAL #21
 //------------------------------------------------------
 
+import { connect } from 'react-redux'
+
 // import todoApp reducer
 import todoApp from './reducers/index'
 
@@ -36,28 +38,43 @@ const TodoApp = () => (
    </div>
 )
 
-// INPUT FIELD AND SUBMIT BUTTON (PRESENTATIONAL COMPONENT) 'Functional' Component - Input Field
+// ACTION CREATORS... (good to keep these separate from components)
 let nextTodoId = 0   // global variable
-const AddTodo = ( props, {store} ) => {
+const addTodo = (text) => {
+   return {
+      type: 'ADD_TODO',
+      id: nextTodoId++,
+      text
+   }
+}
+const setVisibilityFilter = (filter) => {
+   return {
+      type: 'SET_VISIBILITY_FILTER',
+      filter
+   }
+}
+const toggleTodo = (id) => {
+   return {
+      type: 'TOGGLE_TODO',
+      id
+   }
+}
+
+// INPUT FIELD AND SUBMIT BUTTON (PRESENTATIONAL COMPONENT) 'Functional' Component - Input Field
+let AddTodo = ( {dispatch} ) => {
    let input;
    return (
    <div>
       <input ref={ node => {input = node} }></input>
       <button onClick={() => {
-         store.dispatch({
-            type: 'ADD_TODO',
-            id: nextTodoId++,
-            text: input.value
-         })
+         dispatch(addTodo(input.value));
          input.value = ''
       }}>Add Todo
       </button>
    </div>
    )
 }
-AddTodo.contextTypes = {
-   store: React.PropTypes.object
-};
+AddTodo = connect()(AddTodo)   // this passes 'null' for mapStateToProps and dispatch method by default to mapDispatchToProps. Now this.props.dispatch should work on AddTodo. *Note the use of let binding to update component*
 
 // FUNCTION - filter todos by action type (SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETE)
 const getVisibleTodos = (todos, filter) => {
@@ -75,40 +92,6 @@ const getVisibleTodos = (todos, filter) => {
    }
 }
 
-// VISIBLE TODO LIST (CLASS INTERMEDIATE CONTAINER COMPONENT)
-class VisibleTodoList extends Component {
-   componentDidMount() {
-      const { store } = this.context;
-      this.unsubscribe = store.subscribe(() =>
-         this.forceUpdate()
-      )
-   }
-   componentWillUnmount() {
-      this.unsubscribe();
-   }
-
-   render() {
-      const props = this.props;
-      const { store } = this.context;
-      const state = store.getState();
-
-      return (
-         <TodoList
-            todos={ getVisibleTodos(state.todos, state.visibilityFilter) }
-            onTodoClick={id =>
-               store.dispatch({
-                  type: 'TOGGLE_TODO',
-                  id
-               })
-            }
-         />
-   )}
-}
-// like 'childContextTypes' object, called on Provider
-VisibleTodoList.contextTypes = {
-   store: React.PropTypes.object
-}
-
 // LIST OF TODOS (PRESENTATIONAL COMPONENT)
 const TodoList = ( {todos, onTodoClick} ) => (
    <ul>
@@ -120,6 +103,21 @@ const TodoList = ( {todos, onTodoClick} ) => (
       )}
    </ul>
 )
+// GENERATE CONTAINER WITH connect()...
+const mapStateToTodoListProps = (state) => {
+   return {
+      todos: getVisibleTodos(state.todos, state.visibilityFilter)
+   };
+}
+const mapDispatchToTodoListProps = (dispatch) => {
+   return {
+      onTodoClick: (id) =>
+         dispatch(toggleTodo(id))
+   }
+}
+// CONNECT CONTAINER TO PRESENTATIONAL (ie. pass props to presentational)
+const VisibleTodoList = connect(mapStateToTodoListProps, mapDispatchToTodoListProps)(TodoList)
+
 
 // TODO (PRESENTATIONAL COMPONENT)
 const Todo = ( {onClick, completed, text} ) => (
@@ -133,39 +131,6 @@ const Todo = ( {onClick, completed, text} ) => (
       {text}
    </li>
 )
-
-// FILTER LINK (CLASS INTERMEDIATE CONTAINER COMPONENT)
-class FilterLink extends Component {
-   componentDidMount() {
-      const { store } = this.context;
-      this.unsubscribe = store.subscribe(() =>
-         this.forceUpdate()
-      )
-   }
-   componentWillUnmount() {
-      this.unsubscribe();
-   }
-
-   render() {
-      const props = this.props;
-      const { store } = this.context;
-      const state = store.getState();  // redux store state, NOT react sta
-      return (
-         <Link
-            active={props.filter === state.visibilityFilter}
-            onClick={() => store.dispatch({
-               type: 'SET_VISIBILITY_FILTER',
-               filter: props.filter
-            })
-         }>
-            {props.children}
-         </Link>
-      )
-   }
-}
-FilterLink.contextTypes = {
-   store: React.PropTypes.object
-};
 
 // LINK (PRESENTATIONAL COMPONENT)
 const Link = ( {active, children, onClick} ) => {
@@ -183,17 +148,29 @@ const Link = ( {active, children, onClick} ) => {
       </a>
    )
 }
+// GENERATE CONTAINER WITH connect()...
+const mapStateToLinkProps = (state, ownProps) => {
+   return {
+      active: ownProps.filter === state.visibilityFilter
+   }
+}
+const mapDispatchToLinkProps = (dispatch, ownProps) => {
+   return {
+      onClick: () => {
+         dispatch(setVisibilityFilter(ownProps.filter))
+      }
+   }
+}
+// CONNECT CONTAINER TO PRESENTATIONAL (ie. pass props to presentational)
+const FilterLink = connect(mapStateToLinkProps, mapDispatchToLinkProps)(Link)
 
 // FOOTER (PRESENTATIONAL COMPONENT)
 const Footer = () => (
    <p>
       Show:{' '}
-      <FilterLink
-         filter='SHOW_ALL'>All</FilterLink>{' '}
-      <FilterLink
-         filter='SHOW_ACTIVE'>Active</FilterLink>{' '}
-      <FilterLink
-         filter='SHOW_COMPLETED'>Completed</FilterLink>{' '}
+      <FilterLink filter='SHOW_ALL'>All</FilterLink>{' '}
+      <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink>{' '}
+      <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>{' '}
    </p>
 )
 
