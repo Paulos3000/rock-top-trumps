@@ -9,24 +9,6 @@ import { connect } from 'react-redux'
 // import todoApp reducer
 import todoApp from './reducers/index'
 
-const {defaultState} = [
-   {
-      id: 1,
-      text: 'First item',
-      completed: false
-   },
-   {
-      id: 2,
-      text: 'Second item',
-      completed: true
-   },
-   {
-      id: 3,
-      text: 'Third item',
-      completed: false
-   }
-]
-
 // MAIN CONTAINER COMPONENT
 const TodoApp = () => (
    <div className='container'>
@@ -104,9 +86,9 @@ const mapStateToTodoListProps = (state) => ({
    todos: getVisibleTodos(state.todos, state.visibilityFilter)
 })
 const mapDispatchToTodoListProps = (dispatch) => ({
-      onTodoClick(id) {
-         dispatch(toggleTodo(id))
-      }
+   onTodoClick(id) {
+      dispatch(toggleTodo(id))
+   }
 })
 // CONNECT CONTAINER TO PRESENTATIONAL (ie. pass props to presentational)
 const VisibleTodoList = connect(mapStateToTodoListProps, mapDispatchToTodoListProps)(TodoList)
@@ -166,9 +148,26 @@ const Footer = () => (
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
+const persistedState = {
+   todos: [{
+      id: 0,
+      text: 'Welcome back!',
+      completed: false
+   },
+   {
+      id: 1,
+      text: 'Back again?',
+      completed: true
+   }]
+}
+
+const store = createStore(todoApp, persistedState);
+
+console.log(store.getState())
+
 // directly inject store + definition as prop to Provider
 ReactDOM.render(
-   <Provider store={createStore(todoApp)}>
+   <Provider store={store}>
       <TodoApp />
    </Provider>,
    document.getElementById("root")
