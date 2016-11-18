@@ -40,19 +40,15 @@ const TodoApp = () => (
 
 // ACTION CREATORS... (good to keep these separate from components)
 let nextTodoId = 0   // global variable
-const addTodo = (text) => {
-   return {
-      type: 'ADD_TODO',
-      id: nextTodoId++,
-      text
-   }
-}
-const setVisibilityFilter = (filter) => {
-   return {
-      type: 'SET_VISIBILITY_FILTER',
-      filter
-   }
-}
+const addTodo = (text) => ({
+   type: 'ADD_TODO',
+   id: nextTodoId++,
+   text
+})
+const setVisibilityFilter = (filter) => ({
+   type: 'SET_VISIBILITY_FILTER',
+   filter
+})
 const toggleTodo = (id) => {
    return {
       type: 'TOGGLE_TODO',
@@ -104,17 +100,14 @@ const TodoList = ( {todos, onTodoClick} ) => (
    </ul>
 )
 // GENERATE CONTAINER WITH connect()...
-const mapStateToTodoListProps = (state) => {
-   return {
-      todos: getVisibleTodos(state.todos, state.visibilityFilter)
-   };
-}
-const mapDispatchToTodoListProps = (dispatch) => {
-   return {
-      onTodoClick: (id) =>
+const mapStateToTodoListProps = (state) => ({
+   todos: getVisibleTodos(state.todos, state.visibilityFilter)
+})
+const mapDispatchToTodoListProps = (dispatch) => ({
+      onTodoClick(id) {
          dispatch(toggleTodo(id))
-   }
-}
+      }
+})
 // CONNECT CONTAINER TO PRESENTATIONAL (ie. pass props to presentational)
 const VisibleTodoList = connect(mapStateToTodoListProps, mapDispatchToTodoListProps)(TodoList)
 
@@ -149,18 +142,14 @@ const Link = ( {active, children, onClick} ) => {
    )
 }
 // GENERATE CONTAINER WITH connect()...
-const mapStateToLinkProps = (state, ownProps) => {
-   return {
-      active: ownProps.filter === state.visibilityFilter
+const mapStateToLinkProps = (state, ownProps) => ({
+   active: ownProps.filter === state.visibilityFilter
+})
+const mapDispatchToLinkProps = (dispatch, ownProps) => ({
+   onClick() {
+      dispatch(setVisibilityFilter(ownProps.filter))
    }
-}
-const mapDispatchToLinkProps = (dispatch, ownProps) => {
-   return {
-      onClick: () => {
-         dispatch(setVisibilityFilter(ownProps.filter))
-      }
-   }
-}
+})
 // CONNECT CONTAINER TO PRESENTATIONAL (ie. pass props to presentational)
 const FilterLink = connect(mapStateToLinkProps, mapDispatchToLinkProps)(Link)
 
@@ -177,7 +166,7 @@ const Footer = () => (
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-// directly inject store + definition as prop to main app
+// directly inject store + definition as prop to Provider
 ReactDOM.render(
    <Provider store={createStore(todoApp)}>
       <TodoApp />
