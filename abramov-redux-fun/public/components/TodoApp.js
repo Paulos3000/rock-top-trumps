@@ -1,38 +1,20 @@
 import React, { Component } from 'react'
-import { createStore } from 'redux'
 
-// import todoApp reducer
-import todoApp from '../reducers/index'
-// import store
-const store = createStore(todoApp)
+// import components
+import AddTodo from './AddTodo'
+import { VisibleTodoList } from './VisibleTodoList'
+import { Footer } from './Footer'
 
-let nextTodoId = 0
-export default class TodoApp extends Component {
-   render() {
-      return (
-         <div>
+// MAIN CONTAINER COMPONENT
+export const TodoApp = () => (
+   <div className='container'>
 
-            <h1>TodoApp</h1>
+      <h1>TodoApp</h1>
+      <hr/>
 
-            <button onClick={() => {
-               console.log('dispatching action')
-               store.dispatch(
-                  {
-                     type: 'ADD_TODO',
-                     text: 'Test',
-                     id: 1
-                  }
-               )
-            }}>Add Todo</button>
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
 
-            <ul>
-               {this.props.todos.map(todo =>
-                  <li key={todo.id}>
-                     {todo.text}
-                  </li>
-               )}
-            </ul>
-         </div>
-      )
-   }
-}
+   </div>
+)
