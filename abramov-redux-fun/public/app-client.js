@@ -148,20 +148,9 @@ const Footer = () => (
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-const persistedState = {
-   todos: [{
-      id: 0,
-      text: 'Welcome back!',
-      completed: false
-   },
-   {
-      id: 1,
-      text: 'Back again?',
-      completed: true
-   }]
-}
+// const persistedState = loadState();
 
-const store = createStore(todoApp, persistedState);
+const store = createStore(todoApp);
 
 console.log(store.getState())
 
