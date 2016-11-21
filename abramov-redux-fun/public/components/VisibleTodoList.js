@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 // import sub-components
 import { Todo } from './Todo'
 
-// import specific action
+// import specific actionCreator
 import { toggleTodo } from '../actions/actionCreators'
 
 // import utility function

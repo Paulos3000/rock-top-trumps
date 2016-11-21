@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-// import actionCreator
+// import specific actionCreator
 import { addTodo } from '../actions/actionCreators'
 
 // INPUT FIELD AND SUBMIT BUTTON (PRESENTATIONAL COMPONENT) 'Functional' Component - Input Field

@@ -5,11 +5,13 @@ import AddTodo from './AddTodo'
 import { VisibleTodoList } from './VisibleTodoList'
 import { Footer } from './Footer'
 
+import { v4 } from 'node-uuid'
+
 // MAIN CONTAINER COMPONENT
 export const TodoApp = () => (
    <div className='container'>
 
-      <h1>TodoApp</h1>
+      <h1>Todo App</h1>
       <hr/>
 
       <AddTodo />
