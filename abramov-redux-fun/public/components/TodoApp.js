@@ -11,7 +11,7 @@ import { v4 } from 'node-uuid'
 export const TodoApp = ({ params }) => (
    <div className='container'>
 
-      <h1>Todo App</h1>
+      <h1>Todo App (with Router Setup)</h1>
       <hr/>
 
       <AddTodo />
