@@ -1,15 +1,17 @@
 // FUNCTION - filter todos by action type (SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETE)
 export const getVisibleTodos = (todos, filter) => {
    switch(filter) {
-      case 'SHOW_ALL' :
+      case 'all' :
          return todos;
-      case 'SHOW_ACTIVE' :
+      case 'completed' :
          return todos.filter(
-            t => !t.completed
+            todo => todo.completed
          )
-      case 'SHOW_COMPLETED' :
+      case 'active' :
          return todos.filter(
-            t => t.completed
+            todo => !todo.completed
          )
+      default :
+         throw new Error(`Unknown filter: ${filter}`)
    }
 }

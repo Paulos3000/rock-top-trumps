@@ -8,14 +8,14 @@ import { Footer } from './Footer'
 import { v4 } from 'node-uuid'
 
 // MAIN CONTAINER COMPONENT
-export const TodoApp = () => (
+export const TodoApp = ({ params }) => (
    <div className='container'>
 
       <h1>Todo App</h1>
       <hr/>
 
       <AddTodo />
-      <VisibleTodoList />
+      <VisibleTodoList filter={params.filter || 'all'}/>
       <Footer />
 
    </div>

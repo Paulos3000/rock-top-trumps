@@ -1,29 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-// import sub-components
-import { Todo } from './Todo'
-
 // import specific actionCreator
 import { toggleTodo } from '../actions/actionCreators'
 
-// import utility function
-import { getVisibleTodos } from '../util/getVisibleTodos'
+// import connect child component (PRESENTATIONAL)
+import { TodoList } from './TodoList'
 
-// LIST OF TODOS (PRESENTATIONAL COMPONENT)
-const TodoList = ( {todos, onTodoClick} ) => (
-   <ul>
-      {todos.map(todo =>
-         <Todo key={todo.id}
-            {...todo}
-            onClick={() => onTodoClick(todo.id)}
-         />
-      )}
-   </ul>
-)
-// GENERATE CONTAINER WITH connect()...
-const mapStateToTodoListProps = (state) => ({
-   todos: getVisibleTodos(state.todos, state.visibilityFilter)
+const getVisibleTodos = (todos, filter) => {
+   switch(filter) {
+      case 'all' :
+         return todos;
+      case 'completed' :
+         return todos.filter(
+            todo => todo.completed
+         )
+      case 'active' :
+         return todos.filter(
+            todo => !todo.completed
+         )
+      default :
+         throw new Error(`Unknown filter: ${filter}`)
+   }
+}
+
+// Generate CONTAINER with connect()...
+const mapStateToTodoListProps = (state, ownProps) => ({
+   todos: getVisibleTodos(state.todos, ownProps.filter)
 })
 const mapDispatchToTodoListProps = (dispatch) => ({
    onTodoClick(id) {
