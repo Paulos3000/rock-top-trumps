@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 // import components
 import AddTodo from './AddTodo'
-import { VisibleTodoList } from './VisibleTodoList'
+import VisibleTodoList from './VisibleTodoList'
 import { Footer } from './Footer'
 
 import { v4 } from 'node-uuid'
@@ -15,7 +15,7 @@ export const TodoApp = ({ params }) => (
       <hr/>
 
       <AddTodo />
-      <VisibleTodoList filter={params.filter || 'all'}/>
+      <VisibleTodoList />
       <Footer />
 
    </div>

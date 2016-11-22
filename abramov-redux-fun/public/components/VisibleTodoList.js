@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { withRouter } from 'react-router'
+
 // import specific actionCreator
 import { toggleTodo } from '../actions/actionCreators'
 
@@ -25,13 +27,18 @@ const getVisibleTodos = (todos, filter) => {
 }
 
 // Generate CONTAINER with connect()...
-const mapStateToTodoListProps = (state, ownProps) => ({
-   todos: getVisibleTodos(state.todos, ownProps.filter)
+const mapStateToProps = (state, { params }) => ({
+   todos: getVisibleTodos(state.todos, params.filter || 'all')
 })
-const mapDispatchToTodoListProps = (dispatch) => ({
-   onTodoClick(id) {
-      dispatch(toggleTodo(id))
-   }
-})
-// CONNECT CONTAINER TO PRESENTATIONAL (ie. pass props to presentational)
-export const VisibleTodoList = connect(mapStateToTodoListProps, mapDispatchToTodoListProps)(TodoList)
+// const mapDispatchToProps = (dispatch) => ({
+//    onTodoClick(id) {
+//       dispatch(toggleTodo(id))
+//    }
+// })
+
+const VisibleTodoList = withRouter(connect(
+   mapStateToProps,
+   { onTodoClick: toggleTodo }   // this replaces mapDispatchToProps (see above)
+)(TodoList));
+
+export default VisibleTodoList;
