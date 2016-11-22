@@ -11,7 +11,8 @@ import { v4 } from 'node-uuid'
 export const TodoApp = ({ params }) => (
    <div className='container'>
 
-      <h1>Todo App (continue from video #9)</h1>
+      <h2>Todo App</h2>
+      <h2><small>Finished #11 - tricky, but it works. Maybe go over again.</small></h2>
       <hr/>
 
       <AddTodo />
