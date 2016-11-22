@@ -1,5 +1,6 @@
 {
-  "name": "express_react_redux",
+  "name": "abramov-redux-fun",
+  "repository": "https://github.com/Paulos3000/abramov-redux-fun",
   "version": "1.0.0",
   "description": "A simple react redux express.js application",
   "main": "server.js",
