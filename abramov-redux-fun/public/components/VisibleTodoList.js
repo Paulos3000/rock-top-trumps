@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+
 // import specific actionCreator
 import { toggleTodo } from '../actions/actionCreators'
 // import connect child component (PRESENTATIONAL)
 import { TodoList } from './TodoList'
-
+// import SELECTOR
 import { getVisibleTodos } from '../reducers'
 
-// Generate CONTAINER with connect()...
+// import fake api
+import { fetchTodos } from '../api'
+
+// test the fake api with a filter argument
+fetchTodos('all').then(response =>
+   console.log(response)
+)
+
 const mapStateToProps = (state, { params }) => ({
    todos: getVisibleTodos(state, params.filter || 'all')
 })
-// const mapDispatchToProps = (dispatch) => ({
-//    onTodoClick(id) {
-//       dispatch(toggleTodo(id))
-//    }
-// })
 
 const VisibleTodoList = withRouter(connect(
    mapStateToProps,
