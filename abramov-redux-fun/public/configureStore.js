@@ -1,16 +1,33 @@
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-
 import todoApp from './reducers/index'
-
 import { loadState, saveState } from './localStorage'
-// throttle function in lodash, prevents re-run of function after a time limit (useful here as saveState()'s JSON.stringify() is EXPENSIVE')
 import throttle from 'lodash/throttle';
+
+const addLoggingToDispatch = (store) => {
+   const rawDispatch = store.dispatch;
+   if (!console.group) {
+      return rawDispatch;
+   }
+   return (action) => {
+      console.group(action.type);
+      console.log('%c previous state', 'color: gray', store.getState())
+      console.log('%c action', 'color: blue', action);
+      const returnValue = rawDispatch(action);
+      console.log('%c next state', 'color: green', store.getState());
+      console.groupEnd(action.type);
+      return returnValue;
+   }
+}
 
 const configureStore = () => {
    const persistedState = loadState()
    const store = createStore(todoApp, persistedState);
-   // every time state updated, pass state.todos to local storage (with 1000ms interval)
+
+   if (process.env.NODE_ENV !== 'production') {
+      store.dispatch = addLoggingToDispatch(store)
+   }
+
    store.subscribe(throttle(() => {
       saveState({
          todos: store.getState().todos
