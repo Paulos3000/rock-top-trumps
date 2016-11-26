@@ -35,6 +35,10 @@ const Notes = () => (
          <li>Implement manual promise middleware into <code>configureStore.js</code>. See the file for commented details on how this works</li>
          <li>Point 2</li>
       </ol>
+      <h4>17. Redux: The Middleware Chain</h4>
+      <ol>
+         <li>Point 1</li>
+      </ol>
    </div>
 )
 
