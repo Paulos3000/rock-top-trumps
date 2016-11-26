@@ -11,15 +11,16 @@ import { v4 } from 'node-uuid'
 // MAIN CONTAINER COMPONENT
 export const TodoApp = ({ params }) => (
    <div className='container'>
-      <h2>Redux Todo App - Fake Backend</h2>
-      <hr />
-
-      <Notes />
+      <h2>Idiomatic Redux</h2>
       <hr />
 
       <AddTodo />
       <VisibleTodoList />
       <Footer />
+      <hr />
+
+      <Notes />
+      <hr />
 
    </div>
 )
