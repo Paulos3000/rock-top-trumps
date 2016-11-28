@@ -50,7 +50,7 @@ const Notes = () => (
       </ol>
       <h4>19. Updating the State with the Fetched Data</h4>
       <ol>
-         <li>Point 1</li>
+         <li>First, in <code>todos</code> reducer, remove <code>allTodos</code> and its creator <code>getAllTodos</code>. It is impractical to keep ALL todos in memory (and filter on the client)</li>
       </ol>
 
    </div>

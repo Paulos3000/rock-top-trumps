@@ -46,7 +46,7 @@ const configureStore = () => {
    middlewares.push(promise);
 
    return createStore(
-      todoApp,
+      todoApp, // --> this is ROOT REDUCER (reducers/index.js)
       // persistedState, --> Can add this if needed. !Must be before enhancer!
       applyMiddleware(...middlewares) // --> Final argument is an 'ENHANCER'
    );
