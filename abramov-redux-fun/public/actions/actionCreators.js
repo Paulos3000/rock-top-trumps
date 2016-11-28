@@ -21,14 +21,10 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
    // this contacts server/api, and when payload received, dispatches FETCH_TODOS_SUCCESS.
    return api.fetchTodos(filter).then(
       response => {
-         console.log(
-            'normalized response',
-            normalize(response, schema.arrayOfTodos)
-         )
          dispatch({
             type: 'FETCH_TODOS_SUCCESS',
             filter,
-            response
+            response: normalize(response, schema.arrayOfTodos)
          });
       },
       error => {
@@ -45,13 +41,9 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
 // this function passes text value to the api function which returns the response, which this function then dispatches.
 export const addTodo = (text) => (dispatch) =>
    api.addTodo(text).then(response => {
-      console.log(
-         'normalized response',
-         normalize(response, schema.todo)
-      )
       dispatch({
          type: 'ADD_TODO_SUCCESS',
-         response
+         response: normalize(response, schema.todo)
       })
    })
 

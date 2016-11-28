@@ -10,11 +10,11 @@ const createList = (filter) => {
             // if filter in this list matches the filter in the action...
             return filter === action.filter ?
                // action.response is an array of todos. create new array of ONLY ids.
-               action.response.map(todo => todo.id) :
+               action.response.result :
                state;
          case 'ADD_TODO_SUCCESS':
             return filter !== 'completed' ?
-            [...state, action.response.id] :
+            [...state, action.response.result] :
             state;
          default:
             return state;
