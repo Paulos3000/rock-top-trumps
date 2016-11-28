@@ -31,7 +31,7 @@ const Notes = () => (
       </ol>
       <h4>16. Wrapping dispatch() to Recognise Promises.</h4>
       <ol>
-         <li>Change <code>receiveTodos</code> actionCreator to a new actionCreator that will gather data from backend and then pass date to redux state. This will be called <code>fetchTodos</code> (which used to only deal with the initial fetch from the server)</li>
+         <li>Change <code>receiveTodos</code> actionCreator to a new actionCreator that will gather data from backend and then pass data to redux state. This will be called <code>fetchTodos</code> (which used to only deal with the initial fetch from the server)</li>
          <li>Implement manual promise middleware into <code>configureStore.js</code>. See the file for commented details on how this works</li>
       </ol>
       <h4>17. The Middleware Chain</h4>
@@ -44,8 +44,15 @@ const Notes = () => (
       </ol>
       <h4>18. Applying Redux Middleware</h4>
       <ol>
+         <li>This basically just massively streamlines <code>storeConfiguration.js</code></li>
+         <li>Install and import npm dependencies for middlewares and also import <code>applyMiddleware from 'redux'</code> and then implement them, before removing manual funcs</li>
+         <li>Finally, include as FINAL ARGUMENT to <code>createStore</code>, the enhancer, which in this case is <code>applyMiddleware</code> which takes a spread array of the middleware functions as its argument</li>
+      </ol>
+      <h4>19. Updating the State with the Fetched Data</h4>
+      <ol>
          <li>Point 1</li>
       </ol>
+
    </div>
 )
 

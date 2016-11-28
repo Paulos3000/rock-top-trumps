@@ -45,13 +45,10 @@ const configureStore = () => {
    }
    middlewares.push(promise);
 
-   // wrapDispatchWithMiddlewares(store, middlewares);
-
    return createStore(
       todoApp,
       // persistedState, --> Can add this if needed. !Must be before enhancer!
-      // last argument = 'enhancer' (optional)
-      applyMiddleware(...middlewares)
+      applyMiddleware(...middlewares) // --> Final argument is an 'ENHANCER'
    );
 }
 
