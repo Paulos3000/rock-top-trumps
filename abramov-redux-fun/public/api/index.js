@@ -32,6 +32,10 @@ const delay = (ms) =>
 export const fetchTodos = (filter) =>
    // when fetchTodos is run (with a filter argument) is runs 'delay' which is exposed to the promise api, ie .then() will run subsequent code when fetch is complete.
    delay(500).then(() => {
+      if (Math.random() > 0.5) {
+         throw new Error('Boom!');
+      }
+
       switch (filter) {
          case 'all':
             return fakeDatabase.todos;

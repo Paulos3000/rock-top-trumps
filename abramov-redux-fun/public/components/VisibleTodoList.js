@@ -6,10 +6,9 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions/actionCreators'
 // import connect child component (PRESENTATIONAL)
 import { TodoList } from './TodoList'
-// import SELECTOR
-import { getVisibleTodos } from '../reducers'
-
-
+// import SELECTORS
+import { getVisibleTodos, getIsFetching, getErrorMessage } from '../reducers'
+import FetchError from './FetchError'
 
 class VisibleTodoList extends Component {
    componentDidMount() {
@@ -25,23 +24,40 @@ class VisibleTodoList extends Component {
 
    fetchData() {
       const { filter, fetchTodos } = this.props;
-      fetchTodos(filter)
+      fetchTodos(filter).then(() => console.log('done!'))
    }
 
    render() {
-      const { toggleTodo, ...rest } = this.props
+      const { toggleTodo, errorMessage, todos, isFetching } = this.props
+      // if no todos to display & fetching data...
+      if (isFetching && !todos.length) {
+         return <p>Loading...</p>
+      }
+      // if no todos to display & error message in props
+      if (errorMessage && !todos.length) {
+         return (
+            <FetchError
+               message={errorMessage}
+               onRetry={() => this.fetchData()}
+            />
+         )
+      }
       return (
          <TodoList
-            {...rest}
+            todos={todos}
             onTodoClick={toggleTodo}
          />
       )
    }
 }
 
+// to follow data trail... start here.
+// 1. State and filter passed in to each prop. --> go to reducers/index.js
 const mapStateToProps = (state, { params }) => {
    const filter = params.filter || 'all';
    return {
+      isFetching: getIsFetching(state, filter),
+      errorMessage: getErrorMessage(state, filter),
       todos: getVisibleTodos(state, filter),
       filter
    }

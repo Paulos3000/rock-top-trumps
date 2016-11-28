@@ -1,12 +1,20 @@
 import { createStore, applyMiddleware } from 'redux';
-import promise from 'redux-promise';
+import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import throttle from 'lodash/throttle';
 
-import todoApp from './reducers/index';
+import todoRootReducer from './reducers/index';
 
 // ------------------------------------------------
+// OLD MANUAL THUNK IMPLEMENTATION (FOR REFERENCE)
+
+// const thunk = (store) => (next) => (action) =>
+//    typeof action === 'function' ?
+//       action(store.dispatch, store.getState) :
+//       next(action);
+
+
 // OLD MANUAL LOGGER IMPLEMENTATION (FOR REFERENCE)
 
 // const logger = (store) => (next) => {
@@ -38,15 +46,15 @@ import todoApp from './reducers/index';
 // ------------------------------------------------
 
 const configureStore = () => {
-   const middlewares = [promise];
+   const middlewares = [thunk];
    // if in DEVELOPMENT mode, enable logging
    if (process.env.NODE_ENV !== 'production') {
       middlewares.push(createLogger());
    }
-   middlewares.push(promise);
+   middlewares.push();
 
    return createStore(
-      todoApp, // --> this is ROOT REDUCER (reducers/index.js)
+      todoRootReducer, // --> this is ROOT REDUCER (reducers/index.js)
       // persistedState, --> Can add this if needed. !Must be before enhancer!
       applyMiddleware(...middlewares) // --> Final argument is an 'ENHANCER'
    );
