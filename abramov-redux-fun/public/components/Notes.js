@@ -33,9 +33,16 @@ const Notes = () => (
       <ol>
          <li>Change <code>receiveTodos</code> actionCreator to a new actionCreator that will gather data from backend and then pass date to redux state. This will be called <code>fetchTodos</code> (which used to only deal with the initial fetch from the server)</li>
          <li>Implement manual promise middleware into <code>configureStore.js</code>. See the file for commented details on how this works</li>
-         <li>Point 2</li>
       </ol>
-      <h4>17. Redux: The Middleware Chain</h4>
+      <h4>17. The Middleware Chain</h4>
+      <ol>
+         <li>This one's tricky, but only an overall understanding is probably necessary</li>
+         <li>Point of each middleware func is to overwrite <code>store.dispatch</code>, redefining what it actually does.</li>
+         <li>But instead of actually changing the public API (bad idea), we pass each func into an array, then in <code>wrapDispatchWithMiddlewares</code> we pass in the middlewares and iterate over each one, reassigning <code>store.dispatch</code> as we go</li>
+         <li>Another import element here: we are using 'currying'. This is writing functions within functions within functions, which then have to be called like <code>functionName(argument)(nextFuncArgument)</code></li>
+         <li>Take a look at <code>configureStore.js</code> to see how this all works</li>
+      </ol>
+      <h4>18. Applying Redux Middleware</h4>
       <ol>
          <li>Point 1</li>
       </ol>

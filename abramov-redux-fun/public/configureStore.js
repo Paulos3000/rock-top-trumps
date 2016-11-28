@@ -3,48 +3,52 @@ import { Provider } from 'react-redux'
 import todoApp from './reducers/index'
 import throttle from 'lodash/throttle';
 
-const addLoggingToDispatch = (store) => {
-   const rawDispatch = store.dispatch;
+const logger = (store) => (next) => {
    if (!console.group) {
-      return rawDispatch;
+      return next;
    }
    return (action) => {
       console.group(action.type);
       console.log('%c previous state', 'color: gray', store.getState())
       console.log('%c action', 'color: blue', action);
-      const returnValue = rawDispatch(action);
+      const returnValue = next(action);
       console.log('%c next state', 'color: green', store.getState());
       console.groupEnd(action.type);
       return returnValue;
    }
 }
 
-const addPromiseSupportToDispatch = (store) => {
-   const rawDispatch = store.dispatch;
-   // return function that has same api as dispatch function (this is, it accepts an action as an argument)
-   return (action) => {
-      // if it is a PROMISE...
-      if (typeof action.then === 'function') {
-         // return the action, wait for it resolve, then dispatch the synchronous action on that.
-         return action.then(rawDispatch);
-      }
-      // otherwise just call dispatch with action object, as normal (synchronous)
-      return rawDispatch(action)
-   };
+
+const promise = (store) => (next) => (action) => {
+   // if it is a PROMISE...
+   if (typeof action.then === 'function') {
+      // return the action, wait for it resolve, then dispatch the synchronous action on that.
+      return action.then(next);
+   }
+   // otherwise just call dispatch with action object, as normal (synchronous)
+   return next(action)
+};
+
+const wrapDispatchWithMiddlewares = (store, middlewares) => {
+   // run code for every middleware
+   middlewares.slice().reverse().forEach(middleware =>
+      // re-write store.dispatch as before, but with each middleware function in array (see above for details)
+      store.dispatch = middleware(store)(store.dispatch)
+   )
 }
 
 const configureStore = () => {
    const store = createStore(todoApp);
+   const middlewares = [promise];
 
    // if in DEVELOPMENT mode, enable logging
    if (process.env.NODE_ENV !== 'production') {
-      store.dispatch = addLoggingToDispatch(store)
+      middlewares.push(logger);
    }
 
-   // IMPORTANT THAT LOGGING SUPPORT FUNCTION COMES BEFORE PROMISE SUPPORT.
+   middlewares.push(promise);
 
-   // modify store.dispatch to accept promises (as defined above)
-   store.dispatch = addPromiseSupportToDispatch(store)
+   wrapDispatchWithMiddlewares(store, middlewares);
 
    // return store to app.
    return store;
