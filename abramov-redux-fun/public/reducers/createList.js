@@ -1,15 +1,21 @@
 import { combineReducers } from 'redux';
 
+// this reducer creates an 'index' of IDS ONLY
 const createList = (filter) => {
+
+// !! conditionals required here because createList runs on all 3 lists, the only thing that defines them apart here is the logic deciding which filter is applied.
    const ids = (state = [], action) => {
-      // if the user-selected filter doesn't match the one this list is created with, bypass this reducer.
-      if (action.filter !== filter) {
-         return state;
-      }
       switch (action.type) {
          case 'FETCH_TODOS_SUCCESS':
-            // action.response is an array of todos
-            return action.response.map(todo => todo.id);
+            // if filter in this list matches the filter in the action...
+            return filter === action.filter ?
+               // action.response is an array of todos. create new array of ONLY ids.
+               action.response.map(todo => todo.id) :
+               state;
+         case 'ADD_TODO_SUCCESS':
+            return filter !== 'completed' ?
+            [...state, action.response.id] :
+            state;
          default:
             return state;
       }
@@ -55,7 +61,7 @@ const createList = (filter) => {
 }
 export default createList;
 
-// 3. *Secondary* Selectors defined here. 
+// 3. *Secondary* Selectors defined here.
 export const getIds = (state) => state.ids;
 export const getIsFetching = (state) => state.isFetching;
 export const getErrorMessage = (state) => state.errorMessage;

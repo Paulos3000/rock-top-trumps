@@ -1,8 +1,11 @@
-// to create unique user id...
-import { v4 } from 'node-uuid'
-import { getIsFetching } from '../reducers';
+import { normalize } from 'normalizr';
+import * as schema from './schema';
+
 // import all functions in fake backend to be used in actions
 import * as api from '../api'
+
+import { getIsFetching } from '../reducers';
+
 
 // this action is a 'thunk', meaning it is able to pass a second function which takes 'dispatch' and 'getState' arguments (of 'createStore')
 export const fetchTodos = (filter) => (dispatch, getState) => {
@@ -18,6 +21,10 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
    // this contacts server/api, and when payload received, dispatches FETCH_TODOS_SUCCESS.
    return api.fetchTodos(filter).then(
       response => {
+         console.log(
+            'normalized response',
+            normalize(response, schema.arrayOfTodos)
+         )
          dispatch({
             type: 'FETCH_TODOS_SUCCESS',
             filter,
@@ -34,11 +41,20 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
    );
 }
 
-export const addTodo = (text) => ({
-   type: 'ADD_TODO',
-   id: v4(),
-   text
-})
+// this is now run on the server (api) - returns THUNK.
+// this function passes text value to the api function which returns the response, which this function then dispatches.
+export const addTodo = (text) => (dispatch) =>
+   api.addTodo(text).then(response => {
+      console.log(
+         'normalized response',
+         normalize(response, schema.todo)
+      )
+      dispatch({
+         type: 'ADD_TODO_SUCCESS',
+         response
+      })
+   })
+
 
 export const toggleTodo = (id) => ({
    type: 'TOGGLE_TODO',
