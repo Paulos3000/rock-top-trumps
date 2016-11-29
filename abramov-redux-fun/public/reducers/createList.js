@@ -3,6 +3,22 @@ import { combineReducers } from 'redux';
 // this reducer creates an 'index' of IDS ONLY
 const createList = (filter) => {
 
+   const handleToggle = (state, action) => {
+      const { result: toggleId, entities } = action.response
+      const { completed } = entities.todos[toggleId];
+      // shouldRemove is true if either of the following conditions are true
+      const shouldRemove = (
+         // todo is completed AND 'active' (can't be both)
+         (completed && filter === 'active') ||
+         // todo is incomplete AND 'completed' (can't be both)
+         (!completed && filter === 'completed')
+      );
+      // if shouldRemove evaluates to TRUE, then return all ids EXCEPT the toggleId (defined above)
+      return shouldRemove ?
+         state.filter(id => id !== toggleId) :
+         // or if not, return normal state
+         state;
+   }
 // !! conditionals required here because createList runs on all 3 lists, the only thing that defines them apart here is the logic deciding which filter is applied.
    const ids = (state = [], action) => {
       switch (action.type) {
@@ -16,6 +32,8 @@ const createList = (filter) => {
             return filter !== 'completed' ?
             [...state, action.response.result] :
             state;
+         case 'TOGGLE_TODO_SUCCESS':
+            return handleToggle(state, action);
          default:
             return state;
       }
