@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
 
-import { App } from './App'
+import App from './App'
 import Secondary from './Secondary'
 
 const Root = ({ store, history }) => (
