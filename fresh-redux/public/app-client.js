@@ -1,26 +1,20 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { connect } from 'react-redux'
 
-// import root reducer
-import todoApp from './reducers/index'
+// NEW (to sync history with store) -------------
+import { browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+// ----------------------------------------------
 
-// actions defined individually in each relevant component
-
-// import components
-import { TodoApp } from './components/TodoApp'
-import { Todo } from './components/Todo'
-import { FilterLink } from './components/FilterLink'
 import Root from './components/Root'
-
-// import utility functions
-import {getVisibleTodos} from './util/getVisibleTodos'
 
 // create/configure store
 import configureStore from './configureStore'
+
 const store = configureStore()
+const history = syncHistoryWithStore(browserHistory, store)
 
 render(
-   <Root store={store}/>,
+   <Root store={store} history={history}/>,
    document.getElementById("root")
 )

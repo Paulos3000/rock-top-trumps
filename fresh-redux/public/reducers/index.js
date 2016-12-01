@@ -1,4 +1,9 @@
 import { combineReducers } from 'redux';
+
+// NEW!!! -----------------------------------------
+import { routerReducer } from 'react-router-redux'
+// ------------------------------------------------
+
 import byId, * as fromById from './byId'
 import createList, * as fromCreateList from './createList'
 
@@ -10,11 +15,12 @@ const listByFilter = combineReducers({
 })
 
 // ROOT REDUCER (imported in configureStore.js). This defines the root store shape:
-const todoRootReducer = combineReducers({
+const rootReducer = combineReducers({
    byId, // <-- imported from './byId'
-   listByFilter
+   listByFilter,
+   routing: routerReducer
 })
-export default todoRootReducer
+export default rootReducer
 
 
 // SELECTORS
