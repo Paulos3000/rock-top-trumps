@@ -11,7 +11,8 @@ import { v4 } from 'node-uuid'
 // MAIN CONTAINER COMPONENT
 export const TodoApp = ({ params }) => (
    <div className='container'>
-      <h2>Idiomatic Redux</h2>
+      <h2>Fresh-Redux</h2>
+      <h3>Stripped bare, and experimenting with thunks and react-router-redux</h3>
       <hr />
 
       <AddTodo />
