@@ -38,20 +38,20 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
 }
 
 // this is now run on the server (api) - returns THUNK.
-// this function passes text value to the api function which returns the response, which this function then dispatches.
+// this function passes text value to the api function which returns the response, which this function then dispatches action.
 export const addTodo = (text) => (dispatch) =>
-   api.addTodo(text).then(response => {
+   api.addTodo(text).then(response =>
       dispatch({
          type: 'ADD_TODO_SUCCESS',
          response: normalize(response, schema.todo)
       })
-   })
+   )
 
 
 export const toggleTodo = (id) => (dispatch) =>
-   api.toggleTodo(id).then(response => {
+   api.toggleTodo(id).then(response =>
       dispatch({
          type: 'TOGGLE_TODO_SUCCESS',
          response: normalize(response, schema.todo)
       })
-   })
+   )
