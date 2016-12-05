@@ -1,10 +1,26 @@
 import { normalize } from 'normalizr';
 import * as schema from './schema';
-
 // import all functions in fake backend to be used in actions
 import * as api from '../api'
-
+// import getIsFetching selector
 import { getIsFetching } from '../reducers';
+
+import axios from 'axios'
+
+export const fetchRemoteData = (endpoint) => (dispatch, getState) => {
+   // dispatch({
+   //    type: 'FETCH_REMOTE_DATA_REQUEST',
+   //    endpoint
+   // })
+   return axios.get('https://jsonplaceholder.typicode.com/users').then(
+      response =>
+         dispatch({
+            type: 'FETCH_REMOTE_DATA_SUCCESS',
+            endpoint,
+            response
+         })
+      )
+} // end fetchRemoteData actionCreator
 
 
 // this action is a 'thunk', meaning it is able to pass a second function which takes 'dispatch' and 'getState' arguments (of 'createStore')
