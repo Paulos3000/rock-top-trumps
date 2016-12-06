@@ -5,8 +5,9 @@ export default class Users extends Component {
       console.log('Component Mounted!')
       this.props.fetchRemoteData('users')
    }
-   componentDidUpdate() {
+   componentDidUpdate(prevProps) {
       console.log('Component Updated!')
+      console.log('prevProps.users: ', prevProps.users)
       console.log('this.props.users: ', this.props.users)
       // this.props.fetchRemoteData('users')
    }
@@ -17,7 +18,7 @@ export default class Users extends Component {
       return (
          <div>
             <h1>Users Page</h1>
-            <p>This is the Users page. It is making an API call to /users in <code>componentDidMount</code>, but <code>this.props.users</code> (which is present in the component) is not rendering. WHY?!?!?!?!</p>
+            <p>This is the Users page. It is making an API call to /users in <code>componentDidMount</code></p>
             <p>rootPage: {rootPage}</p>
             {users ?
                users.map(user => <p>{user.name}</p>) :
