@@ -7,9 +7,6 @@ export default class Users extends Component {
    }
    componentDidUpdate(prevProps) {
       console.log('Component Updated!')
-      console.log('prevProps.users: ', prevProps.users)
-      console.log('this.props.users: ', this.props.users)
-      // this.props.fetchRemoteData('users')
    }
    render() {
       const {users} = this.props
@@ -21,8 +18,8 @@ export default class Users extends Component {
             <p>This is the Users page. It is making an API call to /users in <code>componentDidMount</code></p>
             <p>rootPage: {rootPage}</p>
             {users ?
-               users.map(user => <p>{user.name}</p>) :
-               <p>No data</p>
+               users.map( (user, i) => <p key={i}>{user.name}</p>) :
+               <p>No data received...</p>
             }
          </div>
       )
