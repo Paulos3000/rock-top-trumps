@@ -29,9 +29,8 @@ class Albums extends Component {
 }
 
 import { connect } from 'react-redux'
-// define component's props
 const mapStateToProps = (state, ownProps) => ({
-   albums: state.filteredList.albums.jsonArray,
+   albums: state.filteredList.albums.jsonArray
 })
 // import component's actions
 import * as actions from '../actions/actionCreators'

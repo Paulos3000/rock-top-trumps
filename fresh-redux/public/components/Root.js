@@ -20,6 +20,7 @@ const Root = ({ store, history }) => (
             <Route path='/users' component={Users}></Route>
             <Route path='/posts' component={Posts}></Route>
             <Route path='/albums' component={Albums}></Route>
+            <Route path='/albums/id-:albumId' component={Photos}></Route>
             <Route path='/todos' component={Todos}></Route>
             <Route path='/comments' component={Comments}></Route>
             <Route path='/photos' component={Photos}></Route>
