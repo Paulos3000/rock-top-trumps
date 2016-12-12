@@ -17,3 +17,116 @@ a.navbar-brand {
    line-height: 30px;
    padding: 10px 0;
 }
+
+
+
+/* NEW CSS */
+/*--------------------------------------*/
+
+/* GENERIC RESETS */
+
+a {
+   text-decoration: none !important;
+   color: inherit;
+}
+
+/* GENERIC STYLES */
+
+.dark-keyline {
+   border: #000;
+}
+
+/* Bootstrap Extra Styles */
+.media-object {
+   width: 60px;
+}
+
+.header h1 {
+   text-align: center;
+}
+
+.jumbotron {
+   margin: 0;
+}
+
+.glyphicon-user, .glyphicon-pencil {
+   font-size: 35px;
+}
+
+/*USERS*/
+
+.user-contact-line {
+   color: grey;
+}
+
+.user-info {
+   display: inline-block;
+   padding: 0 20px 0 0;
+   margin-bottom: 6px;
+}
+
+.user-info-word {
+   margin: 0 5px;
+}
+
+.badge {
+   padding: 3px 5px;
+   margin: 0;
+}
+
+/*ALBUMS*/
+
+.album {
+   text-align: center;
+}
+
+.album-tile {
+   height: 180px;
+}
+
+
+/*POSTS*/
+
+/*PHOTOS*/
+
+.center-thumbnail {
+   margin: 0 auto;
+}
+
+.photo-tile {
+   height: 180px;
+}
+
+/*TODOS*/
+
+.todo-index, .todo-checkbox, .todo-title {
+   padding: 0 10px;
+}
+
+.ticked {
+   color: rgb(200, 200, 200);
+}
+
+.completed {
+   text-decoration: line-through;
+   color: rgb(200, 200, 200);
+}
+
+/*POSTCOMMENTS*/
+
+.single-comment {
+   margin-left: 10%;
+}
+
+.single-comment-glyph {
+   font-size: 20px;
+}
+
+.remove-cross {
+   cursor: pointer;
+   cursor: hand;
+}
+
+.form-row {
+   margin: 40px 0;
+}

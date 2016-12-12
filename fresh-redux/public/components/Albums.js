@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-
 // import util functions
 import capitalizeFirstLetter from '../util/capitalizeFirstLetter'
-
 // import components
 import PageHeader from './PageHeader'
-import PostList from './PostList'
+import AlbumList from './AlbumList'
 
-class Posts extends Component {
+class Albums extends Component {
    componentDidMount() {
       console.log('Component Mounted!')
-      this.props.fetchRemoteData('posts')
+      this.props.fetchRemoteData('albums')
    }
    componentDidUpdate(prevProps) {
       console.log('Component Updated!')
@@ -19,11 +17,12 @@ class Posts extends Component {
       const endpoint = this.props.location.pathname.slice(1)
       const pageTitle = capitalizeFirstLetter(endpoint)
       const apiURL = `https://jsonplaceholder.typicode.com/${endpoint}`
-      const {posts} = this.props
+      const {albums} = this.props
+
       return (
          <div>
             <PageHeader pageTitle={pageTitle} apiURL={apiURL} />
-            <PostList posts={posts} />
+            <AlbumList albums={albums}/>
          </div>
       )
    }
@@ -32,11 +31,11 @@ class Posts extends Component {
 import { connect } from 'react-redux'
 // define component's props
 const mapStateToProps = (state, ownProps) => ({
-   posts: state.filteredList.posts.jsonArray,
+   albums: state.filteredList.albums.jsonArray,
 })
 // import component's actions
 import * as actions from '../actions/actionCreators'
 
-Posts = connect(mapStateToProps, actions)(Posts);
+Albums = connect(mapStateToProps, actions)(Albums);
 
-export default Posts;
+export default Albums;

@@ -3,6 +3,7 @@ import React from 'react'
 const Home = () => (
    <div>
       <h1>Home Page</h1>
+      <hr />
       <ul>
          <li>Home page is separate from param rendered components.</li>
          <li>It is a STATELESS FUNCTIONAL COMPONENT</li>

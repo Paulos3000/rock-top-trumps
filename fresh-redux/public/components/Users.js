@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+// import component's actions
+import * as actions from '../actions/actionCreators'
 
-export default class Users extends Component {
+// import util functions
+import capitalizeFirstLetter from '../util/capitalizeFirstLetter'
+
+// import components
+import PageHeader from './PageHeader'
+import UserList from './UserList'
+
+class Users extends Component {
    componentDidMount() {
       console.log('Component Mounted!')
       this.props.fetchRemoteData('users')
@@ -9,19 +19,27 @@ export default class Users extends Component {
       console.log('Component Updated!')
    }
    render() {
+      const endpoint = this.props.location.pathname.slice(1)
+      const pageTitle = capitalizeFirstLetter(endpoint)
+      const apiURL = `https://jsonplaceholder.typicode.com/${endpoint}`
       const {users} = this.props
-      console.log('users: ', users)
-      const {rootPage} = this.props;
+
       return (
          <div>
-            <h1>Users Page</h1>
-            <p>This is the Users page. It is making an API call to /users in <code>componentDidMount</code></p>
-            <p>rootPage: {rootPage}</p>
-            {users ?
-               users.map( (user, i) => <p key={i}>{user.name}</p>) :
-               <p>No data received...</p>
-            }
+            <PageHeader pageTitle={pageTitle} apiURL={apiURL} />
+            {/*users.map( (user, i) => <p key={i}>{i+1} {user.name}</p>)*/}
+            <UserList users={users}/>
          </div>
       )
    }
 }
+
+// define component's props
+const mapStateToProps = (state) => ({
+   users: state.filteredList.users.jsonArray,
+   isFetching: state.filteredList.users.isFetching
+})
+
+Users = connect(mapStateToProps, actions)(Users);
+
+export default Users;
