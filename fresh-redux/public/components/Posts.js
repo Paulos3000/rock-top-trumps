@@ -31,7 +31,7 @@ class Posts extends Component {
 
 import { connect } from 'react-redux'
 // define component's props
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
    posts: state.filteredList.posts.jsonArray,
 })
 // import component's actions

@@ -4,10 +4,11 @@ const Home = () => (
    <div>
       <h1>Home</h1>
       <hr />
-      <ul>
-         <li>Home page is a STATELESS FUNCTIONAL COMPONENT</li>
-         <li>It has no props, it is static, and it is not intended to render dynamic data</li>
-      </ul>
+      <div className='jumbotron'>
+         <p>This is a test React application using async Redux actions to gather data from a server and present in the view. Styled with Bootstrap.</p>
+         <p>All data fetched from <code>https://jsonplaceholder.typicode.com/</code></p>
+         <p>Work in progress...</p>
+      </div>
    </div>
 )
 
