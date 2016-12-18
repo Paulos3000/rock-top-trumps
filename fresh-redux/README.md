@@ -15,4 +15,13 @@ App makes use of:
 * [Webpack](http://webpack.github.io) for bundling
 * [Webpack Dev Middleware](http://webpack.github.io/docs/webpack-dev-middleware.html)
 * [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware)
-* [Redux](https://github.com/rackt/redux)'s futuristic
+* [Redux](https://github.com/rackt/redux)
+
+## Run development server
+`npm run start-dev`
+
+## Production build
+`npm run build`
+
+## Run production server
+`npm start`
