@@ -15,7 +15,7 @@ import PhotoSingle from './PhotoSingle'
 
 const Root = ({ store, history }) => (
    <Provider store={store}>
-      <Router history={history}>
+      <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
          <Route path='/' component={Main}>
             <IndexRoute component={Home}></IndexRoute>
             <Route path='/users' component={Users}></Route>
