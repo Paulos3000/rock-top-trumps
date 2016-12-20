@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import SinglePhotoImg from './SinglePhotoImg'
+
 import capitalizeFirstLetter from '../util/capitalizeFirstLetter'
 
 class PhotoSingle extends Component {
@@ -9,13 +11,12 @@ class PhotoSingle extends Component {
    render() {
       const {singlePhoto} = this.props
       const photoTitle = capitalizeFirstLetter(singlePhoto.title)
+      if (this.props.isFetching) {
+         return <h4>Fetching data...</h4>
+      }
       return (
          <div>
-            <h1>Single Photo</h1>
-            <h3><i>{photoTitle}</i></h3>
-            <hr />
-            <img className='single-photo' src={singlePhoto.url} />
-            <p>Album ID: {singlePhoto.albumId} | Photo ID: {singlePhoto.id}</p>
+            <SinglePhotoImg singlePhoto={singlePhoto} photoTitle={photoTitle}/>
          </div>
       )
    }
