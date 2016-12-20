@@ -4,7 +4,7 @@ import User from './User'
 
 const UserList = ({ users, isFetching }) => {
    if (isFetching) {
-      return <h4>Loading...</h4>
+      return <h4>Fetching data...</h4>
    }
    return (
       <div>

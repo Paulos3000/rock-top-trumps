@@ -4,7 +4,7 @@ import Post from './Post'
 
 const PostList = ({ posts, isFetching }) => {
    if (isFetching) {
-      return <h4>Loading...</h4>
+      return <h4>Fetching data...</h4>
    }
    return (
       <div>
