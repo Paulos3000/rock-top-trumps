@@ -6,7 +6,7 @@ const PhotoThumb= ({ photo, albumId }) => {
    return (
       <span>
          <Link to={`/albums/id-${albumId}/photo-${photoId}`}>
-            <img className="photo-tile col-xs-6 col-sm-3" src={photo.thumbnailUrl} />
+            <img className="photo-tile col-xs-4 col-sm-3 col-md-2" src={photo.thumbnailUrl} />
          </Link>
       </span>
    )
