@@ -11,7 +11,7 @@ App makes use of:
 * [React](https://github.com/facebook/react)
 * [React Router](https://github.com/rackt/react-router)
 * [Express](http://expressjs.com)
-* [Babel](http://babeljs.io) for ES6 and ES7 magic
+* [Babel](http://babeljs.io) for ES6/ES7 and JSX transpiling
 * [Webpack](http://webpack.github.io) for bundling
 * [Webpack Dev Middleware](http://webpack.github.io/docs/webpack-dev-middleware.html)
 * [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware)

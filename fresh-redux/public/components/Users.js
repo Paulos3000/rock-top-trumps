@@ -27,7 +27,6 @@ class Users extends Component {
       return (
          <div>
             <PageHeader pageTitle={pageTitle} apiURL={apiURL} />
-            {/*users.map( (user, i) => <p key={i}>{i+1} {user.name}</p>)*/}
             <UserList users={users}/>
          </div>
       )
