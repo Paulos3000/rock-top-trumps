@@ -86,10 +86,6 @@ a {
 
 /*PHOTOS*/
 
-/*.center-thumbnail {
-   margin: 0 auto;
-}*/
-
 .photo-row {
    margin: 0 auto;
 }
@@ -97,6 +93,12 @@ a {
 .photo-tile {
    padding: 15px;
    max-width: 50%;
+}
+
+.single-photo {
+   width: 100%;
+   max-width: 400px;
+   padding-bottom: 10px;
 }
 
 /*TODOS*/

@@ -14,14 +14,14 @@ class Photos extends Component {
       console.log('Component Updated!')
    }
    render() {
-      const {allPhotos, albumPhotos} = this.props
+      const {allPhotos, albumPhotos, isFetching} = this.props
       const {albumId} = this.props.params
       console.log(albumId)
       return (
          <div>
             <h1>Album id: {albumId}</h1>
             <hr />
-            <PhotoList albumId={albumId} albumPhotos={albumPhotos}/>
+            <PhotoList albumId={albumId} albumPhotos={albumPhotos} isFetching={isFetching}/>
          </div>
       )
    }
@@ -33,7 +33,8 @@ const mapStateToProps = (state, { params }) => {
    const albumId = parseInt(params.albumId)
    return {
       allPhotos: state.filteredList.photos.jsonArray,
-      albumPhotos: getAlbumPhotos(state.filteredList.photos.jsonArray, albumId)
+      albumPhotos: getAlbumPhotos(state.filteredList.photos.jsonArray, albumId),
+      isFetching: state.filteredList.photos.isFetching
    }
 }
 // import component's actions
