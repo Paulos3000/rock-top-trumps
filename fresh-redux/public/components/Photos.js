@@ -19,7 +19,8 @@ class Photos extends Component {
       console.log(albumId)
       return (
          <div>
-            <h1>Album id: {albumId}</h1>
+            <h1>Album Photos</h1>
+            <h3>Album id: {albumId}</h3>
             <hr />
             <PhotoList albumId={albumId} albumPhotos={albumPhotos} isFetching={isFetching}/>
          </div>
