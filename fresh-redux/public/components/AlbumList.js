@@ -2,7 +2,11 @@ import React from 'react'
 
 import Album from './Album'
 
-const AlbumList = ({ albums }) => (
+const AlbumList = ({ albums, isFetching }) => {
+   if (isFetching) {
+      return <h4>Loading...</h4>
+   }
+   return (
    <div className="row">
       {/*albums.map( (album, i) => <Album key={i} i={i} album={album}/>)*/}
          {albums.map( (album, i) =>
@@ -11,6 +15,7 @@ const AlbumList = ({ albums }) => (
             </div>
          )}
    </div>
-)
+   )
+}
 
 export default AlbumList;

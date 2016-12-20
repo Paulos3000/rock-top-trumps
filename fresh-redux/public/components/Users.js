@@ -22,12 +22,12 @@ class Users extends Component {
       const endpoint = this.props.location.pathname.slice(1)
       const pageTitle = capitalizeFirstLetter(endpoint)
       const apiURL = `https://jsonplaceholder.typicode.com/${endpoint}`
-      const {users} = this.props
+      const {users, isFetching} = this.props
 
       return (
          <div>
             <PageHeader pageTitle={pageTitle} apiURL={apiURL} />
-            <UserList users={users}/>
+            <UserList users={users} isFetching={isFetching}/>
          </div>
       )
    }

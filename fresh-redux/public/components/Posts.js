@@ -19,11 +19,11 @@ class Posts extends Component {
       const endpoint = this.props.location.pathname.slice(1)
       const pageTitle = capitalizeFirstLetter(endpoint)
       const apiURL = `https://jsonplaceholder.typicode.com/${endpoint}`
-      const {posts} = this.props
+      const {posts, isFetching} = this.props
       return (
          <div>
             <PageHeader pageTitle={pageTitle} apiURL={apiURL} />
-            <PostList posts={posts} />
+            <PostList posts={posts} isFetching={isFetching} />
          </div>
       )
    }
@@ -33,6 +33,7 @@ import { connect } from 'react-redux'
 // define component's props
 const mapStateToProps = (state) => ({
    posts: state.filteredList.posts.jsonArray,
+   isFetching: state.filteredList.posts.isFetching
 })
 // import component's actions
 import * as actions from '../actions/actionCreators'

@@ -7,7 +7,7 @@ const Album = ({ album, i }) => {
       <Link to={`albums/id-${album.id}`}>
          <span className='album'>
             <h2><span className='glyphicon glyphicon-book album-center'></span></h2>
-            <h5>{truncateTitle}...</h5>
+            <h5>{truncateTitle}</h5>
             <p><small>Author name (compute)</small></p>
          </span>
       </Link>
