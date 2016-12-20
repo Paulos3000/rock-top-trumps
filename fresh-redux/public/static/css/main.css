@@ -84,17 +84,19 @@ a {
    height: 180px;
 }
 
-
-/*POSTS*/
-
 /*PHOTOS*/
 
-.center-thumbnail {
+/*.center-thumbnail {
    margin: 0 auto;
+}*/
+
+.photo-row {
+   margin: auto;
 }
 
 .photo-tile {
-   height: 180px;
+   padding: 20px;
+   width: 180px;
 }
 
 /*TODOS*/

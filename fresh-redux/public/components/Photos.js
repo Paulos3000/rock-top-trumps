@@ -14,26 +14,28 @@ class Photos extends Component {
       console.log('Component Updated!')
    }
    render() {
-      const {photos} = this.props
+      const {allPhotos, albumPhotos} = this.props
       const {albumId} = this.props.params
       console.log(albumId)
       return (
          <div>
             <h1>Album id: {albumId}</h1>
-            <h2><small>This is the filtered list of albums as dictated by the album id. The photos are compiled from the <code>/photos</code> endpoint, using a selector which passes in the album id to filter the result down to the correct payload</small></h2>
             <hr />
-            <PhotoList albumId={albumId}/>
-            {/*photos.map( (photo, i) => <p key={i}>{photo.name}</p>)*/}
+            <PhotoList albumId={albumId} albumPhotos={albumPhotos}/>
          </div>
       )
    }
 }
 
 import { connect } from 'react-redux'
-// define component's props
-const mapStateToProps = (state, { params }) => ({
-   photos: state.filteredList.photos.jsonArray,
-})
+import { getAlbumPhotos } from '../reducers/createList'
+const mapStateToProps = (state, { params }) => {
+   const albumId = parseInt(params.albumId)
+   return {
+      allPhotos: state.filteredList.photos.jsonArray,
+      albumPhotos: getAlbumPhotos(state.filteredList.photos.jsonArray, albumId)
+   }
+}
 // import component's actions
 import * as actions from '../actions/actionCreators'
 

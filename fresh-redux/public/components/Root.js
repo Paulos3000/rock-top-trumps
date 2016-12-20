@@ -11,6 +11,7 @@ import Albums from './Albums'
 import Todos from './Todos'
 import Comments from './Comments'
 import Photos from './Photos'
+import PhotoSingle from './PhotoSingle'
 
 const Root = ({ store, history }) => (
    <Provider store={store}>
@@ -21,6 +22,7 @@ const Root = ({ store, history }) => (
             <Route path='/posts' component={Posts}></Route>
             <Route path='/albums' component={Albums}></Route>
             <Route path='/albums/id-:albumId' component={Photos}></Route>
+            <Route path='/albums/id-:albumId/photo-:photoId' component={PhotoSingle}></Route>
             <Route path='/todos' component={Todos}></Route>
             <Route path='/comments' component={Comments}></Route>
             <Route path='/photos' component={Photos}></Route>

@@ -40,3 +40,8 @@ const createList = (endpoint) => {
 }
 
 export default createList;
+
+// Selector:
+export const getAlbumPhotos = (state, albumId) => {
+   return state.filter(album => albumId === album.albumId)
+}
