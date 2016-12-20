@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 const Post = ({ post, i }) => (
    <div className="media">
 
-      <div className="media-left media-middle">
+      <div className="media-left media-middle hidden-xs">
          <span className='media-object glyphicon glyphicon-pencil'></span>
       </div>
 
