@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import SinglePhotoImg from './SinglePhotoImg'
+import PhotoSingleImg from './PhotoSingleImg'
 
 import capitalizeFirstLetter from '../util/capitalizeFirstLetter'
 
@@ -9,14 +9,10 @@ class PhotoSingle extends Component {
       this.props.fetchRemoteData('photos')
    }
    render() {
-      const {singlePhoto} = this.props
-      const photoTitle = capitalizeFirstLetter(singlePhoto.title)
-      if (this.props.isFetching) {
-         return <h4>Fetching data...</h4>
-      }
+      const {singlePhoto, photoId} = this.props
       return (
          <div>
-            <SinglePhotoImg singlePhoto={singlePhoto} photoTitle={photoTitle}/>
+            <PhotoSingleImg singlePhoto={singlePhoto} photoId={photoId} />
          </div>
       )
    }
@@ -29,7 +25,8 @@ const mapStateToProps = (state, { params }) => {
    const photoId = parseInt(params.photoId)
    return {
       singlePhoto: getSinglePhoto(state.filteredList.photos.jsonArray, photoId),
-      isFetching: state.filteredList.photos.isFetching
+      isFetching: state.filteredList.photos.isFetching,
+      photoId
    }
 }
 import * as actions from '../actions/actionCreators'
