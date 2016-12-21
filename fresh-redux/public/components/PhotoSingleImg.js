@@ -11,7 +11,7 @@ const PhotoSingleImg = ({ singlePhoto, isFetching, photoId }) => {
          <hr />
          <img className='single-photo' src={singlePhoto.url} />
          <p>Album ID: {singlePhoto.albumId} | Photo ID: {singlePhoto.id}</p>
-      </div>) : null
+      </div>) : <div>No dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo dataNo data</div>
 }
 
 export default PhotoSingleImg;
