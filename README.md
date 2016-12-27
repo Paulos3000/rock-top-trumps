@@ -1,10 +1,8 @@
-# fresh-redux
+# Rock Top Trumps
 
-Test React application using async Redux actions to gather data from a server and present in the view.
+Simple Top Trumps game with famous rock guitarists.
 
 ## About
-
-All data fetched from https://jsonplaceholder.typicode.com/
 
 App makes use of:
 
