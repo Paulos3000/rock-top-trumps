@@ -15,6 +15,9 @@ App makes use of:
 * [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware)
 * [Redux](https://github.com/rackt/redux)
 
+## Install dependencies
+`npm install`
+
 ## Run development server
 `npm run start-dev`
 

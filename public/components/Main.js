@@ -15,6 +15,11 @@ export default class Main extends Component {
                {/*Also note: can pass any individual prop by wrapping in curly braces and applying a key, followed by prop value*/}
                {React.cloneElement(this.props.children, this.props)}
             </div>
+            <footer className="footer">
+               <div className="container">
+                  <p className="text-muted">Player card count goes here...</p>
+               </div>
+            </footer>
          </div>
       )
    }

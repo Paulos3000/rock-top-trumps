@@ -3,28 +3,21 @@ import { routerReducer } from 'react-router-redux'
 
 // IMPORT INDIVIDUAL reducers
 // --------------------------
-// import users from './users'
-// import posts from './posts'
-// import albums from './albums'
-// import comments from './comments'
-// import photos from './photos'
-// import todos from './todos'
+import deck from './deck'
+import players from './players'
 
-// IMPORT FUNCTION THAT RETURN SPECIFIC STATE DEPENDING ON 'ENDPOINT' ARGUMENT
-import createList from './createList'
+import p1hand from './p1hand'
+import p2hand from './p2hand'
+import p3hand from './p3hand'
+import p4hand from './p4hand'
 
-const filteredList = combineReducers({
-   users: createList('users'),
-   posts: createList('posts'),
-   albums: createList('albums'),
-   comments: createList('comments'),
-   photos: createList('photos'),
-   todos: createList('todos')
-})
+const playerHands = combineReducers({ p1: p1hand, p2: p2hand, p3: p3hand, p4: p4hand })
 
-// ROOT REDUCER (imported in configureStore.js). This defines the root store shape:
+// ROOT REDUCER (exported to configureStore.js). This defines the root store shape:
 const rootReducer = combineReducers({
-   filteredList,
+   deck,
+   players,
+   playerHands,
    routing: routerReducer
 })
 export default rootReducer

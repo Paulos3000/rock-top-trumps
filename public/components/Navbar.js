@@ -7,25 +7,18 @@ const Navbar = () => (
          <div className="container-fluid">
             <div className="navbar-header">
                <Link className='navbar-brand' to='/'>
-                  JSON-Placeholder App
+                  Rock Top Trumps
                </Link>
             </div>
             <ul className="nav navbar-nav">
-               <li className="active">
-               </li>
                <li>
-                  <Link to='/users'>
-                     Users
+                  <Link to='/'>
+                     Play
                   </Link>
                </li>
                <li>
-                  <Link to='/posts'>
-                     Posts
-                  </Link>
-               </li>
-               <li>
-                  <Link to='/albums'>
-                     Albums
+                  <Link to='/cardindex'>
+                     Card Index
                   </Link>
                </li>
             </ul>

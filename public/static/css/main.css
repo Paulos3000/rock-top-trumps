@@ -1,136 +1,40 @@
-/* remove margin after jumbotron, and center header text */
-.jumbotron {
-   margin: 0;
-}
-.jumbotron h1 {
-   text-align: center;
-}
-
-/* NAVBAR CENTRING */
-.navbar {
-   text-align: center;
-}
-a.navbar-brand {
-   float: none;
-}
-.navbar-header {
-   line-height: 30px;
-   padding: 10px 0;
-}
-
-
-
-/* NEW CSS */
-/*--------------------------------------*/
-
-/* GENERIC RESETS */
-
+/* Generic Resets
+--------------------------------------*/
 a {
    text-decoration: none !important;
    color: inherit;
 }
 
-/* GENERIC STYLES */
+/* Bootstrap Additional Styles
+--------------------------------------*/
+.jumbotron { margin: 0; }
+.jumbotron h1 { text-align: center; }
 
-.dark-keyline {
-   border: #000;
+/* Navbar Styles
+--------------------------------------*/
+.navbar { text-align: center; }
+a.navbar-brand { float: none; }
+
+.navbar-header {
+   line-height: 30px;
+   padding: 10px 0;
 }
 
-/* Bootstrap Extra Styles */
-.media-object {
-   width: 60px;
+/* APP STYLES HERE
+--------------------------------------*/
+
+.avatar {
+   /*border-radius: 300px;*/
 }
 
-.header h1 {
-   text-align: center;
-}
-
-.jumbotron {
-   margin: 0;
-}
-
-.glyphicon-user, .glyphicon-pencil {
-   font-size: 35px;
-}
-
-/*USERS*/
-
-.user-contact-line {
-   color: grey;
-}
-
-.user-info {
-   display: inline-block;
-   padding: 0 20px 0 0;
-   margin-bottom: 6px;
-}
-
-.user-info-word {
-   margin: 0 5px;
-}
-
-.badge {
-   padding: 3px 5px;
-   margin: 0;
-}
-
-/*ALBUMS*/
-
-.album {
-   text-align: center;
-}
-
-.album-tile {
-   height: 180px;
-}
-
-/*PHOTOS*/
-
-.photo-row {
-   margin: 0 auto;
-}
-
-.photo-tile {
-   padding: 15px;
-   max-width: 50%;
-}
-
-.single-photo {
-   width: 100%;
-   max-width: 400px;
-   padding-bottom: 10px;
-}
-
-/*TODOS*/
-
-.todo-index, .todo-checkbox, .todo-title {
-   padding: 0 10px;
-}
-
-.ticked {
-   color: rgb(200, 200, 200);
-}
-
-.completed {
-   text-decoration: line-through;
-   color: rgb(200, 200, 200);
-}
-
-/*POSTCOMMENTS*/
-
-.single-comment {
-   margin-left: 10%;
-}
-
-.single-comment-glyph {
-   font-size: 20px;
-}
-
-.remove-cross {
-   cursor: pointer;
-   cursor: hand;
-}
-
-.form-row {
-   margin: 40px 0;
+/* Footer Styles
+--------------------------------------*/
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  margin-top: 60px;
+  background-color: #f5f5f5;
 }

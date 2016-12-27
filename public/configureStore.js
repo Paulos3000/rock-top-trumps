@@ -1,10 +1,19 @@
 import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
+// import middlewares...
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import { Provider } from 'react-redux';
-import throttle from 'lodash/throttle';
 
+// import rootReducer
 import rootReducer from './reducers/index';
+
+// import data
+import deck from './data/deck'
+
+const defaultState = {
+   deck
+}
 
 const configureStore = () => {
    const middlewares = [thunk];
@@ -16,7 +25,7 @@ const configureStore = () => {
 
    return createStore(
       rootReducer, // --> this is ROOT REDUCER (reducers/index.js)
-      // persistedState, --> Can add this if needed. !Must be before enhancer!
+      defaultState, // --> If needed. MUST BE OBJECT.
       applyMiddleware(...middlewares) // --> Final argument is an 'ENHANCER'
    );
 }
