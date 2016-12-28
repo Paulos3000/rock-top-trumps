@@ -6,6 +6,7 @@ import { routerReducer } from 'react-router-redux'
 import deck from './deck'
 import players from './players'
 
+// import p1 from './p1'
 import p1hand from './p1hand'
 import p2hand from './p2hand'
 import p3hand from './p3hand'
@@ -17,6 +18,7 @@ const playerHands = combineReducers({ p1: p1hand, p2: p2hand, p3: p3hand, p4: p4
 const rootReducer = combineReducers({
    deck,
    players,
+   // p1,
    playerHands,
    routing: routerReducer
 })

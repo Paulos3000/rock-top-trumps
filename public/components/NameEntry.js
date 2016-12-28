@@ -9,10 +9,11 @@ export default class NameEntry extends Component {
       e.preventDefault();
 
       // const p1name = this.
-      const player1Name = this.refs.player1Name.value;
-      const player2Name = this.refs.player2Name.value;
-      const player3Name = this.refs.player3Name.value;
-      const player4Name = this.refs.player4Name.value;
+      // const player1Name = this.refs.player1Name.value;
+      // const player2Name = this.refs.player2Name.value;
+      // const player3Name = this.refs.player3Name.value;
+      // const player4Name = this.refs.player4Name.value;
+      // console.log('Player 1 Name: ', player1Name)
 
       // fire action containing player name values to be passed to playerName state (prepare this first)
 
@@ -21,17 +22,14 @@ export default class NameEntry extends Component {
 
    render() {
       const {players} = this.props
-      // const handleAddNames = (e) => {
-      //    e.preventDefault;
-      //    console.log('adding names')
-      // }
+
 
       switch(players) {
          case 2:
             return (
                <form ref='nameEntryForm'>
-                  <NameEntryField playerNum={1} ref='player1Name'/>
-                  <NameEntryField playerNum={2} ref='player2Name'/>
+                  <NameEntryField playerNum={1} />
+                  <NameEntryField playerNum={2} />
                   <NameEntryBtn handleAddNames={this.handleAddNames} />
                </form>
             )
@@ -39,9 +37,9 @@ export default class NameEntry extends Component {
          case 3:
             return (
                <form ref='nameEntryForm'>
-                  <NameEntryField playerNum={1} ref='player1Name'/>
-                  <NameEntryField playerNum={2} ref='player2Name'/>
-                  <NameEntryField playerNum={3} ref='player3Name'/>
+                  <NameEntryField playerNum={1} />
+                  <NameEntryField playerNum={2} />
+                  <NameEntryField playerNum={3} />
                   <NameEntryBtn handleAddNames={this.handleAddNames} />
                </form>
             )
@@ -49,10 +47,10 @@ export default class NameEntry extends Component {
          case 4:
             return (
                <form ref='nameEntryForm'>
-                  <NameEntryField playerNum={1} ref='player2Name'/>
-                  <NameEntryField playerNum={2} ref='player2Name'/>
-                  <NameEntryField playerNum={3} ref='player2Name'/>
-                  <NameEntryField playerNum={4} ref='player2Name'/>
+                  <NameEntryField playerNum={1} />
+                  <NameEntryField playerNum={2} />
+                  <NameEntryField playerNum={3} />
+                  <NameEntryField playerNum={4} />
                   <NameEntryBtn handleAddNames={this.handleAddNames} />
                </form>
             )
