@@ -26,10 +26,10 @@ class Main extends Component {
                   <div className="row">
                      <DynamicFooter
                         players={this.props.players}
-                        p1hand={this.props.p1hand}
-                        p2hand={this.props.p2hand}
-                        p3hand={this.props.p3hand}
-                        p4hand={this.props.p4hand}
+                        p1={this.props.p1}
+                        p2={this.props.p2}
+                        p3={this.props.p3}
+                        p4={this.props.p4}
                      />
                   </div>
                </div>
@@ -45,10 +45,14 @@ import { connect } from 'react-redux'
 const mapStateToProps = (state) => ({
    deck: state.deck,
    players: state.players,
-   p1hand: state.playerHands.p1,
-   p2hand: state.playerHands.p2,
-   p3hand: state.playerHands.p3,
-   p4hand: state.playerHands.p4
+   // p1hand: state.playerHands.p1,
+   // p2hand: state.playerHands.p2,
+   // p3hand: state.playerHands.p3,
+   // p4hand: state.playerHands.p4
+   p1: state.playerInfo.p1,
+   p2: state.playerInfo.p2,
+   p3: state.playerInfo.p3,
+   p4: state.playerInfo.p4
 })
 
 // import actions
