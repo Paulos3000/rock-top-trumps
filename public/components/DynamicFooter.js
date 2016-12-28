@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class DynamicFooter extends Component {
    render() {
       const {players, p1, p2, p3, p4} = this.props
-      console.log(p1)
       switch(players) {
          case 2:
             return (

@@ -7,15 +7,16 @@ export default class NameEntry extends Component {
 
    handleAddNames(e) {
       e.preventDefault();
+      console.log('adding a name...')
+      // just need to log ref'd name to console...
 
       // fire action containing player name values to be passed to playerName state (prepare this first)
 
-      this.refs.commentForm.reset();
+      // this.refs.commentForm.reset();
    }
 
    render() {
       const {players} = this.props
-
 
       switch(players) {
          case 2:
