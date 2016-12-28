@@ -12,7 +12,7 @@ import shuffle from '../util/shuffle'
 
 export default class Play extends Component {
    render() {
-      const {players, deck, changeNumPlayers, deal} = this.props
+      const {players, deck, changeNumPlayers, addNames, deal} = this.props
 
       const cloneDeck = deck.slice(0)
 
@@ -22,6 +22,7 @@ export default class Play extends Component {
                players={players}
                deck={cloneDeck}
                changeNumPlayers={changeNumPlayers}
+               addNames={addNames}
                deal={deal}
             />
 

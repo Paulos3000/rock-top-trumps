@@ -21,6 +21,10 @@ import { combineReducers } from 'redux'
    }
 
    const name = (state = null, action) => {
+      switch(action.type) {
+         case 'ADD_NAMES' :
+            return action.p2name
+      }
       return state
    }
 

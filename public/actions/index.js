@@ -14,6 +14,16 @@ export const changeNumPlayers = (number) => (dispatch, getState) => {
    })
 }
 
+export const addNames = (p1name = null, p2name = null, p3name = null, p4name = null) => (dispatch, getState) => {
+   dispatch({
+      type: 'ADD_NAMES',
+      p1name,
+      p2name,
+      p3name,
+      p4name
+   })
+}
+
 export const deal = (deck, players) => (dispatch, getState) => {
    dispatch({
       type: 'DEAL',

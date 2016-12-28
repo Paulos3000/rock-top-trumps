@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import NameEntry from './NameEntry'
 
 export default class Landing extends Component {
-   render() {
-      const {players, deck, changeNumPlayers, deal} = this.props
 
+   render() {
+      const {players, deck, changeNumPlayers, deal, addNames} = this.props
       const handleDeal = () => {
          // add names to state. if not entered, throw error
          deal(deck, players)
@@ -21,7 +21,12 @@ export default class Landing extends Component {
             <button className='btn btn-default' onClick={() => changeNumPlayers(4)}>4 Players</button>
             <hr/>
 
-            <NameEntry players={players}/>
+            <NameEntry
+               players={players}
+               addNames={addNames}
+               deal={deal}
+               deck={deck}
+            />
 
             <button className='btn btn-default' onClick={() => handleDeal()}>Deal</button>
          </div>

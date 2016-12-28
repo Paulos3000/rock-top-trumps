@@ -14,7 +14,6 @@ export default class NameEntryField extends Component {
             <div className="col-sm-10">
                <input
                   type="text"
-                  ref={(input) => { this.textInput = input; }}
                   className="form-control"
                   placeholder="Name"
                />
