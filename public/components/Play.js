@@ -1,32 +1,33 @@
 import React, { Component } from 'react'
 
-class Play extends Component {
-   componentDidMount() {
-      console.log('Component Mounted!')
-      // run this code if needed...
-   }
+// import actions
+import * as actions from '../actions'
+
+// import components
+import Landing from './Landing'
+import NumPlayers from './NumPlayers'
+
+// import utility
+import shuffle from '../util/shuffle'
+
+export default class Play extends Component {
    render() {
+      const {players, deck, changeNumPlayers, deal} = this.props
+
+      const cloneDeck = deck.slice(0)
+
       return (
          <div>
-            <h1>Play</h1>
-            <hr />
-            <div className='jumbotron'>
-               <p>Main playing area here...</p>
-            </div>
+            <Landing
+               players={players}
+               deck={cloneDeck}
+               changeNumPlayers={changeNumPlayers}
+               deal={deal}
+            />
+
             {/*insert switch statement which loads relevant page based on state.stage (or something)*/}
+
          </div>
       )
-   } // end render
-} // end Play component
-
-import { connect } from 'react-redux'
-import * as actions from '../actions/index'
-
-const mapStateToProps = (state) => ({
-   deck: state.deck
-})
-
-// re-define Play as the connect method
-Play = connect(mapStateToProps, actions)(Play)
-
-export default Play;
+   }
+}

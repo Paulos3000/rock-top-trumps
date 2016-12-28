@@ -103,12 +103,12 @@ const deck = [
       'shortName': 'Eric Clapton',
       'imgURL': 'eric_clapton.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 88,
+         'riffage': 85,
+         'songwriting': 76,
+         'fame': 96,
+         'originality': 62,
+         'cool': 41
       }
    },
    {
@@ -117,12 +117,12 @@ const deck = [
       'shortName': 'Dave Gilmour',
       'imgURL': 'dave_gilmour.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 85,
+         'riffage': 62,
+         'songwriting': 91,
+         'fame': 83,
+         'originality': 86,
+         'cool': 71
       }
    },
    {
@@ -131,12 +131,12 @@ const deck = [
       'shortName': 'Jeff Beck',
       'imgURL': 'jeff_beck.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 89,
+         'riffage': 81,
+         'songwriting': 61,
+         'fame': 53,
+         'originality': 77,
+         'cool': 45
       }
    },
    {
@@ -145,12 +145,12 @@ const deck = [
       'shortName': 'Pete Townshend',
       'imgURL': 'pete_townshend.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 73,
+         'riffage': 93,
+         'songwriting': 85,
+         'fame': 79,
+         'originality': 72,
+         'cool': 54
       }
    },
    {
@@ -159,12 +159,12 @@ const deck = [
       'shortName': 'Neil Young',
       'imgURL': 'neil_young.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 38,
+         'riffage': 68,
+         'songwriting': 97,
+         'fame': 81,
+         'originality': 78,
+         'cool': 34
       }
    },
    {
@@ -173,12 +173,12 @@ const deck = [
       'shortName': 'Lou Reed',
       'imgURL': 'lou_reed.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 38,
+         'riffage': 34,
+         'songwriting': 78,
+         'fame': 87,
+         'originality': 80,
+         'cool': 92
       }
    },
    {
@@ -187,12 +187,12 @@ const deck = [
       'shortName': 'Steve Howe',
       'imgURL': 'steve_howe.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 86,
+         'riffage': 78,
+         'songwriting': 70,
+         'fame': 31,
+         'originality': 95,
+         'cool': 28
       }
    },
    {
@@ -201,12 +201,12 @@ const deck = [
       'shortName': 'Ritchie Blackmore',
       'imgURL': 'ritchie_blackmore.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 65,
+         'riffage': 71,
+         'songwriting': 50,
+         'fame': 56,
+         'originality': 67,
+         'cool': 55
       }
    },
    {
@@ -215,12 +215,12 @@ const deck = [
       'shortName': 'Andy Summers',
       'imgURL': 'andy_summers.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
+         'technique': 71,
+         'riffage': 58,
          'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'fame': 48,
+         'originality': 87,
+         'cool': 44
       }
    },
    {
@@ -229,12 +229,12 @@ const deck = [
       'shortName': 'Lenny Kravitz',
       'imgURL': 'lenny_kravitz.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 55,
+         'riffage': 67,
+         'songwriting': 42,
+         'fame': 73,
+         'originality': 8,
+         'cool': 72
       }
    },
    {
@@ -243,12 +243,12 @@ const deck = [
       'shortName': 'Eddie Van Halen',
       'imgURL': 'eddie_van_halen.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 95,
+         'riffage': 86,
+         'songwriting': 48,
+         'fame': 89,
+         'originality': 65,
+         'cool': 70
       }
    },
    {
@@ -257,12 +257,12 @@ const deck = [
       'shortName': 'Joe Satriani',
       'imgURL': 'joe_satriani.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 98,
+         'riffage': 79,
+         'songwriting': 45,
+         'fame': 46,
+         'originality': 34,
+         'cool': 44
       }
    },
    {
@@ -271,12 +271,12 @@ const deck = [
       'shortName': 'Steve Vai',
       'imgURL': 'steve_vai.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 99,
+         'riffage': 78,
+         'songwriting': 37,
+         'fame': 48,
+         'originality': 54,
+         'cool': 42
       }
    },
    {
@@ -285,12 +285,12 @@ const deck = [
       'shortName': 'Slash',
       'imgURL': 'slash.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 85,
+         'riffage': 82,
+         'songwriting': 60,
+         'fame': 93,
+         'originality': 55,
+         'cool': 77
       }
    },
    {
@@ -299,12 +299,12 @@ const deck = [
       'shortName': 'John Frusciante',
       'imgURL': 'john_frusciante.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 68,
+         'riffage': 87,
+         'songwriting': 85,
+         'fame': 70,
+         'originality': 73,
+         'cool': 84
       }
    },
    {
@@ -313,12 +313,12 @@ const deck = [
       'shortName': 'Tom Morello',
       'imgURL': 'tom_morello.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 85,
+         'riffage': 99,
+         'songwriting': 20,
+         'fame': 64,
+         'originality': 87,
+         'cool': 81
       }
    },
    {
@@ -327,12 +327,12 @@ const deck = [
       'shortName': 'Kurt Cobain',
       'imgURL': 'kurt_cobain.jpg',
       'stats': {
-         'technique': 0,
-         'riffage': 0,
-         'songwriting': 0,
-         'fame': 0,
-         'originality': 0,
-         'cool': 0
+         'technique': 50,
+         'riffage': 73,
+         'songwriting': 86,
+         'fame': 99,
+         'originality': 81,
+         'cool': 92
       }
    },
    {
@@ -619,7 +619,7 @@ const deck = [
       'id': 45,
       'fullName': 'Brian May',
       'shortName': 'Brian May',
-      'imgURL': 'brain_may.jpg',
+      'imgURL': 'brian_may.jpg',
       'stats': {
          'technique': 0,
          'riffage': 0,
@@ -697,6 +697,146 @@ const deck = [
          'fame': 0,
          'originality': 0,
          'cool': 0
+      }
+   },
+   {
+      'id': 51,
+      'fullName': 'Paul Kossoff',
+      'shortName': 'Paul Kossoff',
+      'imgURL': 'paul_kossoff.jpg',
+      'stats': {
+         'technique': 81,
+         'riffage': 76,
+         'songwriting': 44,
+         'fame': 54,
+         'originality': 76,
+         'cool': 85
+      }
+   },
+   {
+      'id': 52,
+      'fullName': 'Bruce Springsteen',
+      'shortName': 'Bruce Springsteen',
+      'imgURL': 'bruce_springsteen.jpg',
+      'stats': {
+         'technique': 52,
+         'riffage': 34,
+         'songwriting': 76,
+         'fame': 87,
+         'originality': 70,
+         'cool': 82
+      }
+   },
+   {
+      'id': 53,
+      'fullName': 'Mick Thomson',
+      'shortName': 'Mick Thomson',
+      'imgURL': 'mick_thomson.jpg',
+      'stats': {
+         'technique': 78,
+         'riffage': 91,
+         'songwriting': 29,
+         'fame': 35,
+         'originality': 61,
+         'cool': 52
+      }
+   },
+   {
+      'id': 54,
+      'fullName': 'Mick Ronson',
+      'shortName': 'Mick Ronson',
+      'imgURL': 'mick_ronson.jpg',
+      'stats': {
+         'technique': 61,
+         'riffage': 73,
+         'songwriting': 45,
+         'fame': 54,
+         'originality': 81,
+         'cool': 71
+      }
+   },
+   {
+      'id': 55,
+      'fullName': 'Kurt Vile',
+      'shortName': 'Kurt Vile',
+      'imgURL': 'kurt_vile.jpg',
+      'stats': {
+         'technique': 52,
+         'riffage': 34,
+         'songwriting': 78,
+         'fame': 28,
+         'originality': 63,
+         'cool': 79
+      }
+   },
+   {
+      'id': 56,
+      'fullName': 'Mark Knopfler',
+      'shortName': 'Mark Knopfler',
+      'imgURL': 'mark_knopfler.jpg',
+      'stats': {
+         'technique': 86,
+         'riffage': 49,
+         'songwriting': 79,
+         'fame': 75,
+         'originality': 92,
+         'cool': 15
+      }
+   },
+   {
+      'id': 57,
+      'fullName': 'Stephen Malkmus',
+      'shortName': 'Stephen Malkmus',
+      'imgURL': 'stephen_malkmus.jpg',
+      'stats': {
+         'technique': 52,
+         'riffage': 42,
+         'songwriting': 86,
+         'fame': 67,
+         'originality': 81,
+         'cool': 56
+      }
+   },
+   {
+      'id': 58,
+      'fullName': 'John McLaughlin',
+      'shortName': 'John McLaughlin',
+      'imgURL': 'john_mclaughlin.jpg',
+      'stats': {
+         'technique': 93,
+         'riffage': 80,
+         'songwriting': 38,
+         'fame': 45,
+         'originality': 98,
+         'cool': 24
+      }
+   },
+   {
+      'id': 59,
+      'fullName': 'Prince',
+      'shortName': 'Prince',
+      'imgURL': 'prince.jpg',
+      'stats': {
+         'technique': 86,
+         'riffage': 56,
+         'songwriting': 96,
+         'fame': 99,
+         'originality': 88,
+         'cool': 87
+      }
+   },
+   {
+      'id': 60,
+      'fullName': 'Angus Young',
+      'shortName': 'Angus Young',
+      'imgURL': 'angus_young.jpg',
+      'stats': {
+         'technique': 78,
+         'riffage': 84,
+         'songwriting': 55,
+         'fame': 73,
+         'originality': 52,
+         'cool': 48
       }
    }
 ]

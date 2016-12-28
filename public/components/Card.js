@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Card = ({ card }) => (
-   <div>
-      <img className='avatar' src={`./img/cropped/${card.imgURL}`} />
-      <p>{card.fullName}</p>
+   <div className='avatar-wrapper'>
+      <img className='avatar' src={`./img/sq/${card.imgURL}`} />
+      <h4 className='avatar-caption'>{card.fullName}</h4>
    </div>
 )
 
