@@ -7,7 +7,6 @@ export default class NameEntryField extends Component {
 
    render() {
       const {playerNum} = this.props
-      console.log('refs listed here...: ', this.refs)
       return (
          <div className="form-group row">
             <label className="col-sm-2 col-form-label">Player {playerNum}</label>

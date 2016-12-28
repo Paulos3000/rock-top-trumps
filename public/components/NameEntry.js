@@ -15,7 +15,7 @@ export default class NameEntry extends Component {
       const p2name = this.refs.p2name.value || null
 
       if (players === 2) {
-         this.props.addNames(p1name, p2name, p3name)
+         this.props.addNames(p1name, p2name)
       }
       if (players === 3) {
          const p3name = this.refs.p3name.value || null
@@ -27,6 +27,7 @@ export default class NameEntry extends Component {
          this.props.addNames(p1name, p2name, p3name, p4name)
       }
       this.props.deal(deck, players)
+      this.props.changeStage(1)
 
       // this.refs.commentForm.reset();
    }
@@ -37,7 +38,7 @@ export default class NameEntry extends Component {
       switch(players) {
          case 2:
             return (
-               <form ref='nameEntryForm' onSubmit={this.handleAddNames.bind()}>
+               <form ref='nameEntryForm' onSubmit={this.handleAddNames}>
                   <div className="form-group row">
                      <label className="col-sm-2 col-form-label">Player 1</label>
                      <div className="col-sm-10">

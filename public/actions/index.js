@@ -32,21 +32,28 @@ export const deal = (deck, players) => (dispatch, getState) => {
    })
 }
 
+export const changeStage = (level) => (dispatch, getState) => {
+   dispatch({
+      type: 'CHANGE_STAGE',
+      level
+   })
+}
+
 import axios from 'axios'
 
-export const fetchRemoteData = (endpoint) => (dispatch, getState) => {
-   dispatch({
-      type: 'FETCH_REMOTE_DATA_REQUEST',
-      endpoint,
-      isFetching: true
-   })
-   return axios.get(`https://jsonplaceholder.typicode.com/${endpoint}`).then(
-      response =>
-         dispatch({
-            type: 'FETCH_REMOTE_DATA_SUCCESS',
-            endpoint,
-            isFetching: false,
-            response
-         })
-      )
-}
+// export const fetchRemoteData = (endpoint) => (dispatch, getState) => {
+//    dispatch({
+//       type: 'FETCH_REMOTE_DATA_REQUEST',
+//       endpoint,
+//       isFetching: true
+//    })
+//    return axios.get(`https://jsonplaceholder.typicode.com/${endpoint}`).then(
+//       response =>
+//          dispatch({
+//             type: 'FETCH_REMOTE_DATA_SUCCESS',
+//             endpoint,
+//             isFetching: false,
+//             response
+//          })
+//       )
+// }

@@ -44,11 +44,8 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
    deck: state.deck,
+   stage: state.stage,
    players: state.players,
-   // p1hand: state.playerHands.p1,
-   // p2hand: state.playerHands.p2,
-   // p3hand: state.playerHands.p3,
-   // p4hand: state.playerHands.p4
    p1: state.playerInfo.p1,
    p2: state.playerInfo.p2,
    p3: state.playerInfo.p3,
