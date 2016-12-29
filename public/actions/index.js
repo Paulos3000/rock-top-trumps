@@ -45,3 +45,13 @@ export const changeStage = (level) => (dispatch, getState) => {
       level
    })
 }
+
+export const gatherCards = (p1, p2, p3, p4) => (dispatch, getState) => {
+   dispatch({
+      type: 'GATHER_CARDS',
+      p1,
+      p2,
+      p3,
+      p4
+   })
+}

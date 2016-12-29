@@ -6,7 +6,8 @@ import * as actions from '../actions'
 // import components
 import GameSetup from './GameSetup'
 import NumPlayers from './NumPlayers'
-
+import LeaderCard from './LeaderCard'
+import CardReveal from './CardReveal'
 
 // import utility
 import shuffle from '../util/shuffle'
@@ -16,6 +17,8 @@ export default class Play extends Component {
    // 1 --> 2
    // add all active cards to state.activeCards (p1, p2, p3, p4)
    handleActiveCard = () => {
+      let {p1, p2, p3, p4} = this.props;
+      this.props.gatherCards(p1, p2, p3, p4)
       this.props.changeStage(2)
    }
    // 2 --> 3
@@ -39,7 +42,7 @@ export default class Play extends Component {
    }
 
    render() {
-      const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer} = this.props
+      const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards} = this.props
       const cloneDeck = deck.slice(0)
 
       const {p1, p2, p3, p4} = this.props
@@ -73,81 +76,53 @@ export default class Play extends Component {
                <p><small>Stage 1</small></p>
                <hr />
                <h1>Player turn: {onPlayer.name}</h1>
-               <h3>Look away:{' '}
+               <h3>Other players look away</h3>
+               {/*<h3>Look away:{' '}
                   {p2.name}
                   {players === 3 ? `, ${p3.name}` : null}
                   {players === 4 ? `, ${p3.name}, ${p4.name}` : null}
-               </h3>
+               </h3>*/}
                <button
                   className='btn btn-primary'
                   onClick={this.handleActiveCard}>
-                  Show Active Card
+                  View Card
                </button>
             </div>
             )
 
          case 2:
-            return (
-            <div>
-                  <div className='avatar-wrapper'>
-                     <img className='avatar' src={`/img/sq/${onPlayer.hand[0].tag}.jpg`} />
-                  </div>
-                  <div className='centered'>
-                     <h2 className='card-name centered'>{onPlayer.hand[0].fullName}</h2>
-                     <hr />
-                     <button className='btn btn-default btn-block'>Technique: {onPlayer.hand[0].stats.technique}</button>
-                     <button className='btn btn-default btn-block'>Riffage: {onPlayer.hand[0].stats.riffage}</button>
-                     <button className='btn btn-default btn-block'>Songwriting: {onPlayer.hand[0].stats.songwriting}</button>
-                     <button className='btn btn-default btn-block'>Fame: {onPlayer.hand[0].stats.fame}</button>
-                     <button className='btn btn-default btn-block'>Originality: {onPlayer.hand[0].stats.originality}</button>
-                     <button className='btn btn-default btn-block'>Cool: {onPlayer.hand[0].stats.cool}</button>
-                  </div>
-               <div>
-                  <button className='btn btn-primary btn-block' onClick={this.selectAttribute}>Select Attribute</button>
-               </div>
-            </div>
-            )
+            return <LeaderCard onPlayer={onPlayer} selectAttribute={this.selectAttribute} activeCards={this.props.activeCards}/>
 
          case 3:
-         return (
-            <div className='centered'>
-               <p><small>Stage 3</small></p>
-               <hr />
-               <h1>All players look now.</h1>
-               <button className='btn btn-primary' onClick={this.handleReveal}>Reveal All Cards</button>
-            </div>
-         )
+            return (
+               <div className='centered'>
+                  <p><small>Stage 3</small></p>
+                  <hr />
+                  <h1>All players look now.</h1>
+                  <button className='btn btn-primary' onClick={this.handleReveal}>Reveal All Cards</button>
+               </div>
+            )
 
          case 4:
-         return (
-            <div>
-               <p className='centered'><small>Stage 4</small></p>
-               <hr />
-               <h2>_______ Wins!</h2>
-               <div>
-                  <h2 className='card-name centered'>{onPlayer.hand[0].fullName}</h2>
-                  <hr />
-                  <p className='card-stat'>Technique: {onPlayer.hand[0].stats.technique}</p>
-                  <p className='card-stat'>Riffage: {onPlayer.hand[0].stats.riffage}</p>
-                  <p className='card-stat'>Songwriting: {onPlayer.hand[0].stats.songwriting}</p>
-                  <p className='card-stat'>Fame: {onPlayer.hand[0].stats.fame}</p>
-                  <p className='card-stat'>Originality: {onPlayer.hand[0].stats.originality}</p>
-                  <p className='card-stat'>Cool: {onPlayer.hand[0].stats.cool}</p>
-               </div>
-               <button className='btn btn-primary' onClick={this.handleDistribute}>Distribute Cards</button>
-            </div>
-         )
+            return (
+               <CardReveal
+                  handleDistribute={this.handleDistribute}
+                  activeCards={activeCards}
+                  players={players}
+               />
+            )
+
          case 5:
-         return (
-            <div className='centered'>
-               <p><small>Stage 5</small></p>
-               <hr />
-               <h1>Paul Wins</h1>
-               <h3>Card(s) won:</h3>
-               <p>(List cards won from other players)</p>
-               <button className='btn btn-primary' onClick={this.handleNextRound}>Next Round</button>
-            </div>
-         )
+            return (
+               <div className='centered'>
+                  <p><small>Stage 5</small></p>
+                  <hr />
+                  <h1>Paul Wins</h1>
+                  <h3>Card(s) won:</h3>
+                  <p>(List cards won from other players)</p>
+                  <button className='btn btn-primary' onClick={this.handleNextRound}>Next Round</button>
+               </div>
+            )
       }
 
    }
