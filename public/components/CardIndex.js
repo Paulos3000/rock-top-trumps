@@ -8,6 +8,7 @@ class CardIndex extends Component {
       // run this code if needed...
    }
    render() {
+      console.log('deck: ', this.props.deck)
       return (
          <div>
             <h1>Card Index</h1>
