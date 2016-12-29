@@ -79,6 +79,19 @@ img.avatar {
    transform: translate(-50%, -50%)
 }
 
+/* Card-Detail Styles
+--------------------------------------*/
+.card-name {
+   font-family: 'BenchNine', sans-serif;
+   text-transform: uppercase;
+   font-size: 2.5em;
+   margin-top: 0;
+}
+
+.card-stat {
+   font-size: 1.2em;
+}
+
 /* Footer Styles
 --------------------------------------*/
 .footer {

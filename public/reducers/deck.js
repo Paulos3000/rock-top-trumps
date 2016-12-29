@@ -13,3 +13,7 @@ const deck = (state = [], action) => {
 }
 
 export default deck;
+
+export const findCard = (state, id) => {
+   return state.find(card => card.id === id)
+}
