@@ -15,7 +15,6 @@ import shuffle from '../util/shuffle'
 export default class Play extends Component {
 
    // 1 --> 2
-   // add all active cards to state.activeCards (p1, p2, p3, p4)
    handleActiveCard = () => {
       let {p1, p2, p3, p4} = this.props;
       this.props.gatherCards(p1, p2, p3, p4)
@@ -31,7 +30,8 @@ export default class Play extends Component {
    }
    // 4 --> 5
    // this requires the calculation of which attribute is highest
-   // all cards go to HAND of WINNER
+   // all cards go to HAND of WINNER (end of their array)
+   // LOSERS have their [0] card removed
    handleDistribute = () => {
       this.props.changeStage(5)
    }
