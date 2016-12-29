@@ -49,7 +49,8 @@ const mapStateToProps = (state) => ({
    p1: state.playerInfo.p1,
    p2: state.playerInfo.p2,
    p3: state.playerInfo.p3,
-   p4: state.playerInfo.p4
+   p4: state.playerInfo.p4,
+   activePlayer: state.activePlayer
 })
 
 // import actions
