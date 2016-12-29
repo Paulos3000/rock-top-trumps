@@ -4,8 +4,9 @@ import React, { Component } from 'react'
 import * as actions from '../actions'
 
 // import components
-import Landing from './Landing'
+import GameSetup from './GameSetup'
 import NumPlayers from './NumPlayers'
+
 
 // import utility
 import shuffle from '../util/shuffle'
@@ -39,29 +40,19 @@ export default class Play extends Component {
 
       switch(stage) {
          case 0:
-         return (
-            <div>
-               <Landing
-                  players={players}
-                  deck={cloneDeck}
-                  changeNumPlayers={changeNumPlayers}
-                  addNames={addNames}
-                  deal={deal}
-                  changeStage={changeStage}
-               />
-
-               {/*insert switch statement which loads relevant page based on state.stage (or something)*/}
-
-            </div>
-         )
+            return <GameSetup {...this.props} />
          case 1:
          return (
-            <div className='centered'>
+            <div className="centered">
                <p><small>Stage 1</small></p>
                <hr />
                <h1>Pauls turn</h1>
                <h3>John and Rick look away now...</h3>
-               <button className='btn btn-primary' onClick={() => this.props.changeStage(2)}>Show Active Card</button>
+               <button
+                  className='btn btn-primary'
+                  onClick={() => this.props.changeStage(2)}>
+                  Show Active Card
+               </button>
             </div>
          )
          case 2:

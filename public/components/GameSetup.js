@@ -2,15 +2,10 @@ import React, { Component } from 'react'
 
 import NameEntry from './NameEntry'
 
-export default class Landing extends Component {
+export default class GameSetup extends Component {
 
    render() {
-      const {players, deck, changeNumPlayers, deal, addNames, changeStage} = this.props
-      const handleDeal = () => {
-         deal(deck, players)
-         // change page
-      }
-
+      const {changeNumPlayers} = this.props
       return (
          <div className='centered'>
             <h1>Rock Top Trumps</h1>
@@ -20,15 +15,8 @@ export default class Landing extends Component {
             <button className='btn btn-default' onClick={() => changeNumPlayers(4)}>4 Players</button>
             <hr/>
 
-            <NameEntry
-               players={players}
-               addNames={addNames}
-               deal={deal}
-               deck={deck}
-               changeStage={changeStage}
-            />
+            <NameEntry {...this.props} />
 
-            <button className='btn btn-default' onClick={() => handleDeal()}>Deal</button>
          </div>
       )
    }

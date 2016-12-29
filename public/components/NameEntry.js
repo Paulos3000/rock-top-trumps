@@ -7,7 +7,7 @@ import {addNames} from '../actions'
 
 export default class NameEntry extends Component {
 
-   handleAddNames = (e) => {
+   handleDeal = (e) => {
       e.preventDefault();
       const {deck, players} = this.props
 
@@ -38,7 +38,7 @@ export default class NameEntry extends Component {
       switch(players) {
          case 2:
             return (
-               <form ref='nameEntryForm' onSubmit={this.handleAddNames}>
+               <form ref='nameEntryForm' onSubmit={this.handleDeal}>
                   <div className="form-group row">
                      <label className="col-sm-2 col-form-label">Player 1</label>
                      <div className="col-sm-10">
@@ -62,13 +62,13 @@ export default class NameEntry extends Component {
                      </div>
                   </div>
                   <input type='submit' hidden />
-                  <NameEntryBtn handleAddNames={this.handleAddNames} />
+                  <NameEntryBtn handleDeal={this.handleDeal} />
                </form>
             )
 
          case 3:
             return (
-               <form ref='nameEntryForm' onSubmit={this.handleAddNames}>
+               <form ref='nameEntryForm' onSubmit={this.handleDeal}>
                   <div className="form-group row">
                      <label className="col-sm-2 col-form-label">Player 1</label>
                      <div className="col-sm-10">
@@ -103,13 +103,13 @@ export default class NameEntry extends Component {
                      </div>
                   </div>
                   <input type='submit' hidden />
-                  <NameEntryBtn handleAddNames={this.handleAddNames} />
+                  <NameEntryBtn handleDeal={this.handleDeal} />
                </form>
             )
 
          case 4:
             return (
-               <form ref='nameEntryForm' onSubmit={this.handleAddNames}>
+               <form ref='nameEntryForm' onSubmit={this.handleDeal}>
                   <div className="form-group row">
                      <label className="col-sm-2 col-form-label">Player 1</label>
                      <div className="col-sm-10">
@@ -155,7 +155,7 @@ export default class NameEntry extends Component {
                      </div>
                   </div>
                   <input type='submit' hidden />
-                  <NameEntryBtn handleAddNames={this.handleAddNames} />
+                  <NameEntryBtn handleDeal={this.handleDeal} />
                </form>
             )
 

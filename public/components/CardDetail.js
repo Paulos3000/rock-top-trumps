@@ -27,15 +27,6 @@ class CardDetail extends Component {
    }
 }
 
-// const CardDetail = ({ params }) => (
-//    <div>
-//       <h1>Card Detail</h1>
-//       <hr />
-//       <p>params.id: {params.id}</p>
-//       <p>params.name: {params.name}</p>
-//    </div>
-// )
-
 import { connect } from 'react-redux'
 
 import { findCard } from '../reducers/deck'

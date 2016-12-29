@@ -6,45 +6,57 @@ export default class DynamicFooter extends Component {
       switch(players) {
          case 2:
             return (
-               <div>
-                  <div className="col-xs-6">
-                     <span className="card-count cc-1">{p1.hand.length}</span>
+               <footer className="footer">
+                  <div className="container">
+                     <div className="row">
+                        <div className="col-xs-6">
+                           <span className="card-count cc-1">{p1.hand.length}</span>
+                        </div>
+                        <div className="col-xs-6">
+                           <span className="card-count cc-2">{p2.hand.length}</span>
+                        </div>
+                     </div>
                   </div>
-                  <div className="col-xs-6">
-                     <span className="card-count cc-2">{p2.hand.length}</span>
-                  </div>
-               </div>
+               </footer>
             )
          case 3:
             return (
-               <div>
-                  <div className="col-xs-4">
-                     <span className="card-count cc-1">{p1.hand.length}</span>
+               <footer className="footer">
+                  <div className="container">
+                     <div className="row">
+                        <div className="col-xs-4">
+                           <span className="card-count cc-1">{p1.hand.length}</span>
+                        </div>
+                        <div className="col-xs-4">
+                           <span className="card-count cc-2">{p2.hand.length}</span>
+                        </div>
+                        <div className="col-xs-4">
+                           <span className="card-count cc-3">{p3.hand.length}</span>
+                        </div>
+                     </div>
                   </div>
-                  <div className="col-xs-4">
-                     <span className="card-count cc-2">{p2.hand.length}</span>
-                  </div>
-                  <div className="col-xs-4">
-                     <span className="card-count cc-3">{p3.hand.length}</span>
-                  </div>
-               </div>
+               </footer>
             )
          case 4:
             return (
-               <div>
-                  <div className="col-xs-3">
-                     <span className="card-count cc-1">{p1.hand.length}</span>
+               <footer className="footer">
+                  <div className="container">
+                     <div className="row">
+                        <div className="col-xs-3">
+                           <span className="card-count cc-1">{p1.hand.length}</span>
+                        </div>
+                        <div className="col-xs-3">
+                           <span className="card-count cc-2">{p2.hand.length}</span>
+                        </div>
+                        <div className="col-xs-3">
+                           <span className="card-count cc-3">{p3.hand.length}</span>
+                        </div>
+                        <div className="col-xs-3">
+                           <span className="card-count cc-4">{p4.hand.length}</span>
+                        </div>
+                     </div>
                   </div>
-                  <div className="col-xs-3">
-                     <span className="card-count cc-2">{p2.hand.length}</span>
-                  </div>
-                  <div className="col-xs-3">
-                     <span className="card-count cc-3">{p3.hand.length}</span>
-                  </div>
-                  <div className="col-xs-3">
-                     <span className="card-count cc-4">{p4.hand.length}</span>
-                  </div>
-               </div>
+               </footer>
             )
          default :
             return null

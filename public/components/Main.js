@@ -12,6 +12,7 @@ class Main extends Component {
    render() {
       return (
          <div className='wrapper'>
+
             <Navbar />
 
             <div className='container'>
@@ -21,19 +22,7 @@ class Main extends Component {
                {React.cloneElement(this.props.children, this.props)}
             </div>
 
-            <footer className="footer">
-               <div className="container">
-                  <div className="row">
-                     <DynamicFooter
-                        players={this.props.players}
-                        p1={this.props.p1}
-                        p2={this.props.p2}
-                        p3={this.props.p3}
-                        p4={this.props.p4}
-                     />
-                  </div>
-               </div>
-            </footer>
+            {this.props.stage !== 0 ? <DynamicFooter {...this.props} /> : null}
 
          </div>
       )
@@ -53,10 +42,8 @@ const mapStateToProps = (state) => ({
    activePlayer: state.activePlayer
 })
 
-// import actions
 import * as actions from '../actions'
 
-// re-define Main as the connect method
 Main = connect(mapStateToProps, actions)(Main)
 
 export default Main;

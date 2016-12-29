@@ -1,9 +1,9 @@
 import React from 'react'
 
-const NameEntryBtn = ({ handleAddNames }) => (
+const NameEntryBtn = ({ handleDeal }) => (
    <button
       className='btn btn-default'
-      onClick={handleAddNames}>Add Names
+      onClick={handleDeal}>Deal
    </button>
 )
 
