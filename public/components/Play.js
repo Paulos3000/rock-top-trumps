@@ -6,6 +6,7 @@ import * as actions from '../actions'
 // import components
 import GameSetup from './GameSetup'
 import NumPlayers from './NumPlayers'
+import StartRound from './StartRound'
 import LeaderCard from './LeaderCard'
 import CardReveal from './CardReveal'
 
@@ -15,16 +16,18 @@ import shuffle from '../util/shuffle'
 export default class Play extends Component {
 
 // To Do:
-// 1. Calculate winner PLAYER
+
+// FIRSTLY, UPDATE TRAIN-XP BRANCH (REMOTE)
+// 1. Calculate winner PLAYER (see CardReveal component). Consider tie results.
 // handleDistribute() -->
-// 2. activeCard from WINNER PLAYER goes to BACK of his deck
-// 3. all activeCards that DON'T BELONG TO WINNER PLAYER are removed from respective hands, and added to BACK of winner player hand
-// 4. Final function: RESET ACTIVECARDS AND ACTIVEATTRIBUTE,
-// 5. Make initial shuffled deck IMMUTABLE (it currently is not)
+// 2. Implement SWITCH_CARDS action. Pass activeCards (maybe without playerId property), and (new prop) WINNER PLAYER (calculated in CardReveal component)
+// 3. Final function: RESET ACTIVECARDS AND ACTIVEATTRIBUTE,
+// 4. Make initial shuffled deck IMMUTABLE (it currently is not)
 
    // 1 --> 2
    handleActiveCard = () => {
       let {p1, p2, p3, p4} = this.props;
+      // pass in all player objects so reducer can access both PLAYERID and HAND of each
       this.props.gatherCards(p1, p2, p3, p4)
       this.props.changeStage(2)
    }
@@ -53,12 +56,13 @@ export default class Play extends Component {
    }
 
    render() {
+
       const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards, activeAttribute} = this.props
+
       const cloneDeck = deck.slice(0)
 
-      const {p1, p2, p3, p4} = this.props
-
       let onPlayer;
+      const {p1, p2, p3, p4} = this.props
       switch(activePlayer) {
          case 1:
             onPlayer = p1
@@ -83,22 +87,18 @@ export default class Play extends Component {
 
          case 1:
             return (
-               <div className="centered">
-                  <h1>Player turn: {onPlayer.name}</h1>
-                  <h3>Other players look away</h3>
-                  <button
-                     className='btn btn-primary'
-                     onClick={this.handleActiveCard}>
-                     View Card
-                  </button>
-               </div>
+               <StartRound
+                  onPlayer={onPlayer}
+                  handleActiveCard={this.handleActiveCard}
+               />
             )
 
          case 2:
             return (
-               <LeaderCard onPlayer={onPlayer}
-                           selectAttribute={this.selectAttribute}
-                           activeCards={this.props.activeCards}
+               <LeaderCard
+                  onPlayer={onPlayer}
+                  selectAttribute={this.selectAttribute}
+                  activeCards={this.props.activeCards}
                />
             )
 

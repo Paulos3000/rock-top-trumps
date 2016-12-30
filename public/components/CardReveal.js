@@ -1,6 +1,13 @@
 import React from 'react'
 
-const CardReveal = ({ handleDistribute, activeCards, activeAttribute, players }) => {
+const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute }) => {
+
+   // CALCULATE WINNER.
+   // --> USE activeAttribute and activeCards.
+   // --> USE > (greater than) to decide which is highest.
+   // What about ties??? Decide by card rank? Maybe add these.
+
+   // Then pass this WINNER (.bind(null, winner)) to handleDistribute(), which will then pass that to the action, SWITCH_CARDS
 
    switch(players) {
 

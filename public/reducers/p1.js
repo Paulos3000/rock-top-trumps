@@ -14,7 +14,7 @@ const name = (state = null, action) => {
 
 const hand = (state = [], action) => {
    switch(action.type) {
-      case 'DEAL' :
+      case 'DEAL' :  // <-- this might need changing when deck state is made immutable
          switch(action.players) {
             case 2 :
                // return first HALF of randomised deck
@@ -28,6 +28,15 @@ const hand = (state = [], action) => {
             default :
                return state
          }
+      case 'SWITCH_CARDS' :
+         switch(action.result) {
+            case 'win' :
+               // remove front card from deck (use .splice(1)... I think)
+               // add ALL ACTIVE CARDS to BACK of deck (minus playerId property)
+            case 'lose' :
+               // remove front card from deck only
+         }
+         return state
    }
    return state
 }
