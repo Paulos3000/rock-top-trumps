@@ -73,15 +73,8 @@ export default class Play extends Component {
          case 1:
             return (
             <div className="centered">
-               <p><small>Stage 1</small></p>
-               <hr />
                <h1>Player turn: {onPlayer.name}</h1>
                <h3>Other players look away</h3>
-               {/*<h3>Look away:{' '}
-                  {p2.name}
-                  {players === 3 ? `, ${p3.name}` : null}
-                  {players === 4 ? `, ${p3.name}, ${p4.name}` : null}
-               </h3>*/}
                <button
                   className='btn btn-primary'
                   onClick={this.handleActiveCard}>
@@ -96,8 +89,6 @@ export default class Play extends Component {
          case 3:
             return (
                <div className='centered'>
-                  <p><small>Stage 3</small></p>
-                  <hr />
                   <h1>All players look now.</h1>
                   <button className='btn btn-primary' onClick={this.handleReveal}>Reveal All Cards</button>
                </div>
@@ -115,8 +106,6 @@ export default class Play extends Component {
          case 5:
             return (
                <div className='centered'>
-                  <p><small>Stage 5</small></p>
-                  <hr />
                   <h1>Paul Wins</h1>
                   <h3>Card(s) won:</h3>
                   <p>(List cards won from other players)</p>

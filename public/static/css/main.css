@@ -88,6 +88,10 @@ img.avatar {
    margin-top: 0;
 }
 
+.leadercard-name {
+   margin-bottom: 15px;
+}
+
 .card-stat {
    font-size: 1.2em;
 }
