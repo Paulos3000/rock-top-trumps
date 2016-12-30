@@ -14,6 +14,14 @@ import shuffle from '../util/shuffle'
 
 export default class Play extends Component {
 
+// To Do:
+// 1. Calculate winner PLAYER
+// handleDistribute() -->
+// 2. activeCard from WINNER PLAYER goes to BACK of his deck
+// 3. all activeCards that DON'T BELONG TO WINNER PLAYER are removed from respective hands, and added to BACK of winner player hand
+// 4. Final function: RESET ACTIVECARDS AND ACTIVEATTRIBUTE,
+// 5. Make initial shuffled deck IMMUTABLE (it currently is not)
+
    // 1 --> 2
    handleActiveCard = () => {
       let {p1, p2, p3, p4} = this.props;
@@ -21,7 +29,9 @@ export default class Play extends Component {
       this.props.changeStage(2)
    }
    // 2 --> 3
-   selectAttribute = () => {
+   // NEED TO PASS SELECTED ATTRIBUTE TO THIS FUNCTION. FIGURE OUT HOW.
+   selectAttribute = (attribute) => {
+      this.props.submitAttribute(attribute)
       this.props.changeStage(3)
    }
    // 3 --> 4
@@ -36,13 +46,14 @@ export default class Play extends Component {
       this.props.changeStage(5)
    }
    // 5 --> 1
+   // RESET ALL STATE AS NECESSARY!
    handleNextRound = () => {
       this.props.nextPlayer(this.props.players)
       this.props.changeStage(1)
    }
 
    render() {
-      const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards} = this.props
+      const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards, activeAttribute} = this.props
       const cloneDeck = deck.slice(0)
 
       const {p1, p2, p3, p4} = this.props
@@ -72,19 +83,24 @@ export default class Play extends Component {
 
          case 1:
             return (
-            <div className="centered">
-               <h1>Player turn: {onPlayer.name}</h1>
-               <h3>Other players look away</h3>
-               <button
-                  className='btn btn-primary'
-                  onClick={this.handleActiveCard}>
-                  View Card
-               </button>
-            </div>
+               <div className="centered">
+                  <h1>Player turn: {onPlayer.name}</h1>
+                  <h3>Other players look away</h3>
+                  <button
+                     className='btn btn-primary'
+                     onClick={this.handleActiveCard}>
+                     View Card
+                  </button>
+               </div>
             )
 
          case 2:
-            return <LeaderCard onPlayer={onPlayer} selectAttribute={this.selectAttribute} activeCards={this.props.activeCards}/>
+            return (
+               <LeaderCard onPlayer={onPlayer}
+                           selectAttribute={this.selectAttribute}
+                           activeCards={this.props.activeCards}
+               />
+            )
 
          case 3:
             return (
@@ -99,6 +115,7 @@ export default class Play extends Component {
                <CardReveal
                   handleDistribute={this.handleDistribute}
                   activeCards={activeCards}
+                  activeAttribute={activeAttribute}
                   players={players}
                />
             )

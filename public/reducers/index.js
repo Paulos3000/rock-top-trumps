@@ -13,6 +13,7 @@ import p4 from './p4'
 const playerInfo = combineReducers({ p1, p2, p3, p4 })
 import activePlayer from './activePlayer'
 import activeCards from './activeCards'
+import activeAttribute from './activeAttribute'
 
 // ROOT REDUCER (exported to configureStore.js). This defines the root store shape:
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
    playerInfo,
    activePlayer,
    activeCards,
+   activeAttribute,
    routing: routerReducer
 })
 export default rootReducer

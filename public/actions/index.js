@@ -55,3 +55,10 @@ export const gatherCards = (p1, p2, p3, p4) => (dispatch, getState) => {
       p4
    })
 }
+
+export const submitAttribute = (activeAttribute) => (dispatch, getState) => {
+   dispatch({
+      type: 'SUBMIT_ATTRIBUTE',
+      activeAttribute
+   })
+}

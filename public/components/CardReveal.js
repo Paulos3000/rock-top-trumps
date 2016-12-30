@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardReveal = ({ handleDistribute, activeCards, players }) => {
+const CardReveal = ({ handleDistribute, activeCards, activeAttribute, players }) => {
 
    switch(players) {
 
@@ -8,6 +8,8 @@ const CardReveal = ({ handleDistribute, activeCards, players }) => {
          return (
             <div>
                <h2>_______ Wins!</h2>
+               <h3>Active Attribute: <i>{activeAttribute}</i></h3>
+               <hr />
                <div>
                   <p>{activeCards[0].card.fullName}</p>
                </div>
@@ -22,6 +24,8 @@ const CardReveal = ({ handleDistribute, activeCards, players }) => {
          return (
             <div>
             <h2>_______ Wins!</h2>
+            <h3>Active Attribute: <i>{activeAttribute}</i></h3>
+            <hr />
             <div>
                <p>{activeCards[0].card.fullName}</p>
             </div>
@@ -39,6 +43,8 @@ const CardReveal = ({ handleDistribute, activeCards, players }) => {
          return (
             <div>
                <h2>_______ Wins!</h2>
+               <h3>Active Attribute: <i>{activeAttribute}</i></h3>
+               <hr />
                <div>
                   <p>{activeCards[0].card.fullName}</p>
                </div>
