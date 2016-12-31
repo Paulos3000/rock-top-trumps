@@ -12,11 +12,11 @@ const activeCards = (state = [], action) => {
             },
             {
                playerId: action.p3.id,
-               card: action.p3.hand[0]
+               card: action.p3.hand[0] || null
             },
             {
                playerId: action.p4.id,
-               card: action.p4.hand[0]
+               card: action.p4.hand[0] || null
             }
          ]
    }

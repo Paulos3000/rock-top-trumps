@@ -1,5 +1,9 @@
 import React from 'react'
 
+import Card from './Card'
+
+import capsInit from '../util/capsInit'
+
 const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute }) => {
 
    // CALCULATE WINNER.
@@ -8,66 +12,45 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute })
    // What about ties??? Decide by card rank? Maybe add these.
 
    // Then pass this WINNER (.bind(null, winner)) to handleDistribute(), which will then pass that to the action, SWITCH_CARDS
-
+   let colsSm
+   let colsXs
    switch(players) {
-
       case 2:
-         return (
-            <div>
-               <h2>_______ Wins!</h2>
-               <h3>Active Attribute: <i>{activeAttribute}</i></h3>
-               <hr />
-               <div>
-                  <p>{activeCards[0].card.fullName}</p>
-               </div>
-               <div>
-                  <p>{activeCards[1].card.fullName}</p>
-               </div>
-               <button className='btn btn-primary' onClick={handleDistribute}>Distribute Cards</button>
-            </div>
-         )
-
+         colsSm = 6
+         colsXs = 6
+         break;
       case 3:
-         return (
-            <div>
-            <h2>_______ Wins!</h2>
-            <h3>Active Attribute: <i>{activeAttribute}</i></h3>
-            <hr />
-            <div>
-               <p>{activeCards[0].card.fullName}</p>
-            </div>
-            <div>
-               <p>{activeCards[1].card.fullName}</p>
-            </div>
-            <div>
-               <p>{activeCards[2].card.fullName}</p>
-            </div>
-            <button className='btn btn-primary' onClick={handleDistribute}>Distribute Cards</button>
-         </div>
-         )
-
+         colsSm = 4
+         colsXs = 12
+         break;
       case 4:
-         return (
-            <div>
-               <h2>_______ Wins!</h2>
-               <h3>Active Attribute: <i>{activeAttribute}</i></h3>
-               <hr />
-               <div>
-                  <p>{activeCards[0].card.fullName}</p>
-               </div>
-               <div>
-                  <p>{activeCards[1].card.fullName}</p>
-               </div>
-               <div>
-                  <p>{activeCards[2].card.fullName}</p>
-               </div>
-               <div>
-                  <p>{activeCards[3].card.fullName}</p>
-               </div>
-               <button className='btn btn-primary' onClick={handleDistribute}>Distribute Cards</button>
-            </div>
-         )
+         colsSm = 3
+         colsXs = 6
+         break;
+      default:
+         colsSm = null
+         colsXs = null
    }
+   const trumpAttribute = capsInit(activeAttribute)
+   console.log(trumpAttribute)
+   return (
+      <div>
+         <h2 className='centered'>{trumpAttribute}</h2>
+         <hr />
+         <div className="row">
+            {activeCards.map( (card, i) =>
+                  card.card ?
+                  <div className={`col-xs-${colsXs} col-sm-${colsSm}`} key={i}>
+                     <div className='avatar-wrapper'>
+                        <img className={`avatar avatar-${card.playerId}`} src={`/img/sq/${card.card.tag}.jpg`} />
+                        <h4 className='avatar-stat'>{card.card.stats[activeAttribute]}</h4>
+                     </div>
+                  </div>
+                  : null
+            )}
+         </div>
+      </div>
+   )
 }
 
 export default CardReveal
