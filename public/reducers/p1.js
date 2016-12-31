@@ -29,12 +29,15 @@ const hand = (state = [], action) => {
                return state
          }
       case 'SWITCH_CARDS' :
-         switch(action.result) {
-            case 'win' :
-               // remove front card from deck (use .splice(1)... I think)
-               // add ALL ACTIVE CARDS to BACK of deck (minus playerId property)
-            case 'lose' :
-               // remove front card from deck only
+         switch(action.winnerId) {
+            case 1 :
+               // let cards = action.playedCards.map(card => card)
+               return [
+                  ...state.splice(1),
+                  ...action.playedCards
+               ]
+            default:
+               return state.splice(1)
          }
          return state
    }

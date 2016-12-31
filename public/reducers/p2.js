@@ -28,6 +28,16 @@ const hand = (state = [], action) => {
             default :
                return state
          }
+      case 'SWITCH_CARDS' :
+         switch(action.winnerId) {
+            case 2 :
+               return [
+                  ...state.splice(1),
+                  ...action.playedCards
+               ]
+            default:
+               return state.splice(1)
+         }
    }
    return state
 }

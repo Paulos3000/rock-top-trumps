@@ -62,3 +62,11 @@ export const submitAttribute = (activeAttribute) => (dispatch, getState) => {
       activeAttribute
    })
 }
+
+export const switchCards = (winnerId, playedCards) => (dispatch, getState) => {
+   dispatch({
+      type: 'SWITCH_CARDS',
+      winnerId,
+      playedCards
+   })
+}

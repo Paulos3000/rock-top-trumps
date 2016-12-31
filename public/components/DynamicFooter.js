@@ -10,9 +10,11 @@ export default class DynamicFooter extends Component {
                   <div className="container">
                      <div className="row">
                         <div className="col-xs-6">
-                           <span className="card-count cc-1">{p1.hand.length}</span>
+                           <p className='centered pName'>{p1.name}</p>
+                           <span className="card-count cc-2">{p1.hand.length}</span>
                         </div>
                         <div className="col-xs-6">
+                           <p className='centered pName'>{p2.name}</p>
                            <span className="card-count cc-2">{p2.hand.length}</span>
                         </div>
                      </div>
@@ -25,12 +27,15 @@ export default class DynamicFooter extends Component {
                   <div className="container">
                      <div className="row">
                         <div className="col-xs-4">
+                           <p className='centered pName'>{p1.name}</p>
                            <span className="card-count cc-1">{p1.hand.length}</span>
                         </div>
                         <div className="col-xs-4">
+                           <p className='centered pName'>{p2.name}</p>
                            <span className="card-count cc-2">{p2.hand.length}</span>
                         </div>
                         <div className="col-xs-4">
+                           <p className='centered pName'>{p3.name}</p>
                            <span className="card-count cc-3">{p3.hand.length}</span>
                         </div>
                      </div>
@@ -43,15 +48,19 @@ export default class DynamicFooter extends Component {
                   <div className="container">
                      <div className="row">
                         <div className="col-xs-3">
+                           <p className='centered pName'>{p1.name}</p>
                            <span className="card-count cc-1">{p1.hand.length}</span>
                         </div>
                         <div className="col-xs-3">
+                           <p className='centered pName'>{p2.name}</p>
                            <span className="card-count cc-2">{p2.hand.length}</span>
                         </div>
                         <div className="col-xs-3">
+                           <p className='centered pName'>{p3.name}</p>
                            <span className="card-count cc-3">{p3.hand.length}</span>
                         </div>
                         <div className="col-xs-3">
+                           <p className='centered pName'>{p4.name}</p>
                            <span className="card-count cc-4">{p4.hand.length}</span>
                         </div>
                      </div>

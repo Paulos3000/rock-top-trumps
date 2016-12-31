@@ -17,7 +17,7 @@ export default class Play extends Component {
 
 // To Do:
 
-// ** On CardReveal, show 4 chips, each with colour ring to indicate player, and simply put the active stat in the middle of the chip (like CardIndex with name) the title is the active state being played. HIGHLIGHT THE STAT OF THE WINNING CHIP (HOW??)
+// ** HIGHLIGHT THE STAT OF THE WINNING CHIP (HOW??)
 // ** The final screen lists the cards and all their stats so people know what they've won/lost
 
 // FIRSTLY, UPDATE TRAIN-XP BRANCH (REMOTE)
@@ -48,7 +48,8 @@ export default class Play extends Component {
    // this requires the calculation of which attribute is highest
    // all cards go to HAND of WINNER (end of their array)
    // LOSERS have their [0] card removed
-   handleDistribute = () => {
+   handleDistribute = (winnerId, playedCards) => {
+      this.props.switchCards(winnerId, playedCards)
       this.props.changeStage(5)
    }
    // 5 --> 1
@@ -60,7 +61,9 @@ export default class Play extends Component {
 
    render() {
 
-      const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards, activeAttribute} = this.props
+      const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards, activeAttribute, playerInfo} = this.props
+
+      // console.log('playerInfo', playerInfo)
 
       const cloneDeck = deck.slice(0)
 
@@ -120,14 +123,15 @@ export default class Play extends Component {
                   activeCards={activeCards}
                   activeAttribute={activeAttribute}
                   players={players}
+                  playerInfo={playerInfo}
                />
             )
 
          case 5:
             return (
                <div className='centered'>
-                  <h1>Paul Wins</h1>
-                  <h3>Card(s) won:</h3>
+                  <h1>Declare winner here</h1>
+                  <h3>Cards won:</h3>
                   <p>(List cards won from other players)</p>
                   <button className='btn btn-primary' onClick={this.handleNextRound}>Next Round</button>
                </div>

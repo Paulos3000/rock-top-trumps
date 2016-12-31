@@ -35,6 +35,7 @@ const mapStateToProps = (state) => ({
    deck: state.deck,
    stage: state.stage,
    players: state.players,
+   playerInfo: state.playerInfo,
    p1: state.playerInfo.p1,
    p2: state.playerInfo.p2,
    p3: state.playerInfo.p3,

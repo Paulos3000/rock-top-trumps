@@ -11,19 +11,19 @@ export default class NameEntry extends Component {
       e.preventDefault();
       const {deck, players} = this.props
 
-      const p1name = this.refs.p1name.value || null
-      const p2name = this.refs.p2name.value || null
+      const p1name = this.refs.p1name.value || 'Player 1'
+      const p2name = this.refs.p2name.value || 'Player 2'
 
       if (players === 2) {
          this.props.addNames(p1name, p2name)
       }
       if (players === 3) {
-         const p3name = this.refs.p3name.value || null
+         const p3name = this.refs.p3name.value || 'Player 3'
          this.props.addNames(p1name, p2name, p3name)
       }
       if (players === 4) {
-         const p3name = this.refs.p3name.value || null
-         const p4name = this.refs.p4name.value || null
+         const p3name = this.refs.p3name.value || 'Player 3'
+         const p4name = this.refs.p4name.value || 'Player 4'
          this.props.addNames(p1name, p2name, p3name, p4name)
       }
       this.props.deal(deck, players)
