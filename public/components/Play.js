@@ -20,22 +20,19 @@ export default class Play extends Component {
 // ** HIGHLIGHT THE STAT OF THE WINNING CHIP (HOW??)
 // ** The final screen lists the cards and all their stats so people know what they've won/lost
 
-// FIRSTLY, UPDATE TRAIN-XP BRANCH (REMOTE)
-// 1. Calculate winner PLAYER (see CardReveal component). Consider tie results.
+// 1. Consider tie results.
 // handleDistribute() -->
-// 2. Implement SWITCH_CARDS action. Pass activeCards (maybe without playerId property), and (new prop) WINNER PLAYER (calculated in CardReveal component)
 // 3. Final function: RESET ACTIVECARDS AND ACTIVEATTRIBUTE,
 // 4. Make initial shuffled deck IMMUTABLE (it currently is not)
 
    // 1 --> 2
    handleActiveCard = () => {
-      let {p1, p2, p3, p4} = this.props;
-      // pass in all player objects so reducer can access both PLAYERID and HAND of each
+      // dispatch all player objects to reducer to gather top card of each hand, plus player ID
+      let {p1, p2, p3, p4} = this.props.playerInfo
       this.props.gatherCards(p1, p2, p3, p4)
       this.props.changeStage(2)
    }
    // 2 --> 3
-   // NEED TO PASS SELECTED ATTRIBUTE TO THIS FUNCTION. FIGURE OUT HOW.
    selectAttribute = (attribute) => {
       this.props.submitAttribute(attribute)
       this.props.changeStage(3)
@@ -45,16 +42,15 @@ export default class Play extends Component {
       this.props.changeStage(4)
    }
    // 4 --> 5
-   // this requires the calculation of which attribute is highest
-   // all cards go to HAND of WINNER (end of their array)
-   // LOSERS have their [0] card removed
    handleDistribute = (winnerId, playedCards) => {
+      // all players lose active card, winner gains all active cards at back of hand
       this.props.switchCards(winnerId, playedCards)
       this.props.changeStage(5)
    }
    // 5 --> 1
-   // RESET ALL STATE AS NECESSARY!
    handleNextRound = () => {
+      // reset ACTIVE CARDS and ACTIVE ATTRIBUTE
+      this.props.roundReset()
       this.props.nextPlayer(this.props.players)
       this.props.changeStage(1)
    }
@@ -63,12 +59,10 @@ export default class Play extends Component {
 
       const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards, activeAttribute, playerInfo} = this.props
 
-      // console.log('playerInfo', playerInfo)
-
       const cloneDeck = deck.slice(0)
 
       let onPlayer;
-      const {p1, p2, p3, p4} = this.props
+      const {p1, p2, p3, p4} = this.props.playerInfo
       switch(activePlayer) {
          case 1:
             onPlayer = p1
@@ -111,7 +105,7 @@ export default class Play extends Component {
          case 3:
             return (
                <div className='centered'>
-                  <h1>All players look now.</h1>
+                  <h1>Fight...</h1>
                   <button className='btn btn-primary' onClick={this.handleReveal}>Reveal All Cards</button>
                </div>
             )

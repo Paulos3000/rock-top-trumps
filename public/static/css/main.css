@@ -5,6 +5,8 @@ a {
    color: inherit;
 }
 
+
+
 /* Bootstrap Additional Styles
 --------------------------------------*/
 .jumbotron { margin: 0; }
@@ -12,13 +14,68 @@ a {
 
 /* Navbar Styles
 --------------------------------------*/
-.navbar { text-align: center; }
-a.navbar-brand { float: none; }
+/*.navbar { text-align: center; }*/
+/*a.navbar-brand { float: none; }*/
 
-.navbar-header {
+/*.navbar-header {
    line-height: 30px;
    padding: 10px 0;
+}*/
+
+.navigation-bar {
+   height: 50px;
+   background: rgb(213, 213, 213);
 }
+
+.navlist {
+   display: block;
+   width: 300px;
+   margin: 0 auto;
+}
+
+.navlist li {
+   list-style: none;
+   float: left;
+}
+
+.navlist li a {
+   /*color: #fff;*/
+   display: inline-block;
+   line-height: 50px;
+   /*font-family: 'BenchNine', sans-serif;*/
+   /*font-size: 1.2em;*/
+   /*text-transform: uppercase;*/
+   text-align: center;
+   text-decoration: none;
+   width: 100px;
+}
+
+/*.navlist li:hover {}*/
+
+.navlist li a:hover {
+   color: rgb(43, 43, 43);
+   background: #fff;
+   cursor: pointer;
+   cursor: hand;
+}
+
+/* CENTRO STYLES HERE
+--------------------------------------*/
+.centro-container {
+    display: flex;              /* establish flex container */
+    flex-direction: column;     /* stack flex items vertically */
+    justify-content: center;    /* center items vertically, in this case */
+    align-items: center;        /* center items horizontally, in this case */
+    max-height: 500px;
+}
+
+.centro-item {
+    align-items: stretch;
+    width: 300px;
+    margin: 5px;
+    text-align: center;
+}
+
 
 /* APP STYLES HERE
 --------------------------------------*/
@@ -26,6 +83,21 @@ a.navbar-brand { float: none; }
 .wrapper {
    margin-bottom: 100px;
 }
+
+h1, h2, h3, h4 {
+   font-family: 'BenchNine', sans-serif;
+   text-transform: uppercase;
+}
+
+h1 { font-size: 5rem; }
+h2 { font-size: 4rem; }
+h3 { font-size: 3rem; }
+h4 { font-size: 2rem; }
+
+.pl-1 {color: rgb(203, 66, 66)}
+.pl-2 {color: rgb(32, 89, 185)}
+.pl-3 {color: rgb(61, 136, 51)}
+.pl-4 {color: rgb(241, 175, 5)}
 
 /* GameSetup page
 --------------------------------------*/
@@ -43,7 +115,7 @@ btn:focus {outline:0 !important;}
 --------------------------------------*/
 
 .avatar-wrapper {
-   height: 16em;
+   height: 15em;
    position: relative
 }
 
@@ -116,14 +188,22 @@ img.avatar {
 
 /* Footer Styles
 --------------------------------------*/
+
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 80px;
+  height: 90px;
   margin-top: 60px;
-  background-color: #f5f5f5;
+  background-color: #fff;
+}
+
+.footer-masthead {
+   padding: 3px;
+   text-align: center;
+   color: #fff;
+   background: rgb(49, 47, 88);
 }
 
 .card-count {
@@ -154,5 +234,6 @@ img.avatar {
 /* Button Styles
 --------------------------------------*/
 .btn-block {
-   margin: 10px 0 !important;
+   max-width: 400px;
+   margin: 10px auto !important;
 }

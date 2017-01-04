@@ -19,6 +19,8 @@ const activeCards = (state = [], action) => {
                card: action.p4.hand[0] || null
             }
          ]
+      case 'ROUND_RESET' :
+         return state = []
    }
    return state
 }

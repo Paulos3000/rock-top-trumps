@@ -2,15 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 const Navbar = () => (
-   <nav className="navbar navbar-default">
+   <nav className="navigation-bar">
       <div className='container'>
-         <div className="container-fluid">
-            <div className="navbar-header">
-               <Link className='navbar-brand' to='/'>
-                  Rock Top Trumps
-               </Link>
-            </div>
-            <ul className="nav navbar-nav">
+            <ul className="navlist">
                <li>
                   <Link to='/'>
                      Play
@@ -22,7 +16,6 @@ const Navbar = () => (
                   </Link>
                </li>
             </ul>
-         </div>
       </div>
    </nav>
 )

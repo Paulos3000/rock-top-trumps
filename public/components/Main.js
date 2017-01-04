@@ -10,19 +10,33 @@ class Main extends Component {
       this.props.shuffleDeck()
    }
    render() {
+
+      const {players, p1, p2, p3, p4} = this.props.playerInfo
+
+      // create player array...
+      let playerArr = [];
+      playerArr.push(p1, p2, p3, p4)
+
+      // create active player array (excludes player objects not in the game)
+      let activePlayerArr = [];
+      let onPlaya;
+      for (let i = 0; i < playerArr.length; i++) {
+         if (playerArr[i].name !== null) {
+            activePlayerArr.push(playerArr[i])
+         }
+      }
+
       return (
          <div className='wrapper'>
 
             <Navbar />
 
             <div className='container'>
-               {/*Render active route component (as matched in URL) and pass all props, regardless*/}
-               {/*Alternative method is to connect() to specific component to pass only needed props*/}
-               {/*Also note: can pass any individual prop by wrapping in curly braces and applying a key, followed by prop value*/}
                {React.cloneElement(this.props.children, this.props)}
             </div>
 
-            {this.props.stage !== 0 ? <DynamicFooter {...this.props} /> : null}
+            {/* Render DynamicFooter only when cards have been dealt... */}
+            {this.props.stage !== 0 ? <DynamicFooter activePlayerArr={activePlayerArr} {...this.props} /> : null}
 
          </div>
       )
@@ -36,10 +50,6 @@ const mapStateToProps = (state) => ({
    stage: state.stage,
    players: state.players,
    playerInfo: state.playerInfo,
-   p1: state.playerInfo.p1,
-   p2: state.playerInfo.p2,
-   p3: state.playerInfo.p3,
-   p4: state.playerInfo.p4,
    activePlayer: state.activePlayer,
    activeCards: state.activeCards,
    activeAttribute: state.activeAttribute

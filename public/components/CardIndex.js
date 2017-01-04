@@ -11,8 +11,8 @@ class CardIndex extends Component {
       console.log('deck: ', this.props.deck)
       return (
          <div>
-            <h1>Card Index</h1>
-            <hr />
+            {/*<h1>Card Index</h1>
+            <hr />*/}
             <CardList deck={this.props.deck}/>
             {/*insert switch statement which loads relevant page based on state.stage (or something)*/}
          </div>

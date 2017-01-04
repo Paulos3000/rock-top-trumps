@@ -57,7 +57,7 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
 
    return (
       <div>
-         <h2 className='centered'>Attribute: {trumpAttribute}</h2>
+         <h2 className='centered'>{trumpAttribute}</h2>
          <hr />
          <div className="row">
             {compareCards.map( (card, i) =>

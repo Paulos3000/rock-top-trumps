@@ -70,3 +70,9 @@ export const switchCards = (winnerId, playedCards) => (dispatch, getState) => {
       playedCards
    })
 }
+
+export const roundReset = () => (dispatch, getState) => {
+   dispatch({
+      type: 'ROUND_RESET'
+   })
+}

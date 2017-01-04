@@ -2,15 +2,12 @@ import React from 'react'
 
 const LeaderCard = ({ selectAttribute, onPlayer, activeCards }) => {
 
-   // console.log('onPlayer ID = ', onPlayer.id)
-   // console.log('activeCards = ', activeCards)
    const leadingCard = activeCards.find(card => card.playerId === onPlayer.id)
-   // console.log('leadingCard = ', leadingCard)
 
    return (
       <div>
          <div className='avatar-wrapper'>
-            <img className='avatar' src={`/img/sq/${leadingCard.card.tag}.jpg`} />
+            <img className={`avatar avatar-${onPlayer.id}`} src={`/img/sq/${leadingCard.card.tag}.jpg`} />
          </div>
          <div className='centered'>
             <h2 className='centered card-name leadercard-name'>{leadingCard.card.fullName}</h2>
