@@ -10,12 +10,12 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
    // What about ties??? Decide by card rank? Maybe add these.
 
    // Then pass this WINNER (.bind(null, winner)) to handleDistribute(), which will then pass that to the action, SWITCH_CARDS
-   let colsSm
-   let colsXs
+
+   // define column width based on number of players
+   let colsSm, colsXs
    switch(players) {
       case 2:
-         colsSm = 6
-         colsXs = 6
+         colsSm, colsXs = 6
          break;
       case 3:
          colsSm = 4
@@ -26,11 +26,13 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
          colsXs = 6
          break;
       default:
-         colsSm = null
-         colsXs = null
+         colsSm, colsXs = null
    }
+
+   // attribute being played
    const trumpAttribute = capsInit(activeAttribute)
 
+   // get cards of players in the game
    let compareCards = []
    for (let i = 0; i < activeCards.length; i++) {
       if (activeCards[i].card !== null) {
@@ -38,11 +40,11 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
       }
    }
 
+   // calculate winning card
    let winner = compareCards.reduce((prev, curr) => prev.card.stats[activeAttribute] < curr.card.stats[activeAttribute] ? curr : prev)
 
+   // get winning player id
    let winningPlayerId = winner.playerId
-
-   console.log('winningPlayerId: ', winningPlayerId)
 
    const {p1, p2, p3, p4} = playerInfo
 
@@ -51,9 +53,6 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
    if (winningPlayerId === p2.id) {winningPlayerName = p2.name}
    if (winningPlayerId === p3.id) {winningPlayerName = p3.name}
    if (winningPlayerId === p4.id) {winningPlayerName = p4.name}
-
-   // handleWinningPlayer(winningPlayerName)
-
 
    return (
       <div>

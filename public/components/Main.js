@@ -45,7 +45,7 @@ class Main extends Component {
 
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
    deck: state.deck,
    stage: state.stage,
    players: state.players,

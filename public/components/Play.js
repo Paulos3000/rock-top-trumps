@@ -8,6 +8,7 @@ import GameSetup from './GameSetup'
 import NumPlayers from './NumPlayers'
 import StartRound from './StartRound'
 import LeaderCard from './LeaderCard'
+import Fight from './Fight'
 import CardReveal from './CardReveal'
 
 // import utility
@@ -57,6 +58,8 @@ export default class Play extends Component {
 
    render() {
 
+      console.log('this.props.activePlayerArr: ', this.props.activePlayerArr)
+
       const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards, activeAttribute, playerInfo} = this.props
 
       const cloneDeck = deck.slice(0)
@@ -103,21 +106,16 @@ export default class Play extends Component {
             )
 
          case 3:
-            return (
-               <div className='centered'>
-                  <h1>Fight...</h1>
-                  <button className='btn btn-primary' onClick={this.handleReveal}>Reveal All Cards</button>
-               </div>
-            )
+            return <Fight handleReveal={this.handleReveal} />
 
          case 4:
             return (
                <CardReveal
-                  handleDistribute={this.handleDistribute}
                   activeCards={activeCards}
                   activeAttribute={activeAttribute}
                   players={players}
                   playerInfo={playerInfo}
+                  handleDistribute={this.handleDistribute}
                />
             )
 
