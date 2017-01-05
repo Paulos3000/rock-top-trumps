@@ -34,6 +34,8 @@ const CardReveal = ({ onPlayer, players, activeCards, compareCards, activeAttrib
    // calculate winning card
    let winner = compareCards.reduce((prev, curr) => prev.card.stats[activeAttribute] < curr.card.stats[activeAttribute] ? curr : prev)
 
+   console.log('holaaa: ', winner)
+
    // get winning player id
    let winningPlayerId = winner.playerId
 
@@ -63,6 +65,8 @@ const CardReveal = ({ onPlayer, players, activeCards, compareCards, activeAttrib
          <hr />
          <div className='centered'>
             <h2 className={`underline underline-pl-${winningPlayerId}`}>{winningPlayerName} wins!</h2>
+            <h4>with</h4>
+            <h2>{winner.card.fullName}</h2>
          </div>
          <div className='centered'>
             <button className='btn btn-default' onClick={handleDistribute.bind(null, winningPlayerId, compareCards)}>Distribute Cards</button>

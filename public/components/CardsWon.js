@@ -2,13 +2,21 @@ import React from 'react'
 
 import capsInit from '../util/capsInit'
 
-const CardsWon = ({ players, onPlayer, compareCards, handleNextRound, activeAttribute }) => {
+const CardsWon = ({ players, onPlayer, playerInfo, compareCards, handleNextRound, activeAttribute }) => {
 
    // calculate winning card
    let winner = compareCards.reduce((prev, curr) => prev.card.stats[activeAttribute] < curr.card.stats[activeAttribute] ? curr : prev)
 
    // get winning player id
    let winningPlayerId = winner.playerId
+
+   const {p1, p2, p3, p4} = playerInfo
+
+   let winningPlayerName;
+   if (winningPlayerId === p1.id) {winningPlayerName = p1.name}
+   if (winningPlayerId === p2.id) {winningPlayerName = p2.name}
+   if (winningPlayerId === p3.id) {winningPlayerName = p3.name}
+   if (winningPlayerId === p4.id) {winningPlayerName = p4.name}
 
    // SPLIT COLUMNS INTO 1, 2 OR 3 ON DESKTOP!!!
 
@@ -32,10 +40,9 @@ const CardsWon = ({ players, onPlayer, compareCards, handleNextRound, activeAttr
 
    return (
       <div className='centered'>
-         <h2>Cards won:</h2>
-         <hr />
+         <h2>{winningPlayerName}, collect your winnings...</h2>
          {compareCards.map( (card, i) =>
-            card.playerId !== onPlayer.id ?
+            card.playerId !== winningPlayerId ?
             <div className={`col-xs-${colsXs} col-sm-${colsSm}`} key={i}>
                <div className='avatar-wrapper'>
                   <img className={`avatar avatar-${winningPlayerId}`} src={`/img/sq/${card.card.tag}.jpg`} />

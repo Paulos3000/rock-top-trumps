@@ -141,6 +141,7 @@ export default class Play extends Component {
                <CardsWon
                   onPlayer={onPlayer}
                   players={players}
+                  playerInfo={playerInfo}
                   compareCards={compareCards}
                   activeAttribute={activeAttribute}
                   handleNextRound={this.handleNextRound}
