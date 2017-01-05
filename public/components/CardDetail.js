@@ -14,6 +14,7 @@ class CardDetail extends Component {
             </div>
             <div className='centered'>
                <h2 className='card-name centered'>{card.fullName}</h2>
+               <h4 className='centered'>{card.band}</h4>
                <hr />
                <p className='card-stat'>Technique: {technique}</p>
                <p className='card-stat'>Riffage: {riffage}</p>

@@ -4,7 +4,7 @@ import capsInit from '../util/capsInit'
 const LeaderCard = ({ selectAttribute, onPlayer, activeCards }) => {
 
    const leadingCard = activeCards.find(card => card.playerId === onPlayer.id)
-   const {tag, fullName, stats} = leadingCard.card
+   const {tag, fullName, band, stats} = leadingCard.card
 
    return (
       <div>
@@ -12,7 +12,9 @@ const LeaderCard = ({ selectAttribute, onPlayer, activeCards }) => {
             <img className={`avatar avatar-${onPlayer.id}`} src={`/img/sq/${tag}.jpg`} />
          </div>
          <div className='centered'>
-            <h2 className='centered card-name leadercard-name'>{fullName}</h2>
+            <h2 className='centered card-name'>{fullName}</h2>
+            <h4 className='centered'>{band}</h4>
+            <hr />
 
             {Object.keys(stats).map( (key, i) =>
                <button

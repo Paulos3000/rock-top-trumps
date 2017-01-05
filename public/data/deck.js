@@ -2,7 +2,7 @@ const deck = [
    {
       'id': 1,
       'fullName': 'B.B. King',
-      'shortName': 'B.B. King',
+      'band': null,
       'tag': 'bb_king',
       'stats': {
          'technique': 53,
@@ -16,7 +16,7 @@ const deck = [
    {
       'id': 2,
       'fullName': 'Chuck Berry',
-      'shortName': 'Chuck Berry',
+      'band': null,
       'tag': 'chuck_berry',
       'stats': {
          'technique': 70,
@@ -30,7 +30,7 @@ const deck = [
    {
       'id': 3,
       'fullName': 'Hank Marvin',
-      'shortName': 'Hank Marvin',
+      'band': 'The Shadows',
       'tag': 'hank_marvin',
       'stats': {
          'technique': 32,
@@ -44,7 +44,7 @@ const deck = [
    {
       'id': 4,
       'fullName': 'George Harrison',
-      'shortName': 'George Harrison',
+      'band': 'The Beatles',
       'tag': 'george_harrison',
       'stats': {
          'technique': 41,
@@ -58,7 +58,7 @@ const deck = [
    {
       'id': 5,
       'fullName': 'Keith Richards',
-      'shortName': 'Keith Richards',
+      'band': 'The Rolling Stones',
       'tag': 'keith_richards',
       'stats': {
          'technique': 51,
@@ -72,7 +72,7 @@ const deck = [
    {
       'id': 6,
       'fullName': 'Jimi Hendrix',
-      'shortName': 'Jimi Hendrix',
+      'band': 'The Jimi Hendrix Experience',
       'tag': 'jimi_hendrix',
       'stats': {
          'technique': 97,
@@ -86,7 +86,7 @@ const deck = [
    {
       'id': 7,
       'fullName': 'Jimmy Page',
-      'shortName': 'Jimmy Page',
+      'band': 'Led Zeppelin',
       'tag': 'jimmy_page',
       'stats': {
          'technique': 83,
@@ -100,7 +100,7 @@ const deck = [
    {
       'id': 8,
       'fullName': 'Eric Clapton',
-      'shortName': 'Eric Clapton',
+      'band': 'Cream',
       'tag': 'eric_clapton',
       'stats': {
          'technique': 88,
@@ -114,7 +114,7 @@ const deck = [
    {
       'id': 9,
       'fullName': 'Dave Gilmour',
-      'shortName': 'Dave Gilmour',
+      'band': 'Pink Floyd',
       'tag': 'dave_gilmour',
       'stats': {
          'technique': 85,
@@ -128,7 +128,7 @@ const deck = [
    {
       'id': 10,
       'fullName': 'Jeff Beck',
-      'shortName': 'Jeff Beck',
+      'band': 'The Yardbirds',
       'tag': 'jeff_beck',
       'stats': {
          'technique': 89,
@@ -142,7 +142,7 @@ const deck = [
    {
       'id': 11,
       'fullName': 'Pete Townshend',
-      'shortName': 'Pete Townshend',
+      'band': 'The Who',
       'tag': 'pete_townshend',
       'stats': {
          'technique': 73,
@@ -156,7 +156,7 @@ const deck = [
    {
       'id': 12,
       'fullName': 'Neil Young',
-      'shortName': 'Neil Young',
+      'band': 'Crazy Horse',
       'tag': 'neil_young',
       'stats': {
          'technique': 38,
@@ -170,7 +170,7 @@ const deck = [
    {
       'id': 13,
       'fullName': 'Lou Reed',
-      'shortName': 'Lou Reed',
+      'band': 'Velvet Underground',
       'tag': 'lou_reed',
       'stats': {
          'technique': 38,
@@ -184,7 +184,7 @@ const deck = [
    {
       'id': 14,
       'fullName': 'Steve Howe',
-      'shortName': 'Steve Howe',
+      'band': 'Yes',
       'tag': 'steve_howe',
       'stats': {
          'technique': 86,
@@ -198,7 +198,7 @@ const deck = [
    {
       'id': 15,
       'fullName': 'Ritchie Blackmore',
-      'shortName': 'Ritchie Blackmore',
+      'band': 'Deep Purple',
       'tag': 'ritchie_blackmore',
       'stats': {
          'technique': 65,
@@ -212,7 +212,7 @@ const deck = [
    {
       'id': 16,
       'fullName': 'Andy Summers',
-      'shortName': 'Andy Summers',
+      'band': 'The Police',
       'tag': 'andy_summers',
       'stats': {
          'technique': 71,
@@ -226,7 +226,7 @@ const deck = [
    {
       'id': 17,
       'fullName': 'Lenny Kravitz',
-      'shortName': 'Lenny Kravitz',
+      'band': null,
       'tag': 'lenny_kravitz',
       'stats': {
          'technique': 55,
@@ -240,7 +240,7 @@ const deck = [
    {
       'id': 18,
       'fullName': 'Eddie Van Halen',
-      'shortName': 'Eddie Van Halen',
+      'band': 'Van Halen',
       'tag': 'eddie_van_halen',
       'stats': {
          'technique': 95,
@@ -254,7 +254,7 @@ const deck = [
    {
       'id': 19,
       'fullName': 'Joe Satriani',
-      'shortName': 'Joe Satriani',
+      'band': null,
       'tag': 'joe_satriani',
       'stats': {
          'technique': 98,
@@ -268,7 +268,7 @@ const deck = [
    {
       'id': 20,
       'fullName': 'Steve Vai',
-      'shortName': 'Steve Vai',
+      'band': null,
       'tag': 'steve_vai',
       'stats': {
          'technique': 99,
@@ -282,7 +282,7 @@ const deck = [
    {
       'id': 21,
       'fullName': 'Slash',
-      'shortName': 'Slash',
+      'band': 'Guns N Roses',
       'tag': 'slash',
       'stats': {
          'technique': 85,
@@ -296,7 +296,7 @@ const deck = [
    {
       'id': 22,
       'fullName': 'John Frusciante',
-      'shortName': 'John Frusciante',
+      'band': 'Red Hot Chili Peppers',
       'tag': 'john_frusciante',
       'stats': {
          'technique': 68,
@@ -310,7 +310,7 @@ const deck = [
    {
       'id': 23,
       'fullName': 'Tom Morello',
-      'shortName': 'Tom Morello',
+      'band': 'Rage Against The Machine',
       'tag': 'tom_morello',
       'stats': {
          'technique': 80,
@@ -324,7 +324,7 @@ const deck = [
    {
       'id': 24,
       'fullName': 'Kurt Cobain',
-      'shortName': 'Kurt Cobain',
+      'band': 'Nirvana',
       'tag': 'kurt_cobain',
       'stats': {
          'technique': 50,
@@ -338,7 +338,7 @@ const deck = [
    {
       'id': 25,
       'fullName': 'Stevie Ray Vaughan',
-      'shortName': 'Stevie Ray Vaughan',
+      'band': null,
       'tag': 'stevie_ray_vaughan',
       'stats': {
          'technique': 86,
@@ -352,7 +352,7 @@ const deck = [
    {
       'id': 26,
       'fullName': 'Dimebag Darrell',
-      'shortName': 'Dimebag Darrell',
+      'band': 'Pantera',
       'tag': 'dimebag_darrell',
       'stats': {
          'technique': 64,
@@ -366,7 +366,7 @@ const deck = [
    {
       'id': 27,
       'fullName': 'Elliott Smith',
-      'shortName': 'Elliott Smith',
+      'band': null,
       'tag': 'elliott_smith',
       'stats': {
          'technique': 78,
@@ -380,7 +380,7 @@ const deck = [
    {
       'id': 28,
       'fullName': 'Kirk Hammett',
-      'shortName': 'Kirk Hammett',
+      'band': 'Metallica',
       'tag': 'kirk_hammett',
       'stats': {
          'technique': 80,
@@ -394,7 +394,7 @@ const deck = [
    {
       'id': 29,
       'fullName': 'Duayne Allman',
-      'shortName': 'Duayne Allman',
+      'band': 'Allman Brothers Band',
       'tag': 'duayne_allman',
       'stats': {
          'technique': 75,
@@ -408,7 +408,7 @@ const deck = [
    {
       'id': 30,
       'fullName': 'Mike Einziger',
-      'shortName': 'Mike Einziger',
+      'band': 'Incubus',
       'tag': 'mike_einziger',
       'stats': {
          'technique': 70,
@@ -422,7 +422,7 @@ const deck = [
    {
       'id': 31,
       'fullName': 'Wes Borland',
-      'shortName': 'Wes Borland',
+      'band': 'Limp Bizkit',
       'tag': 'wes_borland',
       'stats': {
          'technique': 66,
@@ -436,7 +436,7 @@ const deck = [
    {
       'id': 32,
       'fullName': 'Dave Grohl',
-      'shortName': 'Dave Grohl',
+      'band': 'Foo Fighters',
       'tag': 'dave_grohl',
       'stats': {
          'technique': 45,
@@ -450,7 +450,7 @@ const deck = [
    {
       'id': 33,
       'fullName': 'Josh Homme',
-      'shortName': 'Josh Homme',
+      'band': 'Queens Of The Stone Age',
       'tag': 'josh_homme',
       'stats': {
          'technique': 75,
@@ -464,7 +464,7 @@ const deck = [
    {
       'id': 34,
       'fullName': 'Omar Rodriguez-Lopez',
-      'shortName': 'Omar Rodriguez-Lopez',
+      'band': 'At The Drive-In / The Mars Volta',
       'tag': 'omar_rodriguez-lopez',
       'stats': {
          'technique': 82,
@@ -478,7 +478,7 @@ const deck = [
    {
       'id': 35,
       'fullName': 'Noel Gallagher',
-      'shortName': 'Noel Gallagher',
+      'band': 'Oasis',
       'tag': 'noel_gallagher',
       'stats': {
          'technique': 15,
@@ -492,7 +492,7 @@ const deck = [
    {
       'id': 36,
       'fullName': 'Jonny Greenwood',
-      'shortName': 'Jonny Greenwood',
+      'band': 'Radiohead',
       'tag': 'jonny_greenwood',
       'stats': {
          'technique': 71,
@@ -506,7 +506,7 @@ const deck = [
    {
       'id': 37,
       'fullName': 'Jonny Marr',
-      'shortName': 'Jonny Marr',
+      'band': 'The Smiths',
       'tag': 'jonny_marr',
       'stats': {
          'technique': 72,
@@ -520,7 +520,7 @@ const deck = [
    {
       'id': 38,
       'fullName': 'Graham Coxon',
-      'shortName': 'Graham Coxon',
+      'band': 'Blur',
       'tag': 'graham_coxon',
       'stats': {
          'technique': 68,
@@ -534,7 +534,7 @@ const deck = [
    {
       'id': 39,
       'fullName': 'Yngwie Malmsteen',
-      'shortName': 'Yngwie Malmsteen',
+      'band': null,
       'tag': 'yngwie_malmsteen',
       'stats': {
          'technique': 96,
@@ -548,7 +548,7 @@ const deck = [
    {
       'id': 40,
       'fullName': 'Robert Fripp',
-      'shortName': 'Robert Fripp',
+      'band': 'King Crimson',
       'tag': 'robert_fripp',
       'stats': {
          'technique': 65,
@@ -562,7 +562,7 @@ const deck = [
    {
       'id': 41,
       'fullName': 'Billy Joe Armstrong',
-      'shortName': 'Billy Joe Armstrong',
+      'band': 'Green Day',
       'tag': 'billy_joe_armstrong',
       'stats': {
          'technique': 32,
@@ -576,7 +576,7 @@ const deck = [
    {
       'id': 42,
       'fullName': 'Dave Navarro',
-      'shortName': 'Dave Navarro',
+      'band': 'Janes Addiction',
       'tag': 'dave_navarro',
       'stats': {
          'technique': 80,
@@ -590,7 +590,7 @@ const deck = [
    {
       'id': 43,
       'fullName': 'Billy Corgan',
-      'shortName': 'Billy Corgan',
+      'band': 'Smashing Pumpkins',
       'tag': 'billy_corgan',
       'stats': {
          'technique': 72,
@@ -604,7 +604,7 @@ const deck = [
    {
       'id': 44,
       'fullName': 'Jack White',
-      'shortName': 'Jack White',
+      'band': 'White Stripes',
       'tag': 'jack_white',
       'stats': {
          'technique': 60,
@@ -618,7 +618,7 @@ const deck = [
    {
       'id': 45,
       'fullName': 'Brian May',
-      'shortName': 'Brian May',
+      'band': 'Queen',
       'tag': 'brian_may',
       'stats': {
          'technique': 87,
@@ -632,7 +632,7 @@ const deck = [
    {
       'id': 46,
       'fullName': 'Tony Iommi',
-      'shortName': 'Tony Iommi',
+      'band': 'Black Sabbath',
       'tag': 'tony_iommi',
       'stats': {
          'technique': 60,
@@ -646,7 +646,7 @@ const deck = [
    {
       'id': 47,
       'fullName': 'Daron Malakian',
-      'shortName': 'Daron Malakian',
+      'band': 'System Of A Down',
       'tag': 'daron_malakian',
       'stats': {
          'technique': 34,
@@ -660,7 +660,7 @@ const deck = [
    {
       'id': 48,
       'fullName': 'Carlos Santana',
-      'shortName': 'Carlos Santana',
+      'band': 'Santana',
       'tag': 'carlos_santana',
       'stats': {
          'technique': 46,
@@ -674,7 +674,7 @@ const deck = [
    {
       'id': 49,
       'fullName': 'The Edge',
-      'shortName': 'The Edge',
+      'band': 'U2',
       'tag': 'the_edge',
       'stats': {
          'technique': 13,
@@ -688,7 +688,7 @@ const deck = [
    {
       'id': 50,
       'fullName': 'Bob Dylan',
-      'shortName': 'Bob Dylan',
+      'band': null,
       'tag': 'bob_dylan',
       'stats': {
          'technique': 15,
@@ -702,7 +702,7 @@ const deck = [
    {
       'id': 51,
       'fullName': 'Paul Kossoff',
-      'shortName': 'Paul Kossoff',
+      'band': 'Free',
       'tag': 'paul_kossoff',
       'stats': {
          'technique': 81,
@@ -716,7 +716,7 @@ const deck = [
    {
       'id': 52,
       'fullName': 'Bruce Springsteen',
-      'shortName': 'Bruce Springsteen',
+      'band': null,
       'tag': 'bruce_springsteen',
       'stats': {
          'technique': 32,
@@ -730,7 +730,7 @@ const deck = [
    {
       'id': 53,
       'fullName': 'Mick Thomson',
-      'shortName': 'Mick Thomson',
+      'band': 'Slipknot',
       'tag': 'mick_thomson',
       'stats': {
          'technique': 78,
@@ -744,7 +744,7 @@ const deck = [
    {
       'id': 54,
       'fullName': 'Mick Ronson',
-      'shortName': 'Mick Ronson',
+      'band': 'David Bowie',
       'tag': 'mick_ronson',
       'stats': {
          'technique': 61,
@@ -758,7 +758,7 @@ const deck = [
    {
       'id': 55,
       'fullName': 'Kurt Vile',
-      'shortName': 'Kurt Vile',
+      'band': 'The Violators',
       'tag': 'kurt_vile',
       'stats': {
          'technique': 52,
@@ -772,7 +772,7 @@ const deck = [
    {
       'id': 56,
       'fullName': 'Mark Knopfler',
-      'shortName': 'Mark Knopfler',
+      'band': 'Dire Straits',
       'tag': 'mark_knopfler',
       'stats': {
          'technique': 86,
@@ -786,7 +786,7 @@ const deck = [
    {
       'id': 57,
       'fullName': 'Stephen Malkmus',
-      'shortName': 'Stephen Malkmus',
+      'band': 'Pavement',
       'tag': 'stephen_malkmus',
       'stats': {
          'technique': 52,
@@ -800,7 +800,7 @@ const deck = [
    {
       'id': 58,
       'fullName': 'John McLaughlin',
-      'shortName': 'John McLaughlin',
+      'band': 'Mahavishnu Orchestra',
       'tag': 'john_mclaughlin',
       'stats': {
          'technique': 93,
@@ -814,7 +814,7 @@ const deck = [
    {
       'id': 59,
       'fullName': 'Prince',
-      'shortName': 'Prince',
+      'band': null,
       'tag': 'prince',
       'stats': {
          'technique': 86,
@@ -828,7 +828,7 @@ const deck = [
    {
       'id': 60,
       'fullName': 'Angus Young',
-      'shortName': 'Angus Young',
+      'band': 'AC/DC',
       'tag': 'angus_young',
       'stats': {
          'technique': 78,
