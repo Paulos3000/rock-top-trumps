@@ -10,8 +10,10 @@ import StartRound from './StartRound'
 import LeaderCard from './LeaderCard'
 import Fight from './Fight'
 import CardReveal from './CardReveal'
+import CardsWon from './CardsWon'
 
 // import utility
+import capsInit from '../util/capsInit'
 import shuffle from '../util/shuffle'
 
 export default class Play extends Component {
@@ -58,9 +60,15 @@ export default class Play extends Component {
 
    render() {
 
-      console.log('this.props.activePlayerArr: ', this.props.activePlayerArr)
-
       const {players, deck, changeNumPlayers, addNames, deal, stage, changeStage, activePlayer, activeCards, activeAttribute, playerInfo} = this.props
+
+      // define active cards of players in the game
+      let compareCards = []
+      for (let i = 0; i < activeCards.length; i++) {
+         if (activeCards[i].card !== null) {
+            compareCards.push(activeCards[i])
+         }
+      }
 
       const cloneDeck = deck.slice(0)
 
@@ -82,6 +90,9 @@ export default class Play extends Component {
          default:
             null
       }
+
+      console.log('onPlayer: ', onPlayer)
+      console.log('compareCards: ', compareCards)
 
       switch(stage) {
 
@@ -106,12 +117,18 @@ export default class Play extends Component {
             )
 
          case 3:
-            return <Fight handleReveal={this.handleReveal} />
+            return (
+               <Fight
+                  onPlayer={onPlayer}
+                  handleReveal={this.handleReveal}
+               />
+            )
 
          case 4:
             return (
                <CardReveal
-                  activeCards={activeCards}
+                  onPlayer={onPlayer}
+                  compareCards={compareCards}
                   activeAttribute={activeAttribute}
                   players={players}
                   playerInfo={playerInfo}
@@ -121,12 +138,13 @@ export default class Play extends Component {
 
          case 5:
             return (
-               <div className='centered'>
-                  <h1>Declare winner here</h1>
-                  <h3>Cards won:</h3>
-                  <p>(List cards won from other players)</p>
-                  <button className='btn btn-primary' onClick={this.handleNextRound}>Next Round</button>
-               </div>
+               <CardsWon
+                  onPlayer={onPlayer}
+                  players={players}
+                  compareCards={compareCards}
+                  activeAttribute={activeAttribute}
+                  handleNextRound={this.handleNextRound}
+               />
             )
       }
 

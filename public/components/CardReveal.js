@@ -4,9 +4,8 @@ import Card from './Card'
 
 import capsInit from '../util/capsInit'
 
-const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, playerInfo }) => {
+const CardReveal = ({ onPlayer, players, activeCards, compareCards, activeAttribute, handleDistribute, playerInfo }) => {
 
-   // CALCULATE WINNER NAME
    // What about ties??? Decide by card rank? Maybe add these.
 
    // Then pass this WINNER (.bind(null, winner)) to handleDistribute(), which will then pass that to the action, SWITCH_CARDS
@@ -32,14 +31,6 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
    // attribute being played
    const trumpAttribute = capsInit(activeAttribute)
 
-   // get cards of players in the game
-   let compareCards = []
-   for (let i = 0; i < activeCards.length; i++) {
-      if (activeCards[i].card !== null) {
-         compareCards.push(activeCards[i])
-      }
-   }
-
    // calculate winning card
    let winner = compareCards.reduce((prev, curr) => prev.card.stats[activeAttribute] < curr.card.stats[activeAttribute] ? curr : prev)
 
@@ -61,6 +52,7 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
          <div className="row">
             {compareCards.map( (card, i) =>
                   <div className={`col-xs-${colsXs} col-sm-${colsSm}`} key={i}>
+                     <h4 className='centered faceoff-name'>{card.card.fullName}</h4>
                      <div className='avatar-wrapper'>
                         <img className={`avatar avatar-${card.playerId}`} src={`/img/sq/${card.card.tag}.jpg`} />
                         <h4 className='avatar-stat'>{card.card.stats[activeAttribute]}</h4>
@@ -69,10 +61,11 @@ const CardReveal = ({ players, activeCards, activeAttribute, handleDistribute, p
             )}
          </div>
          <hr />
-         <h4 className='centered'>Winning card: {winner.card.fullName}</h4>
-         <h4 className='centered'>Winner: {winningPlayerName}</h4>
          <div className='centered'>
-            <button className='btn btn-primary' onClick={handleDistribute.bind({}, winningPlayerId, compareCards)}>Distribute Cards</button>
+            <h2 className={`underline underline-pl-${winningPlayerId}`}>{winningPlayerName} wins!</h2>
+         </div>
+         <div className='centered'>
+            <button className='btn btn-default' onClick={handleDistribute.bind(null, winningPlayerId, compareCards)}>Distribute Cards</button>
          </div>
       </div>
    )
