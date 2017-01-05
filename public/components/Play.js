@@ -91,9 +91,6 @@ export default class Play extends Component {
             null
       }
 
-      console.log('onPlayer: ', onPlayer)
-      console.log('compareCards: ', compareCards)
-
       switch(stage) {
 
          case 0:

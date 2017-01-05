@@ -9,7 +9,7 @@ const LeaderCard = ({ selectAttribute, onPlayer, activeCards }) => {
    return (
       <div>
          <div className='avatar-wrapper'>
-            <img className={`avatar avatar-${onPlayer.id}`} src={`/img/sq/${tag}.jpg`} />
+            <img className={`avatar avatar-${onPlayer.id}`} src={`./img/sq/${tag}.jpg`} />
          </div>
          <div className='centered'>
             <h2 className='centered card-name'>{fullName}</h2>
