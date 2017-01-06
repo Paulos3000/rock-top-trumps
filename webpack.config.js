@@ -27,8 +27,15 @@ module.exports = {
                query: {
                  presets: debug ? ['react', 'es2015', 'react-hmre', 'stage-2'] : ['react', 'es2015', 'stage-2']
                }
+            },
+            {
+               test: /\.(jpe?g|png|gif|svg)$/i,
+               loaders: [
+                  'file?hash=sha512&digest=hex&name=[hash].[ext]',
+                  'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+               ]
             }
-        ]
+         ]
     },
     plugins: debug ? [] : [
       new webpack.DefinePlugin({

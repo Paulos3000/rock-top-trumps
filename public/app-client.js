@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-// NEW (to sync history with store) -------------
+// var url = require("/static/img/sq/andy_summers.jpg");
+
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-// ----------------------------------------------
 
 import Root from './components/Root'
 
-// create/configure store
 import configureStore from './configureStore'
 
 const store = configureStore()

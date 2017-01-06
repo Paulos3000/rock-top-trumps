@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 
+// const hippo = require('./testimg/hippo.png');
+
 import Navbar from './Navbar'
 import DynamicFooter from './DynamicFooter'
 
@@ -28,6 +30,8 @@ class Main extends Component {
 
       return (
          <div className='wrapper'>
+
+            
 
             <Navbar />
 
