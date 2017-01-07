@@ -1,6 +1,11 @@
 import React from 'react'
 
+import { cloudinaryConfig, CloudinaryImage } from 'react-cloudinary';
+cloudinaryConfig({ cloud_name: 'ldldkmn0o' });
+
+// Utilities...
 import capsInit from '../util/capsInit'
+import getCloudinaryId from '../util/getCloudinaryId'
 
 const CardsWon = ({ players, onPlayer, playerInfo, compareCards, handleNextRound, activeAttribute }) => {
 
@@ -45,7 +50,8 @@ const CardsWon = ({ players, onPlayer, playerInfo, compareCards, handleNextRound
             card.playerId !== winningPlayerId ?
             <div className={`col-xs-${colsXs} col-sm-${colsSm}`} key={i}>
                <div className='avatar-wrapper'>
-                  <img className={`avatar avatar-${winningPlayerId}`} src={`/img/sq/${card.card.tag}.jpg`} />
+                  <CloudinaryImage className={`avatar avatar-${winningPlayerId}`} publicId={getCloudinaryId(card.card.tag)}/>
+                  {/*<img className={`avatar avatar-${winningPlayerId}`} src={`/img/sq/${card.card.tag}.jpg`} />*/}
                   <h4 className='avatar-caption'>{card.card.fullName}</h4>
                </div>
                   {Object.keys(card.card.stats).map( (stat, index) =>

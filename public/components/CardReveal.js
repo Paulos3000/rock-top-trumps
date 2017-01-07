@@ -2,7 +2,12 @@ import React from 'react'
 
 import Card from './Card'
 
+import { cloudinaryConfig, CloudinaryImage } from 'react-cloudinary';
+cloudinaryConfig({ cloud_name: 'ldldkmn0o' });
+
+// Utilities...
 import capsInit from '../util/capsInit'
+import getCloudinaryId from '../util/getCloudinaryId'
 
 const CardReveal = ({ onPlayer, players, activeCards, compareCards, activeAttribute, handleDistribute, playerInfo }) => {
 
@@ -56,7 +61,8 @@ const CardReveal = ({ onPlayer, players, activeCards, compareCards, activeAttrib
                   <div className={`col-xs-${colsXs} col-sm-${colsSm}`} key={i}>
                      <h4 className='centered faceoff-name'>{card.card.fullName}</h4>
                      <div className='avatar-wrapper'>
-                        <img className={`avatar avatar-${card.playerId}`} src={`/img/sq/${card.card.tag}.jpg`} />
+                        <CloudinaryImage className={`avatar avatar-${card.playerId}`} publicId={getCloudinaryId(card.card.tag)}/>
+                        {/*<img className={`avatar avatar-${card.playerId}`} src={`/img/sq/${card.card.tag}.jpg`} />*/}
                         <h4 className='avatar-stat'>{card.card.stats[activeAttribute]}</h4>
                      </div>
                   </div>

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 
-// const hippo = require('./testimg/hippo.png');
+// Cloudinary config
+import { cloudinaryConfig, CloudinaryImage } from 'react-cloudinary';
+cloudinaryConfig({ cloud_name: 'ldldkmn0o' });
+
+import {andy_summers} from '../cloudinary/images'
+
+// const andy_summers = 'rock-tt/andy_summers';
 
 import Navbar from './Navbar'
 import DynamicFooter from './DynamicFooter'
@@ -11,6 +17,7 @@ class Main extends Component {
       console.log('Component Mounted!')
       this.props.shuffleDeck()
    }
+
    render() {
 
       const {players, p1, p2, p3, p4} = this.props.playerInfo
