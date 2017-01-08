@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 
-// Cloudinary config
-import { cloudinaryConfig, CloudinaryImage } from 'react-cloudinary';
-cloudinaryConfig({ cloud_name: 'ldldkmn0o' });
-
-import {andy_summers} from '../cloudinary/images'
-
-// const andy_summers = 'rock-tt/andy_summers';
-
 import Navbar from './Navbar'
 import DynamicFooter from './DynamicFooter'
 
@@ -37,8 +29,6 @@ class Main extends Component {
 
       return (
          <div className='wrapper'>
-
-            
 
             <Navbar />
 
