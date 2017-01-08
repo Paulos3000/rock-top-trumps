@@ -208,7 +208,7 @@ img.avatar {
 }
 
 .card-count {
-   padding: 3px 8px;
+   padding: 3px 9px;
    font-family: 'BenchNine', sans-serif;
    font-size: 1.3em;
    border-radius: 100px;
@@ -218,6 +218,8 @@ img.avatar {
    top: 50%;
    left: 50%;
    transform: translate(-50%, 30%)
+   /*text-align: center;*/
+   /*min-width: 38px;*/
 }
 
 .cc-1 { border: 4px solid rgb(203, 66, 66) }

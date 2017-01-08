@@ -217,7 +217,7 @@ const deck = [
       'stats': {
          'technique': 71,
          'riffage': 58,
-         'songwriting': 0,
+         'songwriting': 73,
          'fame': 48,
          'originality': 87,
          'cool': 44
@@ -693,7 +693,7 @@ const deck = [
       'stats': {
          'technique': 15,
          'riffage': 9,
-         'songwriting': 78,
+         'songwriting': 88,
          'fame': 99,
          'originality': 67,
          'cool': 85
@@ -747,12 +747,12 @@ const deck = [
       'band': 'David Bowie',
       'tag': 'mick_ronson',
       'stats': {
-         'technique': 61,
-         'riffage': 73,
+         'technique': 51,
+         'riffage': 63,
          'songwriting': 45,
          'fame': 54,
          'originality': 81,
-         'cool': 71
+         'cool': 53
       }
    },
    {

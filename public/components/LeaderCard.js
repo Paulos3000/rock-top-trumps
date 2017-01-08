@@ -1,9 +1,12 @@
 import React from 'react'
+
+import Avatar from './Avatar'
+
 import capsInit from '../util/capsInit'
 
-import { cloudinaryConfig, CloudinaryImage } from 'react-cloudinary';
-cloudinaryConfig({ cloud_name: 'ldldkmn0o' });
-import getCloudinaryId from '../util/getCloudinaryId'
+// import { cloudinaryConfig, CloudinaryImage } from 'react-cloudinary';
+// cloudinaryConfig({ cloud_name: 'ldldkmn0o' });
+// import getCloudinaryId from '../util/getCloudinaryId'
 
 const LeaderCard = ({ selectAttribute, onPlayer, activeCards }) => {
 
@@ -13,8 +16,10 @@ const LeaderCard = ({ selectAttribute, onPlayer, activeCards }) => {
    return (
       <div>
          <div className='avatar-wrapper'>
-            <CloudinaryImage className={`avatar avatar-${onPlayer.id}`} publicId={getCloudinaryId(tag)}/>
-            {/*<img className={`avatar avatar-${onPlayer.id}`} src={`./img/sq/${tag}.jpg`} />*/}
+            <Avatar
+               guitaristId={tag}
+               playerId={onPlayer.id}
+            />
          </div>
          <div className='centered'>
             <h2 className='centered card-name'>{fullName}</h2>

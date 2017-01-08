@@ -1,11 +1,9 @@
 import React from 'react'
 
-import { cloudinaryConfig, CloudinaryImage } from 'react-cloudinary';
-cloudinaryConfig({ cloud_name: 'ldldkmn0o' });
+import Avatar from './Avatar'
 
 // Utilities...
 import capsInit from '../util/capsInit'
-import getCloudinaryId from '../util/getCloudinaryId'
 
 const CardsWon = ({ players, onPlayer, playerInfo, compareCards, handleNextRound, activeAttribute }) => {
 
@@ -22,8 +20,6 @@ const CardsWon = ({ players, onPlayer, playerInfo, compareCards, handleNextRound
    if (winningPlayerId === p2.id) {winningPlayerName = p2.name}
    if (winningPlayerId === p3.id) {winningPlayerName = p3.name}
    if (winningPlayerId === p4.id) {winningPlayerName = p4.name}
-
-   // SPLIT COLUMNS INTO 1, 2 OR 3 ON DESKTOP!!!
 
    // define column width based on number of players
    let colsSm, colsXs
@@ -46,12 +42,15 @@ const CardsWon = ({ players, onPlayer, playerInfo, compareCards, handleNextRound
    return (
       <div className='centered'>
          <h2>{winningPlayerName}, collect your winnings...</h2>
+         {/* List all cards that are NOT the winning card */}
          {compareCards.map( (card, i) =>
             card.playerId !== winningPlayerId ?
             <div className={`col-xs-${colsXs} col-sm-${colsSm}`} key={i}>
                <div className='avatar-wrapper'>
-                  <CloudinaryImage className={`avatar avatar-${winningPlayerId}`} publicId={getCloudinaryId(card.card.tag)}/>
-                  {/*<img className={`avatar avatar-${winningPlayerId}`} src={`/img/sq/${card.card.tag}.jpg`} />*/}
+                  <Avatar
+                     guitaristId={card.card.tag}
+                     playerId={winningPlayerId}
+                  />
                   <h4 className='avatar-caption'>{card.card.fullName}</h4>
                </div>
                   {Object.keys(card.card.stats).map( (stat, index) =>
