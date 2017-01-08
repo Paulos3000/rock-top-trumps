@@ -122,6 +122,7 @@ btn:focus {outline:0 !important;}
    transform: translate(-50%, -50%)
 }
 
+/* player colours on avatar borders */
 .avatar-1 { border: 4px solid rgb(203, 66, 66) !important; }
 .avatar-2 { border: 4px solid rgb(32, 89, 185) !important; }
 .avatar-3 { border: 4px solid rgb(61, 136, 51) !important; }
@@ -186,7 +187,6 @@ img.avatar {
   position: fixed;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 80px;
   margin-top: 60px;
   background-color: #fff;
@@ -213,17 +213,17 @@ img.avatar {
    transform: translate(-50%, 30%)
 }
 
+.cc-1 { border: 4px solid rgb(203, 66, 66) }
+.cc-2 { border: 4px solid rgb(32, 89, 185) }
+.cc-3 { border: 4px solid rgb(61, 136, 51) }
+.cc-4 { border: 4px solid rgb(241, 175, 5) }
+
 .pName {
    text-transform: uppercase;
    font-family: 'BenchNine', sans-serif;
    font-size: 1.4em;
    margin-top: 5px;
 }
-
-.cc-1 { border: 4px solid rgb(203, 66, 66) }
-.cc-2 { border: 4px solid rgb(32, 89, 185) }
-.cc-3 { border: 4px solid rgb(61, 136, 51) }
-.cc-4 { border: 4px solid rgb(241, 175, 5) }
 
 /* CardReveal Styles
 --------------------------------------*/
