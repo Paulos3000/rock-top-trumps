@@ -1,9 +1,10 @@
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 
-export const shuffleDeck = () => (dispatch, getState) => {
+export const shuffleDeck = (deck) => (dispatch, getState) => {
    dispatch({
-      type: 'SHUFFLE_DECK'
+      type: 'SHUFFLE_DECK',
+      deck
    })
 }
 

@@ -10,6 +10,7 @@ export default class NameEntry extends Component {
    handleDeal = (e) => {
       e.preventDefault();
       const {deck, players} = this.props
+      const cloneDeck = deck.slice(0)
 
       const p1name = this.refs.p1name.value || 'Player 1'
       const p2name = this.refs.p2name.value || 'Player 2'
@@ -26,7 +27,7 @@ export default class NameEntry extends Component {
          const p4name = this.refs.p4name.value || 'Player 4'
          this.props.addNames(p1name, p2name, p3name, p4name)
       }
-      this.props.deal(deck, players)
+      this.props.deal(cloneDeck, players)
       this.props.changeStage(1)
 
       // this.refs.commentForm.reset();

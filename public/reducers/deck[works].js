@@ -3,9 +3,9 @@ import shuffle from '../util/shuffle'
 const deck = (state = [], action) => {
    switch(action.type) {
       case 'SHUFFLE_DECK' :
-         let cloneDeck = action.deck.slice(0);
-         shuffle(cloneDeck)
-         return cloneDeck;
+         let newState = state.map(item => item);
+         shuffle(newState)
+         return newState;
       default :
          return state
    }

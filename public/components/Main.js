@@ -4,10 +4,12 @@ import { Link } from 'react-router'
 import Navbar from './Navbar'
 import DynamicFooter from './DynamicFooter'
 
+import deck from '../data/deck'
+
 class Main extends Component {
    componentDidMount() {
       console.log('Component Mounted!')
-      this.props.shuffleDeck()
+      this.props.shuffleDeck(deck)
    }
 
    render() {

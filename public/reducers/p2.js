@@ -17,14 +17,14 @@ const hand = (state = [], action) => {
       case 'DEAL' :
          switch(action.players) {
             case 2 :
-               // return first HALF of randomised deck
-               return action.deck.splice(0, 30)
+               // return second HALF of randomised deck
+               return action.deck.slice(30, 60)
             case 3 :
-               // return first THIRD of randomised deck
-               return action.deck.splice(0, 20)
+               // return second THIRD of randomised deck
+               return action.deck.slice(20, 40)
             case 4 :
-               // return first QUARTER of randomised deck
-               return action.deck.splice(0, 15)
+               // return second QUARTER of randomised deck
+               return action.deck.slice(15, 30)
             default :
                return state
          }
