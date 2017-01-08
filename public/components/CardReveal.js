@@ -59,7 +59,7 @@ const CardReveal = ({ onPlayer, players, activeCards, compareCards, activeAttrib
          <div className="row">
             {compareCards.map( (card, i) =>
                   <div className={`col-xs-${colsXs} col-sm-${colsSm}`} key={i}>
-                     <h4 className='centered faceoff-name'>{card.card.fullName}</h4>
+                     <h4 className='centered faceoff-name truncate'>{card.card.fullName}</h4>
                      <div className='avatar-wrapper'>
                         <CloudinaryImage className={`avatar avatar-reveal avatar-${card.playerId}`} publicId={getCloudinaryId(card.card.tag)}/>
                         <h4 className='avatar-stat'>{card.card.stats[activeAttribute]}</h4>

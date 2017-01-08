@@ -122,11 +122,10 @@ btn:focus {outline:0 !important;}
    transform: translate(-50%, -50%)
 }
 
-/* player colours on avatar borders */
-.avatar-1 { border: 4px solid rgb(203, 66, 66) !important; }
-.avatar-2 { border: 4px solid rgb(32, 89, 185) !important; }
-.avatar-3 { border: 4px solid rgb(61, 136, 51) !important; }
-.avatar-4 { border: 4px solid rgb(241, 175, 5) !important; }
+.avatar-reveal {
+   min-height: 0 !important;
+   min-width: 0 !important;
+}
 
 /* !! Adjust avatar size !! */
 img.avatar {
@@ -135,6 +134,14 @@ img.avatar {
    padding: 10px;
 }
 /* !! Adjust avatar size !! */
+
+/* player colours on avatar borders */
+.avatar-1 { border: 4px solid rgb(203, 66, 66) !important; }
+.avatar-2 { border: 4px solid rgb(32, 89, 185) !important; }
+.avatar-3 { border: 4px solid rgb(61, 136, 51) !important; }
+.avatar-4 { border: 4px solid rgb(241, 175, 5) !important; }
+
+
 
 .avatar-caption {
    padding: 10px 0;
@@ -241,6 +248,13 @@ img.avatar {
 .underline-pl-2 { border-bottom: 4px solid rgb(32, 89, 185)  }
 .underline-pl-3 { border-bottom: 4px solid rgb(61, 136, 51) }
 .underline-pl-4 { border-bottom: 4px solid rgb(241, 175, 5) }
+
+.truncate {
+  /*width: 70px;*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* Button Styles
 --------------------------------------*/
