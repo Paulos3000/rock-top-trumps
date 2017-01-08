@@ -129,8 +129,8 @@ btn:focus {outline:0 !important;}
 
 /* !! Adjust avatar size !! */
 img.avatar {
-   width: 85%;
-   max-width: 160px;
+   width: 90%;
+   max-width: 170px;
    padding: 10px;
 }
 /* !! Adjust avatar size !! */
