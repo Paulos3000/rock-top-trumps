@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Avatar from './Avatar'
+
 import Card from './Card'
 
 class CardDetail extends Component {
@@ -10,7 +12,10 @@ class CardDetail extends Component {
       return (
          <div>
             <div className='avatar-wrapper'>
-               <img className='avatar' src={`/img/sq/${card.tag}.jpg`} />
+               <Avatar
+                  playerId={null}
+                  guitaristId={card.tag}
+               />
             </div>
             <div className='centered'>
                <h2 className='card-name centered'>{card.fullName}</h2>
