@@ -12,13 +12,6 @@ a {
 
 /* Navbar Styles
 --------------------------------------*/
-/*.navbar  text-align: center; }*/
-/*a.navbar-brand { float: none; }*/
-
-/*.navbar-header {
-   line-height: 30px;
-   padding: 10px 0;
-}*/
 
 .navigation-bar {
    height: 50px;
@@ -136,7 +129,7 @@ btn:focus {outline:0 !important;}
 
 /* !! Adjust avatar size !! */
 img.avatar {
-   width: 100%;
+   width: 85%;
    max-width: 180px;
    padding: 10px;
 }
